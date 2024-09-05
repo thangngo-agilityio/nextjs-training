@@ -6,8 +6,8 @@ import Header from '@/layouts/Header';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Next.js Boilerplate',
-  description: 'Next.js 14+ boilerplate app',
+  title: 'minifurs',
+  description: 'minifurs app',
   icons: [
     {
       rel: 'icon',
