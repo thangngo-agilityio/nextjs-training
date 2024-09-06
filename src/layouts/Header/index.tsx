@@ -1,59 +1,57 @@
+'use client';
+import { Box, Flex, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
+import { CloseIcon } from '@chakra-ui/icons';
 
 // Constants
 import { ROUTER } from '@/constants/router';
 
-// Components
-import {
-  LinkWithIcon,
-  type LinkWithIconProps,
-} from '@/components/LinkWithIcon';
-
 // Icons
-import { BoltIcon, CubeIcon, BugAntIcon, UserIcon } from '@/icons';
-
-const NAVIGATION_ITEMS: LinkWithIconProps[] = [
-  {
-    url: ROUTER.CATEGORY,
-    text: 'Category',
-    title: 'Category Listing',
-    icon: <CubeIcon customClass="w-4 h-4 mr-2" />,
-  },
-  {
-    url: `${ROUTER.CATEGORY}?showError=true`,
-    text: 'Error Page',
-    title: 'Demo Error Page',
-    icon: <BugAntIcon customClass="w-4 h-4 mr-2" />,
-  },
-  {
-    url: ROUTER.LOGIN,
-    text: 'Login',
-    title: 'Login',
-    icon: <UserIcon customClass="w-4 h-4 mr-2" />,
-  },
-];
+import { ArrowIcon, CartIcon, HeartIcon, LogoIcon, SearchIcon } from '@/icons';
+import { Avatar, InputField } from '@/components';
 
 const Header = () => (
-  <header className="sticky top-0 h-12 border-b bg-white">
-    <nav className="container mx-auto h-full flex justify-between items-center">
-      <div>
-        <Link href="/" title="Homepage">
-          <BoltIcon customClass="text-blue-600 w-8 h-8" />
+  <Stack
+    px="52px"
+    pt="40px"
+    pb="24px"
+    flexDirection="row"
+    alignItems="center"
+    justifyContent="space-between"
+  >
+    <Stack flexDirection="row" alignItems="center">
+      <Box>
+        <Link href={ROUTER.HOME} title="Home">
+          <LogoIcon />
         </Link>
-      </div>
-      <div className="flex gap-2">
-        {NAVIGATION_ITEMS.map(({ url, text, title, icon }) => (
-          <LinkWithIcon
-            key={url}
-            url={url}
-            text={text}
-            title={title}
-            icon={icon}
-          />
-        ))}
-      </div>
-    </nav>
-  </header>
+      </Box>
+      <Stack flexDirection="row" alignItems="center">
+        <Flex ml="36px" alignItems="center" gap={1}>
+          <Text size="lg">Space Builder</Text>
+          <Text variant="tertiary">(Coming soon)</Text>
+          <ArrowIcon />
+        </Flex>
+        <Flex ml="40px" alignItems="center" gap={1}>
+          <Text size="lg">Products</Text>
+          <ArrowIcon />
+        </Flex>
+      </Stack>
+      <Box ml="22px">
+        <InputField
+          placeholder="Search for minimalist chair"
+          onChange={() => {}}
+          leftIcon={<SearchIcon />}
+          rightIcon={<CloseIcon as="button" onClick={() => {}} />}
+          background="background.100"
+        />
+      </Box>
+    </Stack>
+    <Stack flexDirection="row" alignItems="center" gap="32px">
+      <HeartIcon />
+      <CartIcon />
+      <Avatar />
+    </Stack>
+  </Stack>
 );
 
 export default Header;
