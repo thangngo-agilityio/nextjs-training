@@ -8,6 +8,7 @@ import './globals.css';
 // Providers
 const ChakraProvider = dynamic(() => import('@/providers/Chakra'));
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
   title: 'minifurs',
   description: 'E-commerce app',
