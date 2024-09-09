@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar test case Should render correctly 1`] = `
+<div>
+  <div
+    class="css-xax5g4"
+  >
+    <img
+      alt="image"
+      class="chakra-image css-15sm3g6"
+      src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
+    />
+  </div>
+</div>
+`;

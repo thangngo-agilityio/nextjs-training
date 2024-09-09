@@ -1,4 +1,9 @@
 {
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
   "extends": [
     "next",
     "prettier",
@@ -6,23 +11,28 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:storybook/recommended"
   ],
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint", "react", "react-refresh"],
   "rules": {
-    "no-console": "warn",
-    "no-unused-vars": "off",
+    "react-refresh/only-export-components": [
+      "warn",
+      {
+        "allowConstantExport": true
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "semi": ["error"],
+    "quotes": ["error", "single"],
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_"
+        "varsIgnorePattern": "^_"
       }
     ],
-    "react/self-closing-comp": ["warn", {
-      "component": true,
-      "html": true
-    }]
+    "no-useless-escape": "off",
+    "arrow-body-style": ["error", "as-needed"],
+    "react/display-name": "off"
   }
 }

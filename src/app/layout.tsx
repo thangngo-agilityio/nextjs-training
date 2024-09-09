@@ -1,13 +1,17 @@
 import type { Metadata } from 'next';
-import { lufga } from '@/ui/fonts';
+import dynamic from 'next/dynamic';
+import { NextUIProvider } from '@nextui-org/system';
 
 // Components
-import Header from '@/layouts/Header';
 import './globals.css';
 
+// Providers
+const ChakraProvider = dynamic(() => import('@/providers/Chakra'));
+
+// eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
   title: 'minifurs',
-  description: 'minifurs app',
+  description: 'E-commerce app',
   icons: [
     {
       rel: 'icon',
@@ -23,9 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lufga.className}>
-        <Header />
-        {children}
+      <body>
+        <NextUIProvider>
+          <ChakraProvider>{children}</ChakraProvider>
+        </NextUIProvider>
       </body>
     </html>
   );
