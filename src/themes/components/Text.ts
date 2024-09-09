@@ -33,6 +33,14 @@ export const Text = defineStyleConfig({
     tertiary: {
       color: 'text.700',
     },
+    quaternary: {
+      color: 'text.900',
+      fontFamily: 'inter',
+    },
+    quinary: {
+      color: 'text.1000',
+      fontFamily: 'inter',
+    },
   },
   defaultProps: {
     size: 'textMd',

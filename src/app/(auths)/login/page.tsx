@@ -1,9 +1,6 @@
-import { Flex, Heading } from '@chakra-ui/react';
+'use client';
+import dynamic from 'next/dynamic';
 
-const LoginPage = () => (
-  <Flex h="100%">
-    <Heading>Login page</Heading>
-  </Flex>
-);
+const SignIn = dynamic(() => import('@/ui/pages/Login'));
 
-export default LoginPage;
+export default SignIn;

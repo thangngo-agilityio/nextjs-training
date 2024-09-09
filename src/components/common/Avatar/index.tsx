@@ -18,7 +18,7 @@ const Avatar = ({
     <Image
       w="100%"
       h="100%"
-      borderRadius="lg"
+      borderRadius="xl"
       objectFit="cover"
       src={src}
       alt={alt}

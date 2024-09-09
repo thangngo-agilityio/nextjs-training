@@ -1,4 +1,5 @@
 import { Button } from './Button';
+import { Checkbox } from './Checkbox';
 import { Heading } from './Heading';
 import { Input } from './Input';
 import { Text } from './Text';
@@ -8,4 +9,5 @@ export const components = {
   Text,
   Button,
   Input,
+  Checkbox,
 };

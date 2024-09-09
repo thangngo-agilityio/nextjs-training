@@ -56,28 +56,32 @@ export const Button = defineStyleConfig({
       borderRadius: '2xl',
       backgroundColor: 'danger.300',
     },
-    tertiary: {
+    auth: {
+      fontFamily: 'inter',
+      borderRadius: 'lg',
+      bgColor: 'background.200',
+      color: 'text.100',
+    },
+    authSecondary: {
+      color: 'text.500',
+      fontFamily: 'inter',
+      fontWeight: 'bold',
+    },
+    authTertiary: {
       color: 'text.300',
-      backgroundColor: 'transparent',
-      borderWidth: '1px',
-      borderColor: 'border.100',
+      fontFamily: 'inter',
+      fontWeight: 'bold',
     },
     iconPrimary: {
-      borderRadius: 'md',
-      backgroundColor: 'background.100',
-      boxShadow: '0 2px 5.5px 0 rgba(0, 0 , 0, .25)',
-    },
-    iconSecondary: {
+      w: '100%',
+      py: '25px',
+      fontFamily: 'inter',
+      color: 'text.900',
       backgroundColor: 'transparent',
       borderRadius: 'lg',
       borderColor: 'border.200',
       borderWidth: '1px',
       opacity: '1 !important',
-    },
-    iconTertiary: {
-      color: 'text.200',
-      backgroundColor: 'transparent',
-      borderRadius: 'md',
     },
   },
   defaultProps: {

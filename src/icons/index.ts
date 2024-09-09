@@ -7,3 +7,5 @@ export * from './ArrowIcon';
 export * from './Search';
 export * from './Heart';
 export * from './Cart';
+export * from './Line';
+export * from './Google';

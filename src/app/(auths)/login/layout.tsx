@@ -6,7 +6,14 @@ interface AuthLayoutProps {
 }
 
 const AuthLayout = ({ children }: AuthLayoutProps) => (
-  <Stack bgImage="/images/background-auth.jpg">{children}</Stack>
+  <Stack
+    h="100vh"
+    bgImage="/images/background-auth.jpg"
+    bgRepeat="no-repeat"
+    bgSize="cover"
+  >
+    {children}
+  </Stack>
 );
 
 export default AuthLayout;

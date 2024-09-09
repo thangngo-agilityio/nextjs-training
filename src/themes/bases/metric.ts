@@ -2,11 +2,14 @@ import { ThemeOverride } from '@chakra-ui/react';
 
 // Custom radii
 export const radii: ThemeOverride['radii'] = {
-  sm: '5px',
+  xs: '5px',
+  sm: '8px',
   md: '9px',
-  lg: '12px',
-  xl: '13px',
+  lg: '10px',
+  xl: '12px',
   '2xl': '34.5px',
+  '3xl': '34.5px',
+  '4xl': '34.5px',
 };
 
 export const sizes: ThemeOverride['sizes'] = {

@@ -17,6 +17,9 @@ export const Heading = defineStyleConfig({
     xl: {
       fontSize: 'xl',
     },
+    size4xl: {
+      fontSize: '4xl',
+    },
     xxl: {
       fontSize: '5xl',
     },
@@ -29,7 +32,9 @@ export const Heading = defineStyleConfig({
       color: 'text.100',
     },
     tertiary: {
-      color: 'text.300',
+      color: 'text.700',
+      fontFamily: 'montserrat',
+      fontWeight: 900,
     },
   },
 

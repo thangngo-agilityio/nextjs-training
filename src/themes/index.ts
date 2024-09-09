@@ -10,7 +10,7 @@ export const theme = extendTheme({
   styles: {
     global: {
       'html, body': {
-        fontFamily: 'primary',
+        fontFamily: 'lufga',
         background: 'background.100',
       },
     },

@@ -21,6 +21,7 @@ import isEqual from 'react-fast-compare';
 type TInputFieldProps = Omit<InputProps, 'onChange'> & {
   errorMessages?: string;
   label?: string;
+  value?: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   isError?: boolean;
@@ -34,6 +35,7 @@ const InputField = forwardRef(
       isError = false,
       errorMessages = 'Default error',
       label,
+      value,
       leftIcon,
       rightIcon,
       onChange,
@@ -48,7 +50,7 @@ const InputField = forwardRef(
 
     return (
       <FormControl isInvalid={isError}>
-        {label && (
+        {/* {label && (
           <FormLabel
             fontSize="md"
             marginInlineEnd={0}
@@ -57,20 +59,49 @@ const InputField = forwardRef(
           >
             {label}
           </FormLabel>
-        )}
-        <InputGroup>
+        )} */}
+        <InputGroup position="relative">
           {leftIcon && (
             <InputLeftElement pointerEvents="none">{leftIcon}</InputLeftElement>
           )}
-
+          <FormLabel
+            pt="24px"
+            pl="20px"
+            fontSize="md"
+            marginInlineEnd={0}
+            minW="max-content"
+            color="text.900"
+            fontWeight={value ? '400' : 'bold'}
+            position="absolute"
+            transition="0.2s ease"
+            transform="auto"
+            _focus={{
+              translateX: '-1px',
+              translateY: '-15px',
+              scale: '0.9',
+              fontWeight: '400',
+            }}
+            translateX={value ? '-1px' : 0}
+            translateY={value ? '-15px' : 0}
+            scale={value ? '0.9' : 'unset'}
+            zIndex={1000}
+          >
+            {label}
+          </FormLabel>
           <Input
-            py={5}
+            px="20px"
+            pt="36px"
+            pb="30px"
             type="text"
             onChange={handleChangeValue}
             ref={ref}
             borderColor="border.200"
-            _hover={{ borderColor: 'border.300' }}
-            _focusVisible={{ borderColor: 'border.100' }}
+            _focus={{
+              borderColor: 'border.500',
+            }}
+            _valid={{
+              borderColor: 'border.500',
+            }}
             {...rest}
             isInvalid={isError}
           />
@@ -79,7 +110,7 @@ const InputField = forwardRef(
             <InputRightElement
               w="25px"
               h="25px"
-              top="11px"
+              top="22px"
               right="15px"
               aria-label="The eye icon"
               type="button"
