@@ -19,7 +19,7 @@ const Header = () => (
     alignItems="center"
     justifyContent="space-between"
   >
-    <Stack flexDirection="row" alignItems="center">
+    <Stack w="100%" flexDirection="row" alignItems="center">
       <Box>
         <Link href={ROUTER.HOME} title="Home">
           <LogoIcon />
@@ -36,12 +36,15 @@ const Header = () => (
           <ArrowIcon />
         </Flex>
       </Stack>
-      <Box ml="22px">
+      <Box ml="22px" width="30%">
         <InputField
           placeholder="Search for minimalist chair"
           onChange={() => {}}
+          variant="search"
           leftIcon={<SearchIcon />}
-          rightIcon={<CloseIcon as="button" onClick={() => {}} />}
+          rightIcon={
+            <CloseIcon as="button" color="text.200" onClick={() => {}} />
+          }
           background="background.100"
         />
       </Box>

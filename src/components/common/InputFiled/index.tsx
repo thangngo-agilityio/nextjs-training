@@ -22,6 +22,7 @@ type TInputFieldProps = Omit<InputProps, 'onChange'> & {
   errorMessages?: string;
   label?: string;
   value?: string;
+  variant?: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   isError?: boolean;
@@ -36,6 +37,7 @@ const InputField = forwardRef(
       errorMessages = 'Default error',
       label,
       value,
+      variant,
       leftIcon,
       rightIcon,
       onChange,
@@ -89,19 +91,10 @@ const InputField = forwardRef(
             {label}
           </FormLabel>
           <Input
-            px="20px"
-            pt="36px"
-            pb="30px"
             type="text"
             onChange={handleChangeValue}
             ref={ref}
-            borderColor="border.200"
-            _focus={{
-              borderColor: 'border.500',
-            }}
-            _valid={{
-              borderColor: 'border.500',
-            }}
+            variant={variant}
             {...rest}
             isInvalid={isError}
           />
@@ -110,7 +103,7 @@ const InputField = forwardRef(
             <InputRightElement
               w="25px"
               h="25px"
-              top="22px"
+              top="8px"
               right="15px"
               aria-label="The eye icon"
               type="button"

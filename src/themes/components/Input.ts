@@ -4,9 +4,6 @@ export const Input = defineStyleConfig({
   baseStyle: {
     field: {
       fontFamily: 'inter',
-      px: '20px',
-      py: '15px',
-      height: '50px',
       borderRadius: 'sm',
       borderWidth: '1px',
       borderColor: 'border.200',
@@ -16,6 +13,22 @@ export const Input = defineStyleConfig({
       _placeholder: {
         color: 'text.400',
         fontSize: 'sm',
+      },
+    },
+  },
+  variants: {
+    form: {
+      field: {
+        px: '20px',
+        pt: '36px',
+        pb: '30px',
+        _focus: { borderColor: 'border.500' },
+        _valid: { borderColor: 'border.500' },
+      },
+    },
+    search: {
+      field: {
+        py: '12px',
       },
     },
   },
