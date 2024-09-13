@@ -2,12 +2,15 @@ import { defineStyleConfig } from '@chakra-ui/react';
 
 export const Heading = defineStyleConfig({
   baseStyle: {
-    fontFamily: 'primary',
+    fontFamily: 'lufga',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
 
   sizes: {
+    xs: {
+      fontSize: 'xs',
+    },
     md: {
       fontSize: 'md',
     },
@@ -35,6 +38,9 @@ export const Heading = defineStyleConfig({
       color: 'text.700',
       fontFamily: 'montserrat',
       fontWeight: 900,
+    },
+    quaternary: {
+      color: 'text.300',
     },
   },
 

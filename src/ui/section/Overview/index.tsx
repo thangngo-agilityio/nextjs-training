@@ -1,8 +1,7 @@
 import { Box, Button, Heading, Text } from '@chakra-ui/react';
 
-const SectionOverview = () => (
+const OverviewSection = () => (
   <Box
-    position="relative"
     px="122px"
     pt="162px"
     pb="150"
@@ -21,4 +20,4 @@ const SectionOverview = () => (
   </Box>
 );
 
-export default SectionOverview;
+export default OverviewSection;
