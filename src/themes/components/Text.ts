@@ -41,6 +41,9 @@ export const Text = defineStyleConfig({
       color: 'text.1000',
       fontFamily: 'inter',
     },
+    senary: {
+      color: 'text.1100',
+    },
   },
   defaultProps: {
     size: 'textMd',
