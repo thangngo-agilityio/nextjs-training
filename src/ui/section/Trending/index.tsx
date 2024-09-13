@@ -2,15 +2,15 @@ import { Fragment, useState } from 'react';
 import { Flex, RadioGroup } from '@chakra-ui/react';
 
 // Components
-import { ItemCategory } from '@/components';
+import { CardBenefit, ItemCategory } from '@/components';
 
 // Constants
-import { MENU_ITEM_FILTER } from '@/constants';
+import { BENEFIT_LIST, MENU_ITEM_FILTER } from '@/constants';
 
 const TrendingSection = () => {
   const [value, setValue] = useState('1');
   return (
-    <Flex justifyContent="center" alignItems="center">
+    <Flex flexDirection="column" justifyContent="center" alignItems="center">
       <Flex
         width="60%"
         px="145px"
@@ -22,6 +22,7 @@ const TrendingSection = () => {
         justifyContent="center"
         alignItems="center"
         mt="-60px"
+        mb="46px"
       >
         {MENU_ITEM_FILTER.map((item) => {
           const IconComponent = item.icon || Fragment;
@@ -44,6 +45,20 @@ const TrendingSection = () => {
                 onChange={() => {}}
               />
             </RadioGroup>
+          );
+        })}
+      </Flex>
+
+      <Flex flexDirection="row" gap="92px">
+        {BENEFIT_LIST.map((item) => {
+          const IconComponent = item.icon || Fragment;
+          return (
+            <CardBenefit
+              key={item.id}
+              icon={<IconComponent />}
+              title={item.title}
+              text={item.text}
+            />
           );
         })}
       </Flex>

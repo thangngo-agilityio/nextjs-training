@@ -8,9 +8,9 @@ type TCardBenefit = {
 };
 
 const CardBenefit = ({ icon, title, text }: TCardBenefit) => (
-  <Flex>
+  <Flex alignItems="center" flexDirection="row">
     <Box>{icon}</Box>
-    <Flex maxW="205px" ml="24px" flexDirection="column">
+    <Flex maxW="206px" ml="24px" flexDirection="column">
       <Heading size="xl" mb="2px">
         {title}
       </Heading>

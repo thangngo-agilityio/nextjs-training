@@ -19,3 +19,7 @@ export * from './ChairActive';
 export * from './SofaActive';
 export * from './StarActive';
 export * from './TableActive';
+export * from './Cup';
+export * from './Check';
+export * from './Shipping';
+export * from './Support';
