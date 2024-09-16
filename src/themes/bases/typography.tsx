@@ -8,10 +8,11 @@ export const fontSizes: ThemeOverride['fontSizes'] = {
   md: '14px',
   lg: '16px',
   xl: '18px',
-  '2xl': '30px',
+  '2xl': '20px',
   '3xl': '28px',
   '4xl': '34px',
-  '5xl': '60px',
+  '5xl': '50px',
+  '6xl': '60px',
 };
 
 export const lufga = LocalFont({ src: '../../assets/fonts/LufgaRegular.ttf' });
@@ -20,12 +21,22 @@ export const lufgaExtraBold = LocalFont({
   src: '../../assets/fonts/LufgaExtraBold.ttf',
 });
 
+export const lufgaBold = LocalFont({
+  src: '../../assets/fonts/LufgaBold.ttf',
+});
+
+export const lufgaSemiBold = LocalFont({
+  src: '../../assets/fonts/LufgaBold.ttf',
+});
+
 export const inter = Inter({ subsets: ['latin'] });
 
 export const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const fonts = {
   lufga: `${lufga.style.fontFamily}, sans-serif`,
+  lufgaSemiBold: `${lufgaSemiBold.style.fontFamily}, sans-serif`,
+  lufgaBold: `${lufgaBold.style.fontFamily}, sans-serif`,
   lufgaExtraBold: `${lufgaExtraBold.style.fontFamily}, sans-serif`,
   inter: `${inter.style.fontFamily}, sans-serif`,
   montserrat: `${montserrat.style.fontFamily}, sans-serif`,

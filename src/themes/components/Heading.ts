@@ -5,6 +5,9 @@ export const Heading = defineStyleConfig({
     fontFamily: 'lufga',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    _firstLetter: {
+      textTransform: 'uppercase',
+    },
   },
 
   sizes: {
@@ -23,8 +26,11 @@ export const Heading = defineStyleConfig({
     size4xl: {
       fontSize: '4xl',
     },
-    xxl: {
+    size5xl: {
       fontSize: '5xl',
+    },
+    size6xl: {
+      fontSize: '6xl',
     },
   },
   variants: {
@@ -41,6 +47,13 @@ export const Heading = defineStyleConfig({
     },
     quaternary: {
       color: 'text.300',
+    },
+    quinary: {
+      fontFamily: 'lufgaBold',
+      color: 'text.1200',
+    },
+    senary: {
+      color: 'text.1300',
     },
   },
 

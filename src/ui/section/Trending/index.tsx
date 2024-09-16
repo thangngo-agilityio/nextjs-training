@@ -1,16 +1,22 @@
 import { Fragment, useState } from 'react';
-import { Flex, RadioGroup } from '@chakra-ui/react';
+import { Box, Flex, Heading, RadioGroup, Text } from '@chakra-ui/react';
 
 // Components
-import { CardBenefit, ItemCategory } from '@/components';
+import { CardBenefit, ItemCategory, ProductCard } from '@/components';
 
 // Constants
 import { BENEFIT_LIST, MENU_ITEM_FILTER } from '@/constants';
+import { PRODUCT_MOCK } from '@/mock';
 
 const TrendingSection = () => {
   const [value, setValue] = useState('1');
   return (
-    <Flex flexDirection="column" justifyContent="center" alignItems="center">
+    <Flex
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      pb="90px"
+    >
       <Flex
         width="60%"
         px="145px"
@@ -49,7 +55,7 @@ const TrendingSection = () => {
         })}
       </Flex>
 
-      <Flex flexDirection="row" gap="92px">
+      <Flex flexDirection="row" gap="92px" mb="98px">
         {BENEFIT_LIST.map((item) => {
           const IconComponent = item.icon || Fragment;
           return (
@@ -61,6 +67,30 @@ const TrendingSection = () => {
             />
           );
         })}
+      </Flex>
+
+      <Flex mb="166px">
+        <Flex flexDirection="column" alignItems="center" textAlign="center">
+          <Heading mb="10px" size="size5xl" variant="quinary">
+            Top Trending
+          </Heading>
+          <Text maxW="797px" variant="septenary" size="text2Xl" mb="10px">
+            Find a bright ideal to suit your taste with our great selection of
+            suspension, wall, floor and table lights.
+          </Text>
+          <Box w="98px" h="5px" bgColor="background.300" />
+        </Flex>
+      </Flex>
+
+      <Flex gap="29px">
+        {PRODUCT_MOCK.map((item) => (
+          <ProductCard
+            key={item.id}
+            image={item.image}
+            title={item.name}
+            price={item.price}
+          />
+        ))}
       </Flex>
     </Flex>
   );

@@ -9,14 +9,14 @@ const OverviewSection = () => (
     bgRepeat="no-repeat"
     bgSize="cover"
   >
-    <Heading maxW="705px" size="xxl" variant="secondary">
+    <Heading maxW="705px" size="size6xl" variant="secondary">
       We allow customers build & Customize items
     </Heading>
     <Text maxW="665px" mb="20px" size="textXl" variant="secondary">
       Find a bright ideal to suit your taste with our great selection of
       suspension, wall, floor and table lights.
     </Text>
-    <Button size="xxl">Shop Now</Button>
+    <Button size="size6xl">Shop Now</Button>
   </Box>
 );
 

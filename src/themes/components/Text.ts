@@ -22,6 +22,9 @@ export const Text = defineStyleConfig({
     textXl: {
       fontSize: 'xl',
     },
+    text2Xl: {
+      fontSize: '2xl',
+    },
   },
   variants: {
     primary: {
@@ -43,6 +46,13 @@ export const Text = defineStyleConfig({
     },
     senary: {
       color: 'text.1100',
+    },
+    septenary: {
+      color: 'text.400',
+    },
+    productCard: {
+      fontFamily: 'lufgaSemiBold',
+      color: 'text.600',
     },
   },
   defaultProps: {

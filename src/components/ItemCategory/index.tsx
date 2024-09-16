@@ -27,6 +27,7 @@ const ItemCategory = ({
         borderRadius="xl"
         bgColor={isActive ? 'background.300' : 'background.700'}
         transition=".2s ease-in"
+        opacity="1"
         _hover={{
           bgColor: 'background.300',
         }}

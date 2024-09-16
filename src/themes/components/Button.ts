@@ -36,11 +36,6 @@ export const Button = defineStyleConfig({
       fontSize: 'xl',
       width: '100%',
     },
-    xxl: {
-      px: '42px',
-      py: '22px',
-      fontSize: '2xl',
-    },
     icon: {
       p: '22px',
     },
