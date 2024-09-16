@@ -15,6 +15,7 @@ const ProductCard = ({ image, title, price }: ProductCard) => (
     flexDirection="column"
     borderRadius="sm"
     boxShadow="0 4px 50px -5px rgba(32, 32, 32, 10%)"
+    pb="14px"
   >
     <Flex
       w="100%"

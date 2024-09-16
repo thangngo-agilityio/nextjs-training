@@ -9,6 +9,8 @@ export const colors = {
     600: '#C6D8D3',
     700: '#F0F0F0',
     800: '#F9F9F9',
+    900: '#EFE5D5',
+    1000: '#5B5E3E',
   },
 
   text: {
