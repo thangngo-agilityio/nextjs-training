@@ -36,6 +36,19 @@ export const Button = defineStyleConfig({
       fontSize: 'xl',
       width: '100%',
     },
+    size3xl: {
+      w: 'fit-content',
+      px: '26px',
+      py: '22px',
+      fontSize: '3xl',
+    },
+    size4xl: {
+      w: 'fit-content',
+      px: '42px',
+      py: '22px',
+      fontSize: '4xl',
+      fontFamily: 'lufgaBold',
+    },
     icon: {
       p: '22px',
     },
@@ -77,6 +90,15 @@ export const Button = defineStyleConfig({
       borderColor: 'border.200',
       borderWidth: '1px',
       opacity: '1 !important',
+    },
+    showroom: {
+      bgColor: 'background.1000',
+      color: 'text.100',
+      borderRadius: 'xl',
+      opacity: 1,
+      _hover: {
+        opacity: 0.8,
+      },
     },
   },
   defaultProps: {

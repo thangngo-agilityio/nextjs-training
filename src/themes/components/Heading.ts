@@ -32,12 +32,16 @@ export const Heading = defineStyleConfig({
     size6xl: {
       fontSize: '6xl',
     },
+    size7xl: {
+      fontSize: '7xl',
+    },
   },
   variants: {
     primary: {
       color: 'text.200',
     },
     secondary: {
+      fontFamily: 'lufgaBold',
       color: 'text.100',
     },
     tertiary: {
@@ -54,6 +58,10 @@ export const Heading = defineStyleConfig({
     },
     senary: {
       color: 'text.1300',
+    },
+    septenary: {
+      color: 'text.700',
+      fontFamily: 'lufgaBold',
     },
   },
 
