@@ -5,7 +5,7 @@ import { ProductCard } from '@/components';
 import { PRODUCT_MOCK } from '@/mock';
 
 const ProductSection = () => (
-  <Flex pt="148px" justifyContent="center">
+  <Flex pt="148px" pb="228px" justifyContent="center">
     <Box maxW="1512px">
       <Flex px="104px" mb="165px">
         <Heading maxW="340px" variant="product" size="size8xl">
@@ -17,7 +17,7 @@ const ProductSection = () => (
           ever since the 1500s,
         </Text>
       </Flex>
-      <Flex gap="29px">
+      <Flex px="94px" gap="29px">
         {PRODUCT_MOCK.map((item) => (
           <ProductCard
             key={item.id}

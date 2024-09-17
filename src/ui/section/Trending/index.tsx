@@ -56,7 +56,7 @@ const TrendingSection = () => {
           })}
         </Flex>
 
-        <Flex flexDirection="row" gap="92px" mb="98px">
+        <Flex flexDirection="row" gap="92px" mb="98px" px="104px">
           {BENEFIT_LIST.map((item) => {
             const IconComponent = item.icon || Fragment;
             return (
@@ -83,7 +83,7 @@ const TrendingSection = () => {
           </Flex>
         </Flex>
 
-        <Flex gap="29px">
+        <Flex px="94px" gap="29px">
           {PRODUCT_MOCK.map((item) => (
             <ProductCard
               key={item.id}
