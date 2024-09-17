@@ -50,6 +50,9 @@ export const Text = defineStyleConfig({
     septenary: {
       color: 'text.400',
     },
+    productPrimary: {
+      color: 'text.1400',
+    },
     productCard: {
       fontFamily: 'lufgaSemiBold',
       color: 'text.600',
