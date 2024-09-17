@@ -3,6 +3,7 @@ import { Stack } from '@chakra-ui/react';
 // Components
 import {
   OverviewSection,
+  ProductSection,
   ShowroomSection,
   TrendingSection,
 } from '@/ui/section';
@@ -12,6 +13,7 @@ const HomePage = () => (
     <OverviewSection />
     <TrendingSection />
     <ShowroomSection />
+    <ProductSection />
   </Stack>
 );
 
