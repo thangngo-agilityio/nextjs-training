@@ -3,12 +3,14 @@ import { Box, Flex, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { CloseIcon } from '@chakra-ui/icons';
 
-// Constants
-import { ROUTER } from '@/constants/router';
+// Components
+import { Avatar, InputField } from '@/components';
 
 // Icons
 import { ArrowIcon, CartIcon, HeartIcon, LogoIcon, SearchIcon } from '@/icons';
-import { Avatar, InputField } from '@/components';
+
+// Constants
+import { ROUTER } from '@/constants';
 
 const Header = () => (
   <Stack

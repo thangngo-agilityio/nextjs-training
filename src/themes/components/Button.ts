@@ -100,6 +100,12 @@ export const Button = defineStyleConfig({
         opacity: 0.8,
       },
     },
+    footer: {
+      w: 'fit-content',
+      color: 'text.1500',
+      bgColor: 'none',
+      textDecor: 'underline',
+    },
   },
   defaultProps: {
     size: 'xs',

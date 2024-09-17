@@ -70,6 +70,16 @@ export const Heading = defineStyleConfig({
       color: 'text.800',
       fontFamily: 'lufgaBold',
     },
+    footerPrimary: {
+      color: 'text.800',
+      fontFamily: 'poppins',
+      fontWeight: '700',
+    },
+    footerSecondary: {
+      color: 'text.100',
+      fontFamily: 'poppins',
+      fontWeight: '600',
+    },
   },
 
   defaultProps: {

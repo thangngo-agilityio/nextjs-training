@@ -57,6 +57,10 @@ export const Text = defineStyleConfig({
       fontFamily: 'lufgaSemiBold',
       color: 'text.600',
     },
+    footer: {
+      text: 'text.1600',
+      fontWeight: '400',
+    },
   },
   defaultProps: {
     size: 'textMd',

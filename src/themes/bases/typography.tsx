@@ -1,6 +1,6 @@
 import { ThemeOverride } from '@chakra-ui/react';
 import LocalFont from 'next/font/local';
-import { Inter, Montserrat } from 'next/font/google';
+import { Inter, Montserrat, Poppins } from 'next/font/google';
 
 export const fontSizes: ThemeOverride['fontSizes'] = {
   xs: '10px',
@@ -35,6 +35,11 @@ export const inter = Inter({ subsets: ['latin'] });
 
 export const montserrat = Montserrat({ subsets: ['latin'] });
 
+export const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+});
+
 export const fonts = {
   lufga: `${lufga.style.fontFamily}, sans-serif`,
   lufgaSemiBold: `${lufgaSemiBold.style.fontFamily}, sans-serif`,
@@ -42,4 +47,5 @@ export const fonts = {
   lufgaExtraBold: `${lufgaExtraBold.style.fontFamily}, sans-serif`,
   inter: `${inter.style.fontFamily}, sans-serif`,
   montserrat: `${montserrat.style.fontFamily}, sans-serif`,
+  poppins: `${poppins.style.fontFamily}, sans-serif`,
 };

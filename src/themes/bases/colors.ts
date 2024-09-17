@@ -11,6 +11,7 @@ export const colors = {
     800: '#F9F9F9',
     900: '#EFE5D5',
     1000: '#5B5E3E',
+    1100: '#FAFAFA',
   },
 
   text: {
@@ -28,6 +29,8 @@ export const colors = {
     1200: '#284F49',
     1300: '#AAAAAA',
     1400: 'rgba(33, 56, 66, 60%)',
+    1500: '#D4D6D4',
+    1600: '#B6C197',
   },
 
   border: {

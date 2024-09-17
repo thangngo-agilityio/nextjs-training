@@ -1,14 +1,17 @@
 'use client';
 import { Stack } from '@chakra-ui/react';
 
-// Section
-import Header from '@/layouts/Header';
+// Pages
 import { HomePage } from '@/ui';
+
+// Component
+import { Footer, Header } from '@/layouts';
 
 const LandingPage = () => (
   <Stack>
     <Header />
     <HomePage />
+    <Footer />
   </Stack>
 );
 
