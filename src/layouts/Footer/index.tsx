@@ -1,6 +1,6 @@
 import { NavFooter } from '@/components';
 import { FOOTER_COMPANY_LIST, FOOTER_SERVICE_LIST } from '@/constants';
-import { LineDownIcon } from '@/icons';
+import { LineDownIcon, LogoWhiteIcon } from '@/icons';
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 
 const Footer = () => (
@@ -28,11 +28,11 @@ const Footer = () => (
         </Button>
       </Flex>
     </Flex>
-    <Flex justifyContent="center">
-      <Flex w="100%" maxW="1512px" flexDir="column" px="172px" gap="120px">
-        <Flex flexDir="row">
+    <Flex flexDir="column" justifyContent="center">
+      <Flex w="100%" maxW="1512px" flexDir="column" px="172px">
+        <Flex flexDir="row" mb="62px">
           <Box position="relative" flex={2}>
-            <Flex>
+            <Flex gap="120px">
               <Flex flexDir="column">
                 <Heading mb="22px" variant="footerSecondary" size="lg">
                   Service
@@ -66,16 +66,63 @@ const Footer = () => (
               <LineDownIcon />
             </Box>
           </Box>
-          <Box flex={1}>
+          <Box flex={1} pl="166px">
             <Flex flexDir="column">
               <Heading mb="22px" variant="footerSecondary" size="lg">
                 Get in Touch
               </Heading>
-              <Text maxW="282px" variant="footer" size="textLg">
+              <Text maxW="282px" variant="footer" size="textLg" mb="24px">
                 Feel free to get in touch with us vai email
               </Text>
+              <Text variant="footerPrimary" size="text9xl" mb="28px">
+                minifurs@gmail.com
+              </Text>
+              <Flex alignItems="center" gap="12px">
+                <Box
+                  w="35px"
+                  h="35px"
+                  borderRadius="full"
+                  bgColor="background.1200"
+                />
+                <Box
+                  w="35px"
+                  h="35px"
+                  borderRadius="full"
+                  bgColor="background.1200"
+                />
+                <Box
+                  w="35px"
+                  h="35px"
+                  borderRadius="full"
+                  bgColor="background.300"
+                />
+                <Box
+                  w="35px"
+                  h="35px"
+                  borderRadius="full"
+                  bgColor="background.1200"
+                />
+              </Flex>
             </Flex>
           </Box>
+        </Flex>
+        <Flex
+          w="100%"
+          flexDir="row"
+          borderTopWidth="1px"
+          borderColor="border.100"
+          justifyContent="space-between"
+          alignItems="center"
+          pr="30px"
+          pt="8px"
+          pb="14px"
+        >
+          <Box>
+            <LogoWhiteIcon />
+          </Box>
+          <Text variant="copyright" size="textMd">
+            &copy; 2020@webovio. All Rights Reserved.
+          </Text>
         </Flex>
       </Flex>
     </Flex>
