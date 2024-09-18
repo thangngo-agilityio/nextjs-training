@@ -28,7 +28,7 @@ const Footer = () => (
         </Button>
       </Flex>
     </Flex>
-    <Flex flexDir="column" justifyContent="center">
+    <Flex justifyContent="center">
       <Flex w="100%" maxW="1512px" flexDir="column" px="172px">
         <Flex flexDir="row" mb="62px">
           <Box position="relative" flex={2}>
