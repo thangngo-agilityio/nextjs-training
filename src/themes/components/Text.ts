@@ -25,6 +25,9 @@ export const Text = defineStyleConfig({
     text2Xl: {
       fontSize: '2xl',
     },
+    text9xl: {
+      fontSize: '9xl',
+    },
   },
   variants: {
     primary: {
@@ -56,6 +59,21 @@ export const Text = defineStyleConfig({
     productCard: {
       fontFamily: 'lufgaSemiBold',
       color: 'text.600',
+    },
+    footer: {
+      color: 'text.1600',
+      fontWeight: '400',
+      fontFamily: 'poppins',
+    },
+    footerPrimary: {
+      color: 'text.100',
+      fontWeight: '700',
+      fontFamily: 'poppins',
+    },
+    copyright: {
+      color: 'text.1700',
+      fontWeight: '400',
+      fontFamily: 'poppins',
     },
   },
   defaultProps: {

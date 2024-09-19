@@ -23,3 +23,5 @@ export * from './Cup';
 export * from './Check';
 export * from './Shipping';
 export * from './Support';
+export * from './LineDown';
+export * from './LogoWhite';

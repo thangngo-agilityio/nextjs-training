@@ -5,7 +5,7 @@ import { ProductCard } from '@/components';
 import { PRODUCT_MOCK } from '@/mock';
 
 const ProductSection = () => (
-  <Flex pt="148px" pb="228px" justifyContent="center">
+  <Flex pt="148px" pb="516px" justifyContent="center">
     <Box maxW="1512px">
       <Flex px="104px" mb="165px">
         <Heading maxW="340px" variant="product" size="size8xl">
