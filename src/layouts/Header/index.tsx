@@ -1,4 +1,3 @@
-'use client';
 import { Box, Flex, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { CloseIcon } from '@chakra-ui/icons';
