@@ -16,8 +16,11 @@ import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
 
 // Component
 import { InputField } from '../common';
-import { AuthFormData } from '@/constants';
 import { GoogleIcon, LineIcon } from '@/icons';
+
+// Constants
+import { AuthFormData, ROUTER } from '@/constants';
+import Link from 'next/link';
 
 type TAuthFormProps = {
   isRegister?: boolean;
@@ -36,8 +39,6 @@ const AuthForm = ({
   handleClearRootError,
   // onSubmit,
 }: TAuthFormProps) => {
-  // const navigate = useNavigate();
-
   const {
     control,
     formState: { isSubmitting },
@@ -77,10 +78,6 @@ const AuthForm = ({
     [],
   );
 
-  // const handleNavigate = () => {
-  //   navigate(isRegister ? ROUTES.SIGN_IN : ROUTES.SIGN_UP);
-  // };
-
   const handleClearErrorMessage = useCallback(
     (
       field: keyof AuthFormData,
@@ -96,20 +93,10 @@ const AuthForm = ({
   );
 
   return (
-    <Stack
-      w="556px"
-      px={isRegister ? '51px' : '0px'}
-      py={isRegister ? '46px' : '0px'}
-      mb="30px"
-      borderRadius={isRegister ? 'xl' : 'unset'}
-      boxShadow={isRegister ? '0 7px 23px rgba(0, 0 , 0, .05)' : 'unset'}
-      bg={isRegister ? 'background.100' : 'transparent'}
-      alignItems="center"
-      justifyContent="center"
-    >
+    <Stack w="556px" mb="30px" alignItems="center" justifyContent="center">
       <Box mb="36px" textAlign="center">
         <Heading as="h1" mb="8px" variant="tertiary" size="size4xl">
-          Welcome Back!
+          {isRegister ? 'Sign Up to get started' : 'Welcome Back!'}
         </Heading>
         <Text variant="quaternary" size="textMd">
           Enter your details to proceed further
@@ -124,49 +111,6 @@ const AuthForm = ({
         as="form"
         onSubmit={() => {}}
       >
-        {isRegister && (
-          <Flex flexDirection="row" alignItems="center">
-            <Controller
-              control={control}
-              name="firstName"
-              render={({ field, fieldState: { error } }) => (
-                <InputField
-                  label="First Name"
-                  variant="form"
-                  isError={!!error}
-                  errorMessages={error?.message}
-                  isDisabled={isSubmitting}
-                  onChange={handleClearErrorMessage(
-                    'firstName',
-                    !!error,
-                    field.onChange,
-                  )}
-                  aria-label="first name"
-                />
-              )}
-            />
-
-            <Controller
-              control={control}
-              name="lastName"
-              render={({ field, fieldState: { error } }) => (
-                <InputField
-                  label="Last Name"
-                  variant="form"
-                  isError={!!error}
-                  errorMessages={error?.message}
-                  isDisabled={isSubmitting}
-                  onChange={handleClearErrorMessage(
-                    'lastName',
-                    !!error,
-                    field.onChange,
-                  )}
-                  aria-label="name"
-                />
-              )}
-            />
-          </Flex>
-        )}
         <Controller
           control={control}
           name="email"
@@ -192,12 +136,58 @@ const AuthForm = ({
           }}
         />
 
+        {isRegister && (
+          <Flex w="full" flexDirection="row" gap="12px" alignItems="center">
+            <Controller
+              control={control}
+              name="firstName"
+              render={({ field, fieldState: { error } }) => (
+                <InputField
+                  label="First Name"
+                  variant="form"
+                  isError={!!error}
+                  errorMessages={error?.message}
+                  isDisabled={isSubmitting}
+                  {...field}
+                  onChange={handleClearErrorMessage(
+                    'firstName',
+                    !!error,
+                    field.onChange,
+                  )}
+                  aria-label="first name"
+                />
+              )}
+            />
+
+            <Controller
+              control={control}
+              name="lastName"
+              render={({ field, fieldState: { error } }) => (
+                <InputField
+                  label="Last Name"
+                  variant="form"
+                  isError={!!error}
+                  errorMessages={error?.message}
+                  isDisabled={isSubmitting}
+                  {...field}
+                  onChange={handleClearErrorMessage(
+                    'lastName',
+                    !!error,
+                    field.onChange,
+                  )}
+                  aria-label="name"
+                />
+              )}
+            />
+          </Flex>
+        )}
+
         <Controller
           control={control}
           name="password"
           render={({ field, fieldState: { error } }) => (
             <InputField
-              label="Password"
+              label={isRegister ? 'Password' : 'Your password'}
               type={isShowPassword ? 'text' : 'password'}
               variant="form"
               rightIcon={renderPasswordIcon(isShowPassword, onShowPassword)}
@@ -310,6 +300,8 @@ const AuthForm = ({
           }}
         />
         <Button
+          as={Link}
+          href={!isRegister ? ROUTER.REGISTER : ROUTER.LOGIN}
           aria-label={!isRegister ? 'sign up' : 'sign in'}
           w="fit-content"
           p={0}
@@ -319,7 +311,6 @@ const AuthForm = ({
           fontSize="md"
           variant="authTertiary"
           ml={1}
-          onClick={() => {}}
         >
           {!isRegister ? 'Sign up' : 'Sign in'}
         </Button>

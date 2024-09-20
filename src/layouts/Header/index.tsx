@@ -42,6 +42,7 @@ const Header = () => (
         </Stack>
         <Box ml="22px" width="30%">
           <InputField
+            isSearch
             placeholder="Search for minimalist chair"
             onChange={() => {}}
             variant="search"

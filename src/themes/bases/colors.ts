@@ -37,6 +37,7 @@ export const colors = {
 
   border: {
     100: '#5D6544',
+    200: '#EDE8E9',
   },
 
   danger: {

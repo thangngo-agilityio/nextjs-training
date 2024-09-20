@@ -27,6 +27,7 @@ type TInputFieldProps = Omit<InputProps, 'onChange'> & {
   rightIcon?: ReactNode;
   isError?: boolean;
   isValidate?: boolean;
+  isSearch?: boolean;
   onChange?: (value: string) => void;
 };
 
@@ -40,6 +41,7 @@ const InputField = forwardRef(
       variant,
       leftIcon,
       rightIcon,
+      isSearch,
       onChange,
       ...rest
     }: TInputFieldProps,
@@ -103,7 +105,7 @@ const InputField = forwardRef(
             <InputRightElement
               w="25px"
               h="25px"
-              top="8px"
+              top={isSearch ? '8px' : '22px'}
               right="15px"
               aria-label="The eye icon"
               type="button"
