@@ -1,35 +1,43 @@
 'use client';
 
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Flex } from '@chakra-ui/react';
-// import { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 // Components
 import { AuthForm } from '@/components';
 
 // Constants
-// import { TSignInForm } from '@/constants';
+import { ROUTER, TSignInForm } from '@/constants';
+import { signInWithEmail } from '@/actions/auth';
 
-const LoginPage = () => (
-  <Flex h="100%" justifyContent="center" alignItems="center">
-    <AuthForm />
-  </Flex>
-);
-// const LoginPage = () => {
-//   const [isPending, setIsPending] = useState(false);
+const LoginPage = () => {
+  const [isPending, setIsPending] = useState(false);
 
-//   const router = useRouter();
+  const router = useRouter();
 
-//   const handleSignIn = useCallback(async (data: TSignInForm) => {
-//     setIsPending(true);
+  const handleSignIn = useCallback(
+    async (data: TSignInForm) => {
+      setIsPending(true);
 
-//   }, []);
+      console.log('data', data);
+      const res = await signInWithEmail(data);
+      console.log(res);
 
-//   return (
-//     <Flex h="100%" justifyContent="center" alignItems="center">
-//       <AuthForm isDisabled={isPending} />
-//     </Flex>
-//   );
-// };
+      if (typeof res === 'string') {
+        setIsPending(false);
+      }
+
+      return router.push(ROUTER.HOME);
+    },
+    [router],
+  );
+
+  return (
+    <Flex h="100%" justifyContent="center" alignItems="center">
+      <AuthForm onSubmit={handleSignIn} isDisabled={isPending} />
+    </Flex>
+  );
+};
 
 export default LoginPage;

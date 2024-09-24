@@ -19,7 +19,7 @@ import { InputField } from '../common';
 import { GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
-import { AuthFormData, ROUTER } from '@/constants';
+import { AuthFormData, ROUTER, TSignInForm } from '@/constants';
 import Link from 'next/link';
 
 type TAuthFormProps = {
@@ -29,7 +29,7 @@ type TAuthFormProps = {
   onChange?: (value: string) => void;
   handleClearRootError?: () => void;
   handleSubmit?: () => void;
-  // onSubmit: (data: AuthFormData) => void;
+  onSubmit: (data: TSignInForm) => void;
 };
 
 const AuthForm = ({
@@ -37,11 +37,12 @@ const AuthForm = ({
   isDisabled = false,
   errorMessage = '',
   handleClearRootError,
-  // onSubmit,
+  onSubmit,
 }: TAuthFormProps) => {
   const {
     control,
     formState: { isSubmitting },
+    handleSubmit,
     clearErrors,
   } = useForm<AuthFormData>({
     mode: 'onBlur',
@@ -92,6 +93,13 @@ const AuthForm = ({
     [clearErrors],
   );
 
+  const handleSignIn = useCallback(
+    (data: TSignInForm) => {
+      onSubmit(data);
+    },
+    [onSubmit],
+  );
+
   return (
     <Stack w="556px" mb="30px" alignItems="center" justifyContent="center">
       <Box mb="36px" textAlign="center">
@@ -104,12 +112,13 @@ const AuthForm = ({
       </Box>
 
       <VStack
+        id={!isRegister ? 'login-form' : 'register-form'}
         w="100%"
         gap="10px"
-        alignItems="flex-start"
+        alignItems="center"
         mb="24px"
         as="form"
-        onSubmit={() => {}}
+        onSubmit={handleSubmit(handleSignIn)}
       >
         <Controller
           control={control}
@@ -265,29 +274,27 @@ const AuthForm = ({
             />
           </>
         )}
+        <Box mb={7} w="76%">
+          <Text color="red" textAlign="center" py={2} h={10}>
+            {errorMessage}
+          </Text>
+          <Button
+            width="100%"
+            py="26px"
+            type="submit"
+            role="button"
+            aria-label={!isRegister ? 'Sign In' : 'Sign Up'}
+            size="md"
+            variant="auth"
+            colorScheme="primary"
+            textTransform="capitalize"
+            form={!isRegister ? 'login-form' : 'register-form'}
+            isDisabled={isDisabled}
+          >
+            {!isRegister ? 'SIGN IN' : 'SIGN UP'}
+          </Button>
+        </Box>
       </VStack>
-
-      <Box mb={7} w="76%">
-        <Text color="red" textAlign="center" py={2} h={10}>
-          {errorMessage}
-        </Text>
-        <Button
-          width="100%"
-          py="26px"
-          type="submit"
-          role="button"
-          aria-label={!isRegister ? 'Sign In' : 'Sign Up'}
-          size="md"
-          variant="auth"
-          colorScheme="primary"
-          textTransform="capitalize"
-          form={!isRegister ? 'login-form' : 'register-form'}
-          isDisabled={isDisabled}
-          onClick={() => {}}
-        >
-          {!isRegister ? 'SIGN IN' : 'SIGN UP'}
-        </Button>
-      </Box>
 
       <Flex justifyContent="center" mb="100px">
         <Text
