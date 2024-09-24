@@ -1,3 +1,1 @@
-export const API_ENDPOINT = {
-  CATEGORY_LIST: 'categories',
-};
+export const BASE_URL = process.env.MOCK_API || '';
