@@ -6,3 +6,8 @@ export type AuthFormData = {
   firstName?: string;
   lastName?: string;
 };
+
+export type TSignInForm = {
+  email: string;
+  password: string;
+};
