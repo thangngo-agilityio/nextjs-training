@@ -32,6 +32,7 @@
       }
     ],
     "no-useless-escape": "off",
+    "no-useless-catch": "off",
     "arrow-body-style": ["error", "as-needed"],
     "react/display-name": "off"
   }
