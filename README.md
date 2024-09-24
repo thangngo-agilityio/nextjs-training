@@ -1,103 +1,72 @@
-# Next.js 14+ Boilerplate
+# NEXTJS
 
-This is a [Next.js](https://nextjs.org/) boilerplate built with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
+## Overview
 
-### Features
+- This document provides requirements and estimation for NextJs Practice.
+- Plan: [Plan Practice](https://docs.google.com/document/d/1d1QqUP4VJu389_t5mr29gMB_BJCoZx0S0LJbm-o1q58/edit)
+- Develop plan: [Develop plan](https://docs.google.com/document/d/1Ta_o1vBg6NKd8opWx18HKadu3bGw7DwD/edit)
 
-This boilerplate includes:
-- ⚡ [Next.js](https://nextjs.org/) with App Router support
-- 🔥 Type checking [TypeScript](https://www.typescriptlang.org/)
-- 💎 Integrate with [Tailwind CSS](https://tailwindcss.com/)
-- [tailwind-merge](https://github.com/dcastil/tailwind-merge) for efficiently merge Tailwind CSS classes without style conflicts
-- ✅ Strict Mode for TypeScript and React 18
-- 📏 Linter with [ESLint](https://eslint.org/)
-- 💖 Code Formatter with [Prettier](https://prettier.io/)
-- 🦊 [Husky](https://github.com/typicode/husky) for Git Hooks
-- 🚫 [Lint-staged](https://github.com/lint-staged/lint-staged) for running linters on Git staged files
-- 🦺 Unit Testing with Jest and React Testing Library
-- ☂️ Code coverage with [V8](https://v8.dev/blog/javascript-code-coverage)
-- 🎉 Storybook for UI development
+### Time line:
 
+- Timeline: 9 days ( Sep 23, 2024 - Oct 03, 2024 )
 
-## How to run
+### Design:
 
-### Prerequisites
+- Design: [Figma](<https://www.figma.com/design/4gQuNxlb8yFu1AsYgcCxST/AI-Furniture-E-commerce-UI-Kit-(Community)-(Copy)?node-id=65-549&node-type=frame&t=k0NNhykdBpQqcofE-0>)
 
-Make sure you install packages with correct version below:
-  - [node v18.18.2+](https://nodejs.org/en/download/package-manager)
-  - [pnpm 9.1.2+](https://pnpm.io/installation)
+### Editor
 
-- **Note:**:
-    - Please add `.env` into root of project source code, refer `.env.sample`.
-    - Refer: Here's the [sample mockAPI project](https://mockapi.io/clone/665e8a3f1e9017dc16f05e15), feel free to **clone** then use in your project
+- Visual Studio Code
 
-Check and update config image hosting on `next.config.mjs` file follow [Next.js document](https://nextjs.org/docs/messages/next-image-unconfigured-host)
+## Target
 
-### Get source code
+- Use some available hooks to make Search features work efficiently.
+- Distinguish between server, and client directives and use it correspondingly for each case.
+- Handle errors and be aware of which errors should be shown for each situation.
+- Bear in mind that improving accessibility and form validation will always be involved.
+- Get to know metadata which is crucial for SEO and shareability.
 
-| Command                                                                                                            | Action                    |
-| :------------------------------------------------------------------------------------------------------------------| :------------------------ |
-| `git clone --depth=1 git@gitlab.asoft-python.com:bgh/javascript/boilerplates/nextjs-boilerplate.git nextjs-project`| Clone Repository with SSH |
-| `$ cd nextjs-project`                                                                                              | Redirect to folder        |
+## Technical
 
-### Build and Run app
+- Vite - v5.3.4
+- Prettier - v3.3.3
+- ESLint - v9.7.0
+- React - v18.3.1
+- TypeScript - v5.2.2
+- Storybook - v8.2.4
+- Jest - v29.7.0
+- React Query - v.5.51.15
+- Zustand - v4.5.4
+- React-Testing-Library - 16.0.0
 
-| Command            | Action                                        | Port                  |
-| :----------------- | :---------------------------------------------|:--------------------- |
-| `$ pnpm install`   | Install packages dependencies                 | N/A                   |
-| `$ pnpm build`     | Build app with optimized production mode      | N/A                   |
-| `$ pnpm start`     | Starts the application in production mode.    | http://localhost:3000 |
-| `$ pnpm dev`       | Run the app in development mode               | http://localhost:3000 |
-| `$ pnpm storybook` | Run Storybook.                                | http://localhost:6006 |
-| `$ pnpm test`      | Run Unit Test                                 | N/A                   |
-| `$ pnpm coverage`  | Generate code coverage                        | N/A                   |
+## Development Tools
 
-### Project structure
-```shell
-.
-├── README.md                       # README file
-├── .husky                          # Husky configuration
-├── .storybook                      # Storybook folder
-├── .vscode                         # VSCode configuration
-├── public                          # Public assets folder
-├── src
-│   ├── api                         # Handle data with API: GET, POST, PUT, DELETE
-│   ├── app                         # Next.js App (App Router)
-│   ├── components                  # React components
-│   ├── constants                   # App constants
-│   ├── icons                       # Icons folder
-│   ├── layouts                     # React components for app layout
-│   ├── models                      # Model type definitions
-│   ├── types                       # Type definitions
-│   ├── ui                          # React components by feature
-│   ├── utils                       # Utilities folder
-├── .eslintrc.json                  # ESLint configuration
-├── .lintstagedrc                   # Lint-stage
-├── .prettierrc                     # Prettier configuration
-├── jest.config.ts                  # Jest configuration
-├── next.config.mjs                 # Next.js configuration
-├── next.config.mjs                 # Next.js configuration
-├── postcss.config.mjs              # Post CSS configuration
-├── tailwind.config.ts              # Tailwind CSS configuration
-└── tsconfig.json                   # TypeScript configuration
-```
+- Eslint
+- Prettier
+- Husky
+- CommitLint
+- Pre-commit
 
-## Maintainers
+### Getting Started
 
-This project is maintained by:
+- Step 1: Clone repository.
+  - SSH:
+    - `$ git clone git@gitlab.asoft-python.com:thang.ngo/nextjs-training.git`.
+  - HTTPS:
+    - `$ git clone https://gitlab.asoft-python.com/thang.ngo/nextjs-training.git`.
+- Step 2:
+  - Open terminal: `cd nextjs-training`
+  - Install the packages `pnpm install`.
+- Step 3:
+  - Add file .env and add elements like .env.example
+  - Run app:
+    - Run web local: `pnpm dev`
+    - Run json server: `pnpm start`
+- Step 4:
+  - Run Storybook: `pnpm storybook`.
+  - Run Test: `pnpm test-coverage`
 
-- **Huy Nguyen Van**
-  - Email: huy.nguyenvan@asnet.com.vn
-  - GitLab: [@huy.nguyenvan](https://gitlab.asoft-python.com/huy.nguyenvan)
-  - Slack: huy.nguyenvan
+## Author
 
-### Responsibilities
-
-- Reviewing and merging pull requests.
-- Managing and responding to issues.
-- Updating project documentation.
-- Ensuring the project is up-to-date with the latest standards and practices.
-
-### Availability
-
-Huy is typically available during weekdays and aims to respond to issues and pull requests within 48 hours. For urgent matters, please email directly.
+- Thang ngo.
+- Email: [thang.ngo@asnet.com.vn](thang.ngo@asnet.com.vn).
