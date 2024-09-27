@@ -3,7 +3,7 @@
 import { Button, Heading } from '@chakra-ui/react';
 
 // Types
-import { PageErrorProps } from '@/types/components';
+import { PageErrorProps } from '@/types';
 
 // Components
 import Header from '@/layouts/Header';

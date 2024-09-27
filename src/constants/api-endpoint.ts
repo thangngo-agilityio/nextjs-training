@@ -1,3 +1,5 @@
-export const API_ENDPOINT = {
-  CATEGORY_LIST: 'categories',
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || '';
+
+export const API_PATH = {
+  USERS: 'users',
 };

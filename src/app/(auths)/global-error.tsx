@@ -3,7 +3,7 @@
 import { Button, Heading } from '@chakra-ui/react';
 
 // Types
-import { PageErrorProps } from '@/types/components';
+import { PageErrorProps } from '@/types';
 
 export default function GlobalError({
   // error,

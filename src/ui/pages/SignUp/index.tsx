@@ -3,10 +3,10 @@ import { Flex } from '@chakra-ui/react';
 // Components
 import { AuthForm } from '@/components';
 
-const LoginPage = () => (
+const SignInPage = () => (
   <Flex h="100%" justifyContent="center" alignItems="center">
-    <AuthForm isRegister />
+    <AuthForm onSubmit={() => {}} isRegister />
   </Flex>
 );
 
-export default LoginPage;
+export default SignInPage;
