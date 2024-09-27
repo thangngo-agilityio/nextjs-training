@@ -5,7 +5,7 @@ import { Flex } from '@chakra-ui/react';
 import { useCallback, useState } from 'react';
 
 // Components
-import { AuthForm } from '@/components';
+import { LoginForm } from '@/components';
 
 // Constants
 import { ROUTER, TSignInForm } from '@/constants';
@@ -35,7 +35,7 @@ const LoginPage = () => {
 
   return (
     <Flex h="100%" justifyContent="center" alignItems="center">
-      <AuthForm onSubmit={handleSignIn} isDisabled={isPending} />
+      <LoginForm onSubmit={handleSignIn} isDisabled={isPending} />
     </Flex>
   );
 };

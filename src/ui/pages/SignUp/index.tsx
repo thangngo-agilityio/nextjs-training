@@ -1,11 +1,11 @@
 import { Flex } from '@chakra-ui/react';
 
 // Components
-import { AuthForm } from '@/components';
+import { SignUpForm } from '@/components';
 
 const SignInPage = () => (
   <Flex h="100%" justifyContent="center" alignItems="center">
-    <AuthForm onSubmit={() => {}} isRegister />
+    <SignUpForm onSubmit={() => {}} />
   </Flex>
 );
 

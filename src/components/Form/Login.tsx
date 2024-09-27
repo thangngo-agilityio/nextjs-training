@@ -32,7 +32,7 @@ type TAuthFormProps = {
   onSubmit: (data: TSignInForm) => void;
 };
 
-const AuthForm = ({
+const LgoinForm = ({
   isRegister = false,
   isDisabled = false,
   errorMessage = '',
@@ -334,4 +334,4 @@ const AuthForm = ({
   );
 };
 
-export default AuthForm;
+export default LgoinForm;
