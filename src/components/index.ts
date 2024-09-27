@@ -1,5 +1,6 @@
 export * from './Skeleton';
-export { default as AuthForm } from './Form/Auth';
+export { default as LoginForm } from './Form/Login';
+export { default as SignUpForm } from './Form/SignUp';
 export { default as ItemCategory } from './ItemCategory';
 export { default as CardBenefit } from './CardBenefit';
 export { default as ProductCard } from './ProductCard';
