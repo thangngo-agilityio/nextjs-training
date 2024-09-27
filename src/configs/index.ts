@@ -3,17 +3,17 @@ import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
-import bcrypt from 'bcryptjs';
 
 // APIs
 import { getUsers } from '@/apis';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
+  secret: process.env.AUTH_SECRET,
   providers: [
     Credentials({
       credentials: {
-        email: { label: 'Email' },
+        email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
 
@@ -21,7 +21,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const parsedCredentials = z
           .object({
             email: z.string().email(),
-            password: z.string().min(8),
+            password: z.string().min(6),
           })
           .safeParse(credentials);
 
@@ -37,12 +37,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
           if (!user) return null;
 
-          const isPasswordsMatch = await bcrypt.compare(
-            password,
-            user.password,
-          );
-
-          if (isPasswordsMatch) return user;
+          if (password === user.password) return user;
         }
 
         return null;

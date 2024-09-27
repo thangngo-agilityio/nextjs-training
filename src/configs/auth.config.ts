@@ -11,12 +11,12 @@ export const authConfig = {
         nextUrl.pathname === ROUTER.LOGIN ||
         nextUrl.pathname === ROUTER.REGISTER;
 
-      // If use has not logged in and access to Dashboard pages, navigate to Login Page
+      // If use has not logged in and access to Home pages, navigate to Login Page
       if (!isLoggedIn && !isPublicPage) {
         return Response.redirect(new URL(ROUTER.LOGIN, nextUrl));
       }
 
-      // If user has logged in and access to Login page, navigate to Dashboard page
+      // If user has logged in and access to Login page, navigate to Home page
       if (isLoggedIn && isPublicPage) {
         return Response.redirect(new URL(ROUTER.HOME, nextUrl));
       }

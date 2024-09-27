@@ -10,7 +10,7 @@ import {
   useDisclosure,
   VStack,
 } from '@chakra-ui/react';
-import { ChangeEvent, useCallback } from 'react';
+import { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
 
@@ -94,9 +94,7 @@ const AuthForm = ({
   );
 
   const handleSignIn = useCallback(
-    (data: TSignInForm) => {
-      onSubmit(data);
-    },
+    (data: TSignInForm) => onSubmit(data),
     [onSubmit],
   );
 
@@ -112,7 +110,6 @@ const AuthForm = ({
       </Box>
 
       <VStack
-        id={!isRegister ? 'login-form' : 'register-form'}
         w="100%"
         gap="10px"
         alignItems="center"
@@ -212,26 +209,20 @@ const AuthForm = ({
         {/* Helpers */}
         {!isRegister && (
           <HStack justifyContent="space-between" w="100%" mt="10px">
-            <Controller
-              control={control}
-              name="isRemember"
-              render={({ field: { value, onChange } }) => (
-                <Checkbox
-                  aria-label="remember"
-                  variant="round"
-                  isChecked={value}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    onChange(e.target.checked)
-                  }
-                  isDisabled={isSubmitting}
-                  position="relative"
-                >
-                  <Text variant="quinary" fontWeight="bold">
-                    Remember me
-                  </Text>
-                </Checkbox>
-              )}
-            />
+            <Checkbox
+              aria-label="remember"
+              variant="round"
+              // isChecked={value}
+              // onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              //   onChange(e.target.checked)
+              // }
+              isDisabled={isSubmitting}
+              position="relative"
+            >
+              <Text variant="quinary" fontWeight="bold">
+                Remember me
+              </Text>
+            </Checkbox>
             <Button
               isDisabled={isSubmitting}
               variant="authSecondary"
@@ -288,7 +279,6 @@ const AuthForm = ({
             variant="auth"
             colorScheme="primary"
             textTransform="capitalize"
-            form={!isRegister ? 'login-form' : 'register-form'}
             isDisabled={isDisabled}
           >
             {!isRegister ? 'SIGN IN' : 'SIGN UP'}
@@ -296,7 +286,7 @@ const AuthForm = ({
         </Box>
       </VStack>
 
-      <Flex justifyContent="center" mb="100px">
+      <Flex justifyContent="center" alignItems="center" mb="100px">
         <Text
           variant="quaternary"
           textAlign="center"

@@ -9,6 +9,8 @@ import { AuthForm } from '@/components';
 
 // Constants
 import { ROUTER, TSignInForm } from '@/constants';
+
+// Actions
 import { signInWithEmail } from '@/actions/auth';
 
 const LoginPage = () => {
@@ -20,9 +22,7 @@ const LoginPage = () => {
     async (data: TSignInForm) => {
       setIsPending(true);
 
-      console.log('data', data);
       const res = await signInWithEmail(data);
-      console.log(res);
 
       if (typeof res === 'string') {
         setIsPending(false);

@@ -6,14 +6,15 @@ import { AuthError } from 'next-auth';
 import { signIn } from '@/configs';
 
 // Constants
-import { AUTH_METHODS, ERROR_MESSAGES, ERROR_TYPES } from '@/constants';
+import {
+  AUTH_METHODS,
+  // AUTH_METHODS,
+  ERROR_MESSAGES,
+  ERROR_TYPES,
+  TSignInForm,
+} from '@/constants';
 
-type TSignInPayload = {
-  email: string;
-  password: string;
-};
-
-export const signInWithEmail = async (payload: TSignInPayload) => {
+export const signInWithEmail = async (payload: TSignInForm) => {
   try {
     await signIn(AUTH_METHODS.CREDENTIALS, payload);
   } catch (error) {
