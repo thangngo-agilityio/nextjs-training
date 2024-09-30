@@ -13,17 +13,17 @@ import {
 import { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
 
 // Component
 import { InputField } from '../common';
 import { GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
-import { AuthFormData, ROUTER, TSignInForm } from '@/constants';
-import Link from 'next/link';
+import { ROUTER, TSignInForm } from '@/constants';
+import { LoginFormData } from '@/types';
 
 type TAuthFormProps = {
-  isRegister?: boolean;
   isDisabled?: boolean;
   errorMessage?: string;
   onChange?: (value: string) => void;
@@ -32,8 +32,7 @@ type TAuthFormProps = {
   onSubmit: (data: TSignInForm) => void;
 };
 
-const LgoinForm = ({
-  isRegister = false,
+const LoginForm = ({
   isDisabled = false,
   errorMessage = '',
   handleClearRootError,
@@ -44,23 +43,16 @@ const LgoinForm = ({
     formState: { isSubmitting },
     handleSubmit,
     clearErrors,
-  } = useForm<AuthFormData>({
+  } = useForm<LoginFormData>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
     defaultValues: {
       email: '',
       password: '',
-
-      ...(isRegister && {
-        name: '',
-        confirmPassword: '',
-      }),
     },
   });
 
   const { isOpen: isShowPassword, onToggle: onShowPassword } = useDisclosure();
-  const { isOpen: isShowConfirmPassword, onToggle: onShowConfirmPassword } =
-    useDisclosure();
 
   const renderPasswordIcon = useCallback(
     (isCorrect: boolean, callback: typeof onShowPassword): JSX.Element => {
@@ -81,7 +73,7 @@ const LgoinForm = ({
 
   const handleClearErrorMessage = useCallback(
     (
-      field: keyof AuthFormData,
+      field: keyof LoginFormData,
       isError: boolean,
       onChange: (value: string) => void,
     ) =>
@@ -102,7 +94,7 @@ const LgoinForm = ({
     <Stack w="556px" mb="30px" alignItems="center" justifyContent="center">
       <Box mb="36px" textAlign="center">
         <Heading as="h1" mb="8px" variant="tertiary" size="size4xl">
-          {isRegister ? 'Sign Up to get started' : 'Welcome Back!'}
+          Welcome Back!
         </Heading>
         <Text variant="quaternary" size="textMd">
           Enter your details to proceed further
@@ -124,6 +116,7 @@ const LgoinForm = ({
             const handleChange = (valueInput: string) => {
               const sanitizedValue = valueInput.trim();
 
+              !!error && clearErrors('email');
               onChange(sanitizedValue);
             };
 
@@ -142,58 +135,12 @@ const LgoinForm = ({
           }}
         />
 
-        {isRegister && (
-          <Flex w="full" flexDirection="row" gap="12px" alignItems="center">
-            <Controller
-              control={control}
-              name="firstName"
-              render={({ field, fieldState: { error } }) => (
-                <InputField
-                  label="First Name"
-                  variant="form"
-                  isError={!!error}
-                  errorMessages={error?.message}
-                  isDisabled={isSubmitting}
-                  {...field}
-                  onChange={handleClearErrorMessage(
-                    'firstName',
-                    !!error,
-                    field.onChange,
-                  )}
-                  aria-label="first name"
-                />
-              )}
-            />
-
-            <Controller
-              control={control}
-              name="lastName"
-              render={({ field, fieldState: { error } }) => (
-                <InputField
-                  label="Last Name"
-                  variant="form"
-                  isError={!!error}
-                  errorMessages={error?.message}
-                  isDisabled={isSubmitting}
-                  {...field}
-                  onChange={handleClearErrorMessage(
-                    'lastName',
-                    !!error,
-                    field.onChange,
-                  )}
-                  aria-label="name"
-                />
-              )}
-            />
-          </Flex>
-        )}
-
         <Controller
           control={control}
           name="password"
           render={({ field, fieldState: { error } }) => (
             <InputField
-              label={isRegister ? 'Password' : 'Your password'}
+              label="Your password"
               type={isShowPassword ? 'text' : 'password'}
               variant="form"
               rightIcon={renderPasswordIcon(isShowPassword, onShowPassword)}
@@ -201,70 +148,44 @@ const LgoinForm = ({
               errorMessages={error?.message}
               isDisabled={isDisabled}
               {...field}
+              onChange={handleClearErrorMessage(
+                'password',
+                !!error,
+                field.onChange,
+              )}
               onBlur={handleClearRootError}
             />
           )}
         />
 
-        {/* Helpers */}
-        {!isRegister && (
-          <HStack justifyContent="space-between" w="100%" mt="10px">
-            <Checkbox
-              aria-label="remember"
-              variant="round"
-              // isChecked={value}
-              // onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              //   onChange(e.target.checked)
-              // }
-              isDisabled={isSubmitting}
-              position="relative"
-            >
-              <Text variant="quinary" fontWeight="bold">
-                Remember me
-              </Text>
-            </Checkbox>
-            <Button
-              isDisabled={isSubmitting}
-              variant="authSecondary"
-              px={0}
-              fontSize="md"
-              w="fit-content"
-              aria-label="recover password"
-              textTransform="capitalize"
-            >
-              Recover password
-            </Button>
-          </HStack>
-        )}
+        <HStack justifyContent="space-between" w="100%" mt="10px">
+          <Checkbox
+            aria-label="remember"
+            variant="round"
+            // isChecked={value}
+            // onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            //   onChange(e.target.checked)
+            // }
+            isDisabled={isSubmitting}
+            position="relative"
+          >
+            <Text variant="quinary" fontWeight="bold">
+              Remember me
+            </Text>
+          </Checkbox>
+          <Button
+            isDisabled={isSubmitting}
+            variant="authSecondary"
+            px={0}
+            fontSize="md"
+            w="fit-content"
+            aria-label="recover password"
+            textTransform="capitalize"
+          >
+            Recover password
+          </Button>
+        </HStack>
 
-        {isRegister && (
-          <>
-            <Controller
-              control={control}
-              name="confirmPassword"
-              render={({ field, fieldState: { error } }) => (
-                <InputField
-                  label="Confirm password"
-                  type={isShowConfirmPassword ? 'text' : 'password'}
-                  variant="form"
-                  rightIcon={renderPasswordIcon(
-                    isShowConfirmPassword,
-                    onShowConfirmPassword,
-                  )}
-                  {...field}
-                  isError={!!error}
-                  errorMessages={error?.message}
-                  isDisabled={isSubmitting}
-                  onChange={handleClearErrorMessage(
-                    'confirmPassword',
-                    !!error,
-                    field.onChange,
-                  )}
-                />
-              )}
-            />
-          </>
-        )}
         <Box mb={7} w="76%">
           <Text color="red" textAlign="center" py={2} h={10}>
             {errorMessage}
@@ -274,14 +195,14 @@ const LgoinForm = ({
             py="26px"
             type="submit"
             role="button"
-            aria-label={!isRegister ? 'Sign In' : 'Sign Up'}
+            aria-label="Sign In"
             size="md"
             variant="auth"
             colorScheme="primary"
             textTransform="capitalize"
             isDisabled={isDisabled}
           >
-            {!isRegister ? 'SIGN IN' : 'SIGN UP'}
+            SIGN IN
           </Button>
         </Box>
       </VStack>
@@ -291,15 +212,13 @@ const LgoinForm = ({
           variant="quaternary"
           textAlign="center"
           dangerouslySetInnerHTML={{
-            __html: !isRegister
-              ? 'Don&apos;t have an account?'
-              : 'Already have an account?',
+            __html: 'Don&apos;t have an account?',
           }}
         />
         <Button
           as={Link}
-          href={!isRegister ? ROUTER.REGISTER : ROUTER.LOGIN}
-          aria-label={!isRegister ? 'sign up' : 'sign in'}
+          href={ROUTER.REGISTER}
+          aria-label="sign up"
           w="fit-content"
           p={0}
           _hover={{
@@ -309,7 +228,7 @@ const LgoinForm = ({
           variant="authTertiary"
           ml={1}
         >
-          {!isRegister ? 'Sign up' : 'Sign in'}
+          Sign up
         </Button>
       </Flex>
       <Flex flexDirection="column" alignItems="center" justifyContent="center">
@@ -334,4 +253,4 @@ const LgoinForm = ({
   );
 };
 
-export default LgoinForm;
+export default LoginForm;

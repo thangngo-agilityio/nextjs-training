@@ -1,11 +1,10 @@
-export type AuthFormData = {
+export interface ISignUpForm {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   confirmPassword: string;
-  isRemember?: boolean;
-  firstName?: string;
-  lastName?: string;
-};
+}
 
 export type TSignInForm = {
   email: string;
