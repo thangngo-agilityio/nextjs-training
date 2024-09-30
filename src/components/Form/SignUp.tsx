@@ -11,14 +11,17 @@ import {
 import { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
 
 // Component
 import { InputField } from '../common';
 import { GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
-import { AuthFormData, ROUTER, TSignInForm } from '@/constants';
-import Link from 'next/link';
+import { ISignUpForm, ROUTER } from '@/constants';
+
+// Types
+import { TUser } from '@/types';
 
 type TAuthFormProps = {
   isDisabled?: boolean;
@@ -26,7 +29,7 @@ type TAuthFormProps = {
   onChange?: (value: string) => void;
   handleClearRootError?: () => void;
   handleSubmit?: () => void;
-  onSubmit: (data: TSignInForm) => void;
+  onSubmit: (data: Omit<TUser, 'id'>) => void;
 };
 
 const SignUpForm = ({
@@ -40,7 +43,7 @@ const SignUpForm = ({
     formState: { isSubmitting },
     handleSubmit,
     clearErrors,
-  } = useForm<AuthFormData>({
+  } = useForm<ISignUpForm>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
     defaultValues: {
@@ -75,7 +78,7 @@ const SignUpForm = ({
 
   const handleClearErrorMessage = useCallback(
     (
-      field: keyof AuthFormData,
+      field: keyof ISignUpForm,
       isError: boolean,
       onChange: (value: string) => void,
     ) =>
@@ -88,7 +91,7 @@ const SignUpForm = ({
   );
 
   const handleSignUp = useCallback(
-    (data: TSignInForm) => onSubmit(data),
+    (data: Omit<TUser, 'id'>) => onSubmit(data),
     [onSubmit],
   );
 
@@ -118,6 +121,7 @@ const SignUpForm = ({
             const handleChange = (valueInput: string) => {
               const sanitizedValue = valueInput.trim();
 
+              !!error && clearErrors('email');
               onChange(sanitizedValue);
             };
 
@@ -193,6 +197,11 @@ const SignUpForm = ({
               errorMessages={error?.message}
               isDisabled={isDisabled}
               {...field}
+              onChange={handleClearErrorMessage(
+                'password',
+                !!error,
+                field.onChange,
+              )}
               onBlur={handleClearRootError}
             />
           )}

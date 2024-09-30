@@ -4,7 +4,6 @@ export type TUser = {
   lastName: string;
   email: string;
   password: string;
-  createdAt: string;
 };
 
 export interface LoginFormData {

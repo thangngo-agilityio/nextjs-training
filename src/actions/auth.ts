@@ -7,12 +7,38 @@ import { signIn } from '@/configs';
 
 // Constants
 import {
+  API_PATH,
   AUTH_METHODS,
-  // AUTH_METHODS,
   ERROR_MESSAGES,
   ERROR_TYPES,
   TSignInForm,
 } from '@/constants';
+
+// Types
+import { TUser } from '@/types';
+import { httpClient } from '@/service';
+
+type TSignUpPayload = Omit<TUser, 'id'>;
+
+type TSignUpResponse = { user: Omit<TUser, 'password'> };
+
+export const signUp = async (
+  payload: TSignUpPayload,
+): Promise<{ error?: string; user?: Omit<TUser, 'password'> }> => {
+  try {
+    const res = await httpClient.postRequest<TSignUpPayload, TSignUpResponse>({
+      endpoint: API_PATH.USERS,
+      body: payload,
+    });
+
+    const { data } = res || {};
+    const { user } = data || {};
+
+    return { user };
+  } catch (error) {
+    return { error: ERROR_MESSAGES.EMAIL_EXIST };
+  }
+};
 
 export const signInWithEmail = async (payload: TSignInForm) => {
   try {
