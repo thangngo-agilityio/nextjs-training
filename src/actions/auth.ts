@@ -3,7 +3,7 @@
 import { AuthError } from 'next-auth';
 
 // Config
-import { signIn } from '@/configs';
+import { signIn, signOut } from '@/configs';
 
 // Constants
 import {
@@ -56,3 +56,5 @@ export const signInWithEmail = async (payload: TSignInForm) => {
     throw error;
   }
 };
+
+export const logout = (): Promise<void> => signOut();

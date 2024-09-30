@@ -25,3 +25,4 @@ export * from './Shipping';
 export * from './Support';
 export * from './LineDown';
 export * from './LogoWhite';
+export * from './Logout';
