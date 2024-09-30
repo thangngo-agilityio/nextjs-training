@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { CloseIcon } from '@chakra-ui/icons';
 
 // Components
-import { Avatar, InputField } from '@/components';
+import { InputField, UserDropdown } from '@/components';
 
 // Icons
 import { ArrowIcon, CartIcon, HeartIcon, LogoIcon, SearchIcon } from '@/icons';
@@ -57,7 +57,7 @@ const Header = () => (
       <Stack flexDirection="row" alignItems="center" gap="32px">
         <HeartIcon />
         <CartIcon />
-        <Avatar />
+        <UserDropdown />
       </Stack>
     </Flex>
   </Flex>
