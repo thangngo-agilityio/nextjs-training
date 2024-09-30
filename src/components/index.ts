@@ -6,6 +6,7 @@ export { default as CardBenefit } from './CardBenefit';
 export { default as ProductCard } from './ProductCard';
 export { default as NavFooter } from './NavFooter';
 export { default as UserDropdown } from './UserDropdown';
+export { default as Loading } from './Loading';
 
 // Common
 export * from './common';
