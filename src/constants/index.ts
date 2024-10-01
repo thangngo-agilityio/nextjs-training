@@ -7,3 +7,4 @@ export * from './card-benefit';
 export * from './footer';
 export * from './auth';
 export * from './message';
+export * from './pagination';
