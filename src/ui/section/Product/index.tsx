@@ -1,11 +1,17 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+'use client';
+
+import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react';
 
 // Component
 import { ProductCard } from '@/components';
-import { PRODUCT_MOCK } from '@/mock';
+import { TProduct } from '@/types';
 
-const ProductSection = () => (
-  <Flex pt="148px" pb="516px" justifyContent="center">
+type TProductSection = {
+  productList: TProduct[];
+};
+
+const ProductSection = ({ productList }: TProductSection) => (
+  <Flex pt="148px" pb="416px" justifyContent="center">
     <Box maxW="1512px">
       <Flex px="104px" mb="165px">
         <Heading maxW="340px" variant="product" size="size8xl">
@@ -17,16 +23,21 @@ const ProductSection = () => (
           ever since the 1500s,
         </Text>
       </Flex>
-      <Flex px="94px" gap="29px">
-        {PRODUCT_MOCK.map((item) => (
-          <ProductCard
-            key={item.id}
-            image={item.image}
-            title={item.name}
-            price={item.price}
-          />
+      <Grid
+        px="94px"
+        gap="29px"
+        templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
+      >
+        {productList.map((item) => (
+          <GridItem key={item.id} mb="100px">
+            <ProductCard
+              image={item.image}
+              title={item.name}
+              price={item.price}
+            />
+          </GridItem>
         ))}
-      </Flex>
+      </Grid>
     </Box>
   </Flex>
 );

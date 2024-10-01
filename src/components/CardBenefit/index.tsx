@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
-import { ReactElement } from 'react';
+import { memo, ReactElement } from 'react';
+import isEqual from 'react-fast-compare';
 
 type TCardBenefit = {
   icon?: ReactElement;
@@ -21,4 +22,4 @@ const CardBenefit = ({ icon, title, text }: TCardBenefit) => (
   </Flex>
 );
 
-export default CardBenefit;
+export default memo(CardBenefit, isEqual);

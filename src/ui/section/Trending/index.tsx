@@ -1,17 +1,42 @@
-import { Fragment, useState } from 'react';
-import { Box, Flex, Heading, RadioGroup, Text } from '@chakra-ui/react';
+'use client';
+
+import { Fragment, useMemo, useState } from 'react';
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  RadioGroup,
+  Text,
+} from '@chakra-ui/react';
 
 // Components
 import { CardBenefit, ItemCategory, ProductCard } from '@/components';
 
 // Constants
 import { BENEFIT_LIST, MENU_ITEM_FILTER } from '@/constants';
-import { PRODUCT_MOCK } from '@/mock';
 
-const TrendingSection = () => {
-  const [value, setValue] = useState('1');
+// Types
+import { TProduct } from '@/types';
+
+type TTrendingSection = {
+  productList: TProduct[];
+};
+
+const TrendingSection = ({ productList }: TTrendingSection) => {
+  const [filter, setFilter] = useState<string>('');
+
+  const productFilter = useMemo(
+    () =>
+      productList.filter(({ category }) => category.trim().includes(filter)),
+    [filter, productList],
+  );
+
+  console.log('filter', filter);
+
   return (
-    <Flex justifyContent="center" alignItems="center" pb="90px" px="94px">
+    <Flex justifyContent="center" alignItems="center" px="94px">
       <Flex
         flexDir="column"
         maxW="1512px"
@@ -39,17 +64,17 @@ const TrendingSection = () => {
                 flexDirection="column"
                 alignItems="center"
                 cursor="pointer"
-                onChange={setValue}
-                value={value}
+                onChange={setFilter}
+                value={filter}
                 key={item.id}
               >
                 <ItemCategory
-                  id={item.id}
-                  value={value}
+                  value={item.value}
                   title={item.itemContent}
+                  filter={filter}
                   icon={<IconComponent />}
                   iconActive={<IconActiveComponent />}
-                  onChange={() => {}}
+                  onClick={setFilter}
                 />
               </RadioGroup>
             );
@@ -83,16 +108,21 @@ const TrendingSection = () => {
           </Flex>
         </Flex>
 
-        <Flex px="94px" gap="29px">
-          {PRODUCT_MOCK.map((item) => (
-            <ProductCard
-              key={item.id}
-              image={item.image}
-              title={item.name}
-              price={item.price}
-            />
+        <Grid
+          px="94px"
+          gap="29px"
+          templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
+        >
+          {productFilter.map((item) => (
+            <GridItem key={item.id} mb="100px">
+              <ProductCard
+                image={item.image}
+                title={item.name}
+                price={item.price}
+              />
+            </GridItem>
           ))}
-        </Flex>
+        </Grid>
       </Flex>
     </Flex>
   );
