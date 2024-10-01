@@ -5,6 +5,7 @@ export const PRODUCT_MOCK = [
     image: '/images/product-1.png',
     price: 70,
     description: 'description 3',
+    category: 'category 1',
     id: '3',
   },
   {
@@ -13,6 +14,7 @@ export const PRODUCT_MOCK = [
     image: '/images/product-1.png',
     price: 5,
     description: 'description 4',
+    category: 'category 1',
     id: '4',
   },
   {
@@ -21,6 +23,7 @@ export const PRODUCT_MOCK = [
     image: '/images/product-1.png',
     price: 5,
     description: 'description 5',
+    category: 'category 1',
     id: '5',
   },
   {
@@ -29,6 +32,7 @@ export const PRODUCT_MOCK = [
     image: '/images/product-1.png',
     price: 5,
     description: 'description 6',
+    category: 'category 1',
     id: '6',
   },
 ];

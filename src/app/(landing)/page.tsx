@@ -1,4 +1,6 @@
 import dynamic from 'next/dynamic';
 
 // Pages
-export default dynamic(() => import('@/ui/pages/Home'));
+const homePage = dynamic(() => import('@/ui/pages/Home'));
+
+export default homePage;

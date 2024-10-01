@@ -1,26 +1,32 @@
 import { Flex, Heading, Radio } from '@chakra-ui/react';
-import { ReactElement } from 'react';
+import { memo, MouseEventHandler, ReactElement } from 'react';
+import isEqual from 'react-fast-compare';
 
 type TItemCategory = {
-  id: string;
+  title: string;
   value?: string;
-  title?: string;
+  filter?: string;
   icon?: ReactElement;
   iconActive?: ReactElement;
-  onChange: () => void;
+  onClick?: (value: string) => void;
 };
 
 const ItemCategory = ({
-  id,
-  value,
   title,
+  filter,
+  value,
   icon,
   iconActive,
+  onClick,
 }: TItemCategory) => {
-  const isActive = value === id;
+  const isActive = value === filter;
+
+  const handleClick: MouseEventHandler = () => {
+    onClick && onClick(title);
+  };
 
   return (
-    <Radio m={0} value={id}>
+    <Radio m={0} value={value} onClick={handleClick}>
       <Flex
         w="56px"
         h="56px"
@@ -44,4 +50,4 @@ const ItemCategory = ({
   );
 };
 
-export default ItemCategory;
+export default memo(ItemCategory, isEqual);
