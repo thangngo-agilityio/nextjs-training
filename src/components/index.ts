@@ -7,6 +7,8 @@ export { default as ProductCard } from './ProductCard';
 export { default as NavFooter } from './NavFooter';
 export { default as UserDropdown } from './UserDropdown';
 export { default as Loading } from './Loading';
+export { default as LoadingIndicator } from './LoadingIndicator';
+export { default as Pagination } from './Pagination';
 
 // Common
 export * from './common';
