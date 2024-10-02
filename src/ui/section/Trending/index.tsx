@@ -122,12 +122,13 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           </Flex>
         </Flex>
 
-        <Flex flexDir="column" alignItems="center">
+        <Flex flexDir="column" alignItems="center" mb="20px">
           <Grid
             px="94px"
             gap="29px"
             rowGap="120px"
             templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
+            mb="20px"
           >
             {filterData.map((item) => (
               <GridItem key={item.id}>
