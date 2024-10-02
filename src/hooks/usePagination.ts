@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 // Constants
-import { PAGE_SIZE, PREV } from '@/constants';
+import { PREV } from '@/constants';
 
 // Utils
 import { formatPagination } from '@/utils';
@@ -9,9 +9,9 @@ import { formatPagination } from '@/utils';
 // Types
 import { PaginationType } from '@/types';
 
-export const usePagination = <T>(pagination: T[]) => {
+export const usePagination = <T>(pagination: T[], limitPage: number) => {
   const [data, setData] = useState<PaginationType>({
-    limit: PAGE_SIZE,
+    limit: limitPage,
     currentPage: 1,
     arrOfCurrButtons: [],
   });

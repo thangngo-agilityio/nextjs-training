@@ -3,6 +3,7 @@
 import { Fragment, useMemo, useState } from 'react';
 import {
   Box,
+  Button,
   Flex,
   Grid,
   GridItem,
@@ -19,12 +20,15 @@ import {
   ProductCard,
 } from '@/components';
 
+// Hooks
+import { usePagination } from '@/hooks';
+
 // Constants
-import { BENEFIT_LIST, MENU_ITEM_FILTER } from '@/constants';
+import { BENEFIT_LIST, MENU_ITEM_FILTER, PAGE_SIZE, ROUTER } from '@/constants';
 
 // Types
 import { TProduct } from '@/types';
-import { usePagination } from '@/hooks';
+import Link from 'next/link';
 
 type TTrendingSection = {
   productList: TProduct[];
@@ -47,7 +51,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
     isDisableNext,
     handlePageChange,
     handlePageClick,
-  } = usePagination(productFilter);
+  } = usePagination(productFilter, PAGE_SIZE);
 
   return (
     <Flex justifyContent="center" alignItems="center" px="94px">
@@ -123,6 +127,9 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
         </Flex>
 
         <Flex flexDir="column" alignItems="center" mb="20px">
+          <Button as={Link} href={ROUTER.PRODUCT}>
+            See more
+          </Button>
           <Grid
             px="94px"
             gap="29px"
