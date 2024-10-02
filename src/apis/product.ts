@@ -7,7 +7,9 @@ import { API_PATH } from '@/constants';
 // Types
 import { TProduct } from '@/types';
 
-export const getProducts = async (): Promise<{ data: TProduct[] }> => {
+export const getProducts = async (): Promise<{
+  data: TProduct[];
+}> => {
   try {
     const res = await httpClient.getRequest<TProduct[]>({
       endpoint: API_PATH.PRODUCTS,

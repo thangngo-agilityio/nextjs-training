@@ -24,14 +24,19 @@ const ProductCard = ({ image, title, price }: ProductCard) => (
       mt="-90px"
       mb="18px"
     >
-      <Box w="90%" borderRadius="sm" overflow="hidden">
+      <Box w="90%" h="180px" borderRadius="sm" overflow="hidden">
         <Image
           width={276}
           height={180}
           objectFit="cover"
           src={image}
           alt={title}
-          style={{ borderRadius: 'sm', backgroundRepeat: 'no-repeat' }}
+          style={{
+            borderRadius: 'sm',
+            backgroundRepeat: 'no-repeat',
+            height: '100%',
+            backgroundSize: 'cover',
+          }}
         />
       </Box>
       <Flex
@@ -49,7 +54,7 @@ const ProductCard = ({ image, title, price }: ProductCard) => (
       </Flex>
     </Flex>
     <Flex maxW="274px" flexDirection="column" alignItems="flex-start" px="16px">
-      <Heading variant="senary" size="xl">
+      <Heading variant="senary" size="xl" noOfLines={1}>
         {title}
       </Heading>
       <Text variant="productCard" size="textLg">

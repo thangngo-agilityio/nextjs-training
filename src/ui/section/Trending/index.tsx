@@ -12,13 +12,19 @@ import {
 } from '@chakra-ui/react';
 
 // Components
-import { CardBenefit, ItemCategory, ProductCard } from '@/components';
+import {
+  CardBenefit,
+  ItemCategory,
+  Pagination,
+  ProductCard,
+} from '@/components';
 
 // Constants
 import { BENEFIT_LIST, MENU_ITEM_FILTER } from '@/constants';
 
 // Types
 import { TProduct } from '@/types';
+import { usePagination } from '@/hooks';
 
 type TTrendingSection = {
   productList: TProduct[];
@@ -33,7 +39,15 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
     [filter, productList],
   );
 
-  console.log('filter', filter);
+  const {
+    data,
+    filterData,
+    arrOfCurrButtons,
+    isDisabledPrev,
+    isDisableNext,
+    handlePageChange,
+    handlePageClick,
+  } = usePagination(productFilter);
 
   return (
     <Flex justifyContent="center" alignItems="center" px="94px">
@@ -108,21 +122,33 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           </Flex>
         </Flex>
 
-        <Grid
-          px="94px"
-          gap="29px"
-          templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
-        >
-          {productFilter.map((item) => (
-            <GridItem key={item.id} mb="100px">
-              <ProductCard
-                image={item.image}
-                title={item.name}
-                price={item.price}
-              />
-            </GridItem>
-          ))}
-        </Grid>
+        <Flex flexDir="column" alignItems="center" mb="20px">
+          <Grid
+            px="94px"
+            gap="29px"
+            rowGap="120px"
+            templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
+            mb="20px"
+          >
+            {filterData.map((item) => (
+              <GridItem key={item.id}>
+                <ProductCard
+                  image={item.image}
+                  title={item.name}
+                  price={item.price}
+                />
+              </GridItem>
+            ))}
+          </Grid>
+          <Pagination
+            currentPage={data.currentPage}
+            isDisableNext={isDisableNext}
+            isDisabledPrev={isDisabledPrev}
+            arrOfCurrButtons={arrOfCurrButtons}
+            onPageChange={handlePageChange}
+            onClickPage={handlePageClick}
+          />
+        </Flex>
       </Flex>
     </Flex>
   );

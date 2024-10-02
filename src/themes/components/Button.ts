@@ -91,6 +91,14 @@ export const Button = defineStyleConfig({
       borderWidth: '1px',
       opacity: '1 !important',
     },
+    iconSecondary: {
+      borderRadius: 'md',
+      backgroundColor: 'background.100',
+      boxShadow: '0 2px 5.5px 0 rgba(0, 0 , 0, .25)',
+      _hover: {
+        backgroundColor: 'background.900',
+      },
+    },
     showroom: {
       bgColor: 'background.1000',
       color: 'text.100',

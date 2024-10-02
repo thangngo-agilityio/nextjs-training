@@ -3,6 +3,7 @@ import { BASE_URL } from '@/constants';
 
 type TRequest = {
   endpoint: string;
+  queryParams?: Record<string, unknown>;
   configOptions?: RequestInit;
 };
 
@@ -19,7 +20,6 @@ type TDeleteRequest<T> = TRequest & {
 };
 
 export type ResponseData<T> = {
-  totalCount: number;
   data: T;
 };
 
@@ -32,17 +32,20 @@ class HttpClient {
 
   async request<T>({
     endpoint,
+    queryParams,
     configOptions,
   }: TRequest): Promise<ResponseData<T>> {
-    const res = await fetch(this.baseApi + endpoint, configOptions);
+    const params = new URLSearchParams(queryParams as Record<string, string>);
+
+    const url = `${endpoint}?${params}`;
+
+    const res = await fetch(this.baseApi + url, configOptions);
 
     if (!res?.ok) {
       throw new Error(res?.statusText);
     }
 
     const contentType = res.headers.get('Content-Type') || '';
-    const totalCountHeader = res.headers.get('x-total-count') || '0';
-    const totalCount = +totalCountHeader;
 
     let result: T;
 
@@ -52,11 +55,12 @@ class HttpClient {
       result = (await res.text()) as unknown as T;
     }
 
-    return { totalCount, data: result };
+    return { data: result };
   }
 
   async getRequest<T>({
     endpoint,
+    queryParams,
     configOptions,
   }: TRequest): Promise<ResponseData<T>> {
     const options: RequestInit = {
@@ -64,7 +68,7 @@ class HttpClient {
       ...configOptions,
     };
 
-    return this.request<T>({ endpoint, configOptions: options });
+    return this.request<T>({ endpoint, queryParams, configOptions: options });
   }
 
   async postRequest<T, K>({

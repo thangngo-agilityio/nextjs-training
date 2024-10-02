@@ -50,7 +50,7 @@ const PaginationComponent = ({
           height={{ base: '6px', default: '30px' }}
           data-testid="prev-button"
           aria-label="btn-prev"
-          variant="iconPrimary"
+          variant="iconSecondary"
           cursor={isDisabledPrev ? 'not-allowed' : ''}
           isDisabled={isDisabledPrev}
           onClick={handlePrevPage}
@@ -109,7 +109,7 @@ const PaginationComponent = ({
         <Button
           data-testid="next-button"
           aria-label="btn-next"
-          variant="iconPrimary"
+          variant="iconSecondary"
           cursor={isDisableNext ? 'not-allowed' : ''}
           isDisabled={isDisableNext}
           onClick={handleNextPage}
