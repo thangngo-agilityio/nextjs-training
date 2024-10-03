@@ -3,6 +3,7 @@
 import { Fragment, useMemo, useState } from 'react';
 import {
   Box,
+  Button,
   Flex,
   Grid,
   GridItem,
@@ -19,12 +20,15 @@ import {
   ProductCard,
 } from '@/components';
 
+// Hooks
+import { usePagination } from '@/hooks';
+
 // Constants
-import { BENEFIT_LIST, MENU_ITEM_FILTER } from '@/constants';
+import { BENEFIT_LIST, MENU_ITEM_FILTER, PAGE_SIZE, ROUTER } from '@/constants';
 
 // Types
 import { TProduct } from '@/types';
-import { usePagination } from '@/hooks';
+import Link from 'next/link';
 
 type TTrendingSection = {
   productList: TProduct[];
@@ -47,7 +51,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
     isDisableNext,
     handlePageChange,
     handlePageClick,
-  } = usePagination(productFilter);
+  } = usePagination(productFilter, PAGE_SIZE);
 
   return (
     <Flex justifyContent="center" alignItems="center" px="94px">
@@ -109,8 +113,13 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           })}
         </Flex>
 
-        <Flex mb="166px">
-          <Flex flexDirection="column" alignItems="center" textAlign="center">
+        <Flex mb="136px" flexDir="column" alignItems="center">
+          <Flex
+            flexDirection="column"
+            alignItems="center"
+            textAlign="center"
+            mb="30px"
+          >
             <Heading mb="10px" size="size7xl" variant="quinary">
               Top Trending
             </Heading>
@@ -120,6 +129,9 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             </Text>
             <Box w="98px" h="5px" bgColor="background.300" />
           </Flex>
+          <Button as={Link} size="md" variant="showroom" href={ROUTER.PRODUCT}>
+            See more
+          </Button>
         </Flex>
 
         <Flex flexDir="column" alignItems="center" mb="20px">

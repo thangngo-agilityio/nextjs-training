@@ -3,4 +3,5 @@ export const ROUTER = {
   CATEGORY: '/category',
   LOGIN: '/login',
   REGISTER: '/register',
+  PRODUCT: '/product',
 };

@@ -16,7 +16,7 @@ const HomePage = async () => {
 
   return (
     <Stack>
-      <OverviewSection />
+      <OverviewSection isHomePage />
       <TrendingSection productList={productList} />
       <ShowroomSection />
       <ProductSection productList={productList} />
