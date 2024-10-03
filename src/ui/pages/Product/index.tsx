@@ -2,6 +2,7 @@
 
 import { Flex, Grid, GridItem } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 // Components
 import { Pagination, ProductCard } from '@/components';
@@ -11,7 +12,15 @@ import { usePagination } from '@/hooks';
 
 // Types
 import { TProduct } from '@/types';
-import { PAGE_SIZE_PRODUCT } from '@/constants';
+
+// Constants
+import { PAGE_SIZE_PRODUCT, SEARCH_QUERIES } from '@/constants';
+
+// Utils
+import { getSearchParams, updateSearchParams } from '@/utils';
+import { ChangeEvent, useCallback } from 'react';
+
+const Header = dynamic(() => import('@/layouts/Header'));
 
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
 
@@ -20,6 +29,12 @@ type TTrendingSection = {
 };
 
 const ProductPage = ({ productList }: TTrendingSection) => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  const { name } = getSearchParams(searchParams);
+
   const {
     data,
     filterData,
@@ -30,8 +45,23 @@ const ProductPage = ({ productList }: TTrendingSection) => {
     handlePageClick,
   } = usePagination(productList, PAGE_SIZE_PRODUCT);
 
+  const handleSearchProducts = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+      const updatedParams = updateSearchParams(
+        searchParams,
+        SEARCH_QUERIES.NAME,
+        value,
+      );
+
+      replace(`${pathname}?${updatedParams.toString()}`, { scroll: false });
+    },
+    [pathname, replace, searchParams],
+  );
+
   return (
     <>
+      <Header onChange={handleSearchProducts} searchValue={name} />
       <OverviewSection title="Product page" />
       <Flex
         pt="180px"

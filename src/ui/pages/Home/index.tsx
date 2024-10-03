@@ -10,12 +10,14 @@ const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
 const TrendingSection = dynamic(() => import('@/ui/section/Trending'));
 const ShowroomSection = dynamic(() => import('@/ui/section/Showroom'));
 const ProductSection = dynamic(() => import('@/ui/section/Product'));
+const Header = dynamic(() => import('@/layouts/Header'));
 
 const HomePage = async () => {
   const { data: productList } = await getProducts();
 
   return (
     <Stack>
+      <Header />
       <OverviewSection isHomePage />
       <TrendingSection productList={productList} />
       <ShowroomSection />

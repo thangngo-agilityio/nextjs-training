@@ -1,7 +1,9 @@
-import { NavFooter } from '@/components';
-import { FOOTER_COMPANY_LIST, FOOTER_SERVICE_LIST } from '@/constants';
-import { LineDownIcon, LogoWhiteIcon } from '@/icons';
+'use client';
+
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
+import { NavFooter } from '@/components';
+import { LineDownIcon, LogoWhiteIcon } from '@/icons';
+import { FOOTER_COMPANY_LIST, FOOTER_SERVICE_LIST } from '@/constants';
 
 const Footer = () => (
   <Flex
