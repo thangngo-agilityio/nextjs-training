@@ -100,6 +100,7 @@ export const Button = defineStyleConfig({
       },
     },
     showroom: {
+      w: 'fit-content',
       bgColor: 'background.1000',
       color: 'text.100',
       borderRadius: 'xl',
