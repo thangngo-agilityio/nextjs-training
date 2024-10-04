@@ -9,3 +9,4 @@ export * from './auth';
 export * from './message';
 export * from './pagination';
 export * from './navigation';
+export * from './query-tags';
