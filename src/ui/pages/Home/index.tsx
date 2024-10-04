@@ -14,8 +14,8 @@ const ProductSection = dynamic(() => import('@/ui/section/Product'));
 const Header = dynamic(() => import('@/layouts/Header'));
 
 type THomePage = {
-  limit: number;
-  page: string;
+  limit?: number;
+  page?: string;
 };
 
 const HomePage = async ({ limit = PAGE_SIZE, page = '1' }: THomePage) => {
