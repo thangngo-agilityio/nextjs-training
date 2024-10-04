@@ -9,7 +9,7 @@ export const HeartIcon = () => (
     <path
       d="M11.9996 21.5543C-8 10.5002 5.99999 -1.49984 11.9996 6.08821C18 -1.49985 32 10.5002 11.9996 21.5543Z"
       stroke="#262F56"
-      stroke-width="1.8"
+      strokeWidth="1.8"
     />
   </svg>
 );

@@ -25,7 +25,7 @@ const ProductCard = ({ image, title, price }: ProductCard) => (
       mt="-90px"
       mb="18px"
     >
-      <Box w="90%" h="180px" borderRadius="sm" overflow="hidden">
+      <Box as="div" w="90%" h="180px" borderRadius="sm" overflow="hidden">
         <Image
           width={276}
           height={180}

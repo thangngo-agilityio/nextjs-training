@@ -7,7 +7,7 @@ type TImageProduct = {
 };
 
 const ImageProduct = ({ src, alt }: TImageProduct) => (
-  <Box borderRadius="sm">
+  <Box as="div" borderRadius="sm">
     <Image
       width={647}
       height={549}
