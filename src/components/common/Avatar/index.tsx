@@ -14,7 +14,7 @@ const Avatar = ({
   height = '40px',
   ...props
 }: TAvatarProps) => (
-  <Box w={width} h={height} borderRadius="lg" {...props}>
+  <Box as="div" w={width} h={height} borderRadius="lg" {...props}>
     <Image
       w="100%"
       h="100%"

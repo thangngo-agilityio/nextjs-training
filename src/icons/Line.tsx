@@ -9,7 +9,7 @@ export const LineIcon = () => (
     <path
       d="M1.39745 0.690686H210.549"
       stroke="#ECECF2"
-      stroke-linecap="square"
+      strokeLinecap="square"
     />
   </svg>
 );

@@ -27,3 +27,5 @@ export * from './LineDown';
 export * from './LogoWhite';
 export * from './Logout';
 export * from './ArrowPagination';
+export * from './Minus';
+export * from './Plus';

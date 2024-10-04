@@ -11,6 +11,8 @@ import { formatUrlWithQuery } from '@/utils';
 type configs = {
   id?: string;
   name?: string;
+  limit?: number;
+  page?: string;
 };
 
 export const getProducts = async (
@@ -21,6 +23,8 @@ export const getProducts = async (
   const queryParams = {
     name: queryConfigs?.name,
     id: queryConfigs?.id,
+    limit: queryConfigs?.limit,
+    page: queryConfigs?.page,
   };
   const endpoint = formatUrlWithQuery(API_PATH.PRODUCTS, queryParams);
 

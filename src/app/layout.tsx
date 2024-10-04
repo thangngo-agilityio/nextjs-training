@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import { NextUIProvider } from '@nextui-org/system';
+import { SessionProvider } from 'next-auth/react';
 
 // Components
 import './globals.css';
@@ -28,9 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NextUIProvider>
+        <SessionProvider>
           <ChakraProvider>{children}</ChakraProvider>
-        </NextUIProvider>
+        </SessionProvider>
       </body>
     </html>
   );

@@ -12,8 +12,7 @@ const LoadingIndicator = (): JSX.Element => (
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: 'black',
-      opacity: 0.7,
+      backgroundColor: 'white',
       zIndex: 9999,
     }}
   >

@@ -3,8 +3,9 @@
 import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react';
 
 // Component
-import { ProductCard } from '@/components';
+import { ProductCard, SkeletonProductList } from '@/components';
 import { TProduct } from '@/types';
+import { Suspense } from 'react';
 
 type TProductSection = {
   productList: TProduct[];
@@ -23,21 +24,25 @@ const ProductSection = ({ productList }: TProductSection) => (
           ever since the 1500s,
         </Text>
       </Flex>
-      <Grid
-        px="94px"
-        gap="29px"
-        templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
-      >
-        {productList.map((item) => (
-          <GridItem key={item.id} mb="100px">
-            <ProductCard
-              image={item.image}
-              title={item.name}
-              price={item.price}
-            />
-          </GridItem>
-        ))}
-      </Grid>
+      <Suspense fallback={<SkeletonProductList length={4} />}>
+        <Grid
+          px="94px"
+          gap="29px"
+          rowGap="120px"
+          templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
+          mb="20px"
+        >
+          {productList.map((item) => (
+            <GridItem key={item.id}>
+              <ProductCard
+                image={item.image[0]}
+                title={item.name}
+                price={item.price}
+              />
+            </GridItem>
+          ))}
+        </Grid>
+      </Suspense>
     </Box>
   </Flex>
 );

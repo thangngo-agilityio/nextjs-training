@@ -75,6 +75,10 @@ export const Text = defineStyleConfig({
       fontWeight: '400',
       fontFamily: 'poppins',
     },
+    quantity: {
+      color: 'text.300',
+      fontFamily: 'lufgaBold',
+    },
   },
   defaultProps: {
     size: 'textMd',

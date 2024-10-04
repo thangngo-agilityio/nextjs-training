@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 // Icons
 import { HeartIcon } from '@/icons';
+import { formatAmountNumber } from '@/utils';
 
 type ProductCard = {
   image: string;
@@ -24,7 +25,7 @@ const ProductCard = ({ image, title, price }: ProductCard) => (
       mt="-90px"
       mb="18px"
     >
-      <Box w="90%" h="180px" borderRadius="sm" overflow="hidden">
+      <Box as="div" w="90%" h="180px" borderRadius="sm" overflow="hidden">
         <Image
           width={276}
           height={180}
@@ -58,7 +59,7 @@ const ProductCard = ({ image, title, price }: ProductCard) => (
         {title}
       </Heading>
       <Text variant="productCard" size="textLg">
-        N{price}
+        N{formatAmountNumber(price.toString())}
       </Text>
     </Flex>
   </Flex>
