@@ -14,14 +14,16 @@ const ProductSection = dynamic(() => import('@/ui/section/Product'));
 const Header = dynamic(() => import('@/layouts/Header'));
 
 type THomePage = {
-  limit?: number;
-  page?: string;
+  searchParams: {
+    limit?: number;
+    page?: string;
+  };
 };
 
-const HomePage = async ({ limit = PAGE_SIZE, page = '1' }: THomePage) => {
+const HomePage = async ({ searchParams }: THomePage) => {
   const queryConfigs = {
-    limit: limit,
-    page: page,
+    limit: (searchParams.limit = PAGE_SIZE),
+    page: (searchParams.page = '1'),
   };
 
   const { data: productList } = await getProducts(queryConfigs);
