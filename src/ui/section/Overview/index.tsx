@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
+import { Button, Flex, Heading, Text } from '@chakra-ui/react';
 
 type TOverviewSection = {
   title?: string;
@@ -15,11 +15,17 @@ const OverviewSection = ({ isHomePage, title }: TOverviewSection) => (
     bgSize="cover"
     justifyContent="center"
   >
-    <Box w="100%" maxW="1512px">
+    <Flex
+      flexDir="column"
+      alignItems={!isHomePage ? 'center' : 'unset'}
+      w="100%"
+      maxW="1512px"
+    >
       <Heading
         maxW="705px"
         size={isHomePage ? 'size7xl' : 'size6xl'}
         variant="secondary"
+        textAlign={!isHomePage ? 'center' : 'unset'}
       >
         {isHomePage ? 'We allow customers build & Customize items' : title}
       </Heading>
@@ -32,7 +38,7 @@ const OverviewSection = ({ isHomePage, title }: TOverviewSection) => (
           <Button size="size4xl">Shop Now</Button>
         </>
       )}
-    </Box>
+    </Flex>
   </Flex>
 );
 

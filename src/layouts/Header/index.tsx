@@ -1,13 +1,21 @@
 'use client';
 
-import { useCallback, useTransition } from 'react';
-import { Box, Flex, Stack, Text } from '@chakra-ui/react';
+import { ChangeEvent, useCallback, useTransition } from 'react';
+import {
+  Box,
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
 import Link from 'next/link';
-import { CloseIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/navigation';
+import { useDebounceCallback } from 'usehooks-ts';
 
 // Components
-import { InputField, Loading, UserDropdown } from '@/components';
+import { Loading, UserDropdown } from '@/components';
 
 // Icons
 import { ArrowIcon, CartIcon, HeartIcon, LogoIcon, SearchIcon } from '@/icons';
@@ -18,9 +26,25 @@ import { ROUTER } from '@/constants';
 // Actions
 import { logout } from '@/actions';
 
-const Header = () => {
+export type TSearchValue = {
+  search: string;
+};
+
+type THeader = {
+  searchValue?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+
+const Header = ({ searchValue, onChange }: THeader) => {
   const [isLogout, startTransition] = useTransition();
   const router = useRouter();
+
+  const handleOnChange = useDebounceCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange && onChange(e);
+    },
+    500,
+  );
 
   const handleLogout = useCallback(() => {
     startTransition(async () => {
@@ -60,17 +84,18 @@ const Header = () => {
               </Flex>
             </Stack>
             <Box ml="22px" width="30%">
-              <InputField
-                isSearch
-                placeholder="Search for minimalist chair"
-                onChange={() => {}}
-                variant="search"
-                leftIcon={<SearchIcon />}
-                rightIcon={
-                  <CloseIcon as="button" color="text.200" onClick={() => {}} />
-                }
-                background="background.100"
-              />
+              <InputGroup>
+                <InputLeftElement>
+                  <SearchIcon />
+                </InputLeftElement>
+                <Input
+                  placeholder="Search for minimalist chair"
+                  defaultValue={searchValue}
+                  onChange={handleOnChange}
+                  variant="search"
+                  background="background.100"
+                />
+              </InputGroup>
             </Box>
           </Stack>
           <Stack flexDirection="row" alignItems="center" gap="32px">

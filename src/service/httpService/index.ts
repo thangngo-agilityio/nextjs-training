@@ -3,7 +3,6 @@ import { BASE_URL } from '@/constants';
 
 type TRequest = {
   endpoint: string;
-  queryParams?: Record<string, unknown>;
   configOptions?: RequestInit;
 };
 
@@ -32,14 +31,9 @@ class HttpClient {
 
   async request<T>({
     endpoint,
-    queryParams,
     configOptions,
   }: TRequest): Promise<ResponseData<T>> {
-    const params = new URLSearchParams(queryParams as Record<string, string>);
-
-    const url = `${endpoint}?${params}`;
-
-    const res = await fetch(this.baseApi + url, configOptions);
+    const res = await fetch(this.baseApi + endpoint, configOptions);
 
     if (!res?.ok) {
       throw new Error(res?.statusText);
@@ -60,7 +54,6 @@ class HttpClient {
 
   async getRequest<T>({
     endpoint,
-    queryParams,
     configOptions,
   }: TRequest): Promise<ResponseData<T>> {
     const options: RequestInit = {
@@ -68,7 +61,7 @@ class HttpClient {
       ...configOptions,
     };
 
-    return this.request<T>({ endpoint, queryParams, configOptions: options });
+    return this.request<T>({ endpoint, configOptions: options });
   }
 
   async postRequest<T, K>({
