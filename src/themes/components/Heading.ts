@@ -23,6 +23,9 @@ export const Heading = defineStyleConfig({
     xl: {
       fontSize: 'xl',
     },
+    size2xl: {
+      fontSize: '2xl',
+    },
     size4xl: {
       fontSize: '4xl',
     },
@@ -37,6 +40,9 @@ export const Heading = defineStyleConfig({
     },
     size8xl: {
       fontSize: '8xl',
+    },
+    size9xl: {
+      fontSize: '9xl',
     },
   },
   variants: {
@@ -79,6 +85,10 @@ export const Heading = defineStyleConfig({
       color: 'text.100',
       fontFamily: 'poppins',
       fontWeight: '600',
+    },
+    productTitle: {
+      color: 'text.1100',
+      fontFamily: 'lufgaBold',
     },
   },
 

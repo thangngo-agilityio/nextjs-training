@@ -52,6 +52,15 @@ export const Button = defineStyleConfig({
     icon: {
       p: '22px',
     },
+    quantity: {
+      w: '26px',
+      h: '26px',
+    },
+    productDetail: {
+      w: 'fit-content',
+      px: '38px,',
+      py: '20px,',
+    },
   },
   variants: {
     default: {
@@ -114,6 +123,36 @@ export const Button = defineStyleConfig({
       color: 'text.1500',
       bgColor: 'none',
       textDecor: 'underline',
+    },
+    quantity: {
+      display: 'flex',
+      borderRadius: '100%',
+      bgColor: 'background.1300',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    buy: {
+      bg: 'background.300',
+      color: 'text.100',
+      borderRadius: '5xl',
+      fontFamily: 'lufgaSemiBold',
+      boxShadow: '0 6px 14px 4px rgba(164, 237, 163, 32.48%)',
+      transition: '.2s ease-in',
+      _hover: {
+        boxShadow: 'none',
+        bgColor: 'background.1700',
+      },
+    },
+    cart: {
+      bg: 'transparent',
+      color: 'text.700',
+      border: '1px solid #E68314',
+      borderRadius: '5xl',
+      fontFamily: 'lufgaSemiBold',
+      transition: '.2s ease-in',
+      _hover: {
+        bgColor: 'background.300',
+      },
     },
   },
   defaultProps: {

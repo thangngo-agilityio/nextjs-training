@@ -1,4 +1,4 @@
-import { LogoWhiteIcon } from '@/icons';
+import { LineIcon } from '@/icons';
 import { Flex, Heading } from '@chakra-ui/react';
 
 type THeadingSection = {
@@ -10,7 +10,7 @@ const HeadingSection = ({ title }: THeadingSection) => (
     <Heading size="size5xl" variant="quinary" mb="8px">
       {title}
     </Heading>
-    <LogoWhiteIcon />
+    <LineIcon />
   </Flex>
 );
 

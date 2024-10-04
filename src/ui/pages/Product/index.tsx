@@ -136,7 +136,7 @@ const ProductPage = ({ productList }: TTrendingSection) => {
             {filterData.map((item) => (
               <GridItem key={item.id}>
                 <ProductCard
-                  image={item.image}
+                  image={item.image[0]}
                   title={item.name}
                   price={item.price}
                 />

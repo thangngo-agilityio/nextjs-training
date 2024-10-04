@@ -10,6 +10,7 @@ export const radii: ThemeOverride['radii'] = {
   '2xl': '34.5px',
   '3xl': '34.5px',
   '4xl': '34.5px',
+  '5xl': '16px',
 };
 
 export const sizes: ThemeOverride['sizes'] = {
