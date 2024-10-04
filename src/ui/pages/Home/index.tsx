@@ -25,7 +25,6 @@ const HomePage = async ({ limit = PAGE_SIZE, page = '1' }: THomePage) => {
   };
 
   const { data: productList } = await getProducts(queryConfigs);
-  console.log('productList', productList);
 
   return (
     <Stack>
