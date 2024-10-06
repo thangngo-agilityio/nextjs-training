@@ -23,7 +23,7 @@ const ShowroomSection = () => (
         </Button>
       </Flex>
 
-      <Flex flex={1} justifyContent="center">
+      <Flex as="div" flex={1} justifyContent="center">
         <Image
           width={545}
           height={356}

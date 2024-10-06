@@ -27,13 +27,7 @@ type TProductInfo = {
   description?: string;
 };
 
-const ProductInfo = ({
-  title,
-  description,
-  length,
-  width,
-  price,
-}: TProductInfo) => {
+const ProductInfo = ({ title, description, price }: TProductInfo) => {
   const [quantity, setQuantity] = useState(1);
   // Handle change quantity
   const onChange = useCallback((operation: 'increment' | 'decrement') => {
@@ -51,25 +45,25 @@ const ProductInfo = ({
   }, [onChange]);
 
   return (
-    <Flex>
+    <Flex flexDir="column" flex={1}>
       <Heading size="size6xl" variant="quinary" mb="5px">
         {title}
       </Heading>
       <Text size="text2Xl" variant="senary" mb="30px">
         {description}
       </Text>
-      <VStack mb="30px">
+      <VStack mb="30px" alignItems="flex-start">
         <Heading variant="productTitle" size="size2xl">
           Dimension:
         </Heading>
-        <Box>
+        <Flex flexDir="row" gap="5px">
           <Text variant="senary" size="text2Xl">
-            {length},{' '}
+            Length-34cm,
           </Text>
           <Text variant="tertiary" size="text2Xl">
-            {width}
+            Width-56cm
           </Text>
-        </Box>
+        </Flex>
       </VStack>
 
       <Box
@@ -78,17 +72,17 @@ const ProductInfo = ({
         borderColor="border.300"
         mb="28px"
       >
-        <Heading size="size9xl" variant="quinary">
+        <Heading size="size9xl" variant="quinary" py="10px">
           N{formatAmountNumber(price?.toString())}
         </Heading>
       </Box>
 
-      <Flex flexDir="row" mb="44px">
-        <VStack>
+      <Flex flexDir="row" mb="44px" gap="60px">
+        <VStack alignItems="flex-start">
           <Heading variant="quaternary" size="lg" mb="20px">
             Quantity available
           </Heading>
-          <HStack>
+          <HStack gap="20px">
             <Button
               variant="quantity"
               size="quantity"
@@ -109,7 +103,7 @@ const ProductInfo = ({
             </Button>
           </HStack>
         </VStack>
-        <VStack>
+        <VStack alignItems="flex-start">
           <Heading mb="20px" variant="quaternary" size="lg">
             Color:
           </Heading>
@@ -140,7 +134,6 @@ const ProductInfo = ({
         flexDirection="row"
         gap="92px"
         mb="40px"
-        px="104px"
         templateColumns={{ base: '', lg: 'repeat(2, 1fr)' }}
       >
         {BENEFIT_LIST.map((item) => {
@@ -161,14 +154,14 @@ const ProductInfo = ({
         Delivery Fee: N3,000-N5000
       </Heading>
 
-      <VStack>
+      <HStack>
         <Button size="productDetail" variant="buy">
           Buy now
         </Button>
         <Button size="productDetail" variant="cart" ml="30px">
           Add to cart
         </Button>
-      </VStack>
+      </HStack>
     </Flex>
   );
 };

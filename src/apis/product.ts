@@ -41,3 +41,17 @@ export const getProducts = async (
     throw error;
   }
 };
+
+export const getProductDetail = async (id: string) => {
+  try {
+    const res = await httpClient.getRequest<TProduct>({
+      endpoint: `${API_PATH.PRODUCTS}/${id}`,
+    });
+
+    const { data } = res || {};
+
+    return { data };
+  } catch (error) {
+    return { error };
+  }
+};

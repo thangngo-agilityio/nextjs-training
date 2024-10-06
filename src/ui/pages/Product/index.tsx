@@ -37,7 +37,6 @@ import {
 } from 'react';
 
 const Header = dynamic(() => import('@/layouts/Header'));
-
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
 
 type TTrendingSection = {
@@ -136,6 +135,7 @@ const ProductPage = ({ productList }: TTrendingSection) => {
             {filterData.map((item) => (
               <GridItem key={item.id}>
                 <ProductCard
+                  id={item.id}
                   image={item.image[0]}
                   title={item.name}
                   price={item.price}
