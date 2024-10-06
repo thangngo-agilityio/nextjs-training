@@ -119,6 +119,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => (
           {productList.map((item) => (
             <GridItem key={item.id}>
               <ProductCard
+                id={item.id}
                 image={item.image[0]}
                 title={item.name}
                 price={item.price}

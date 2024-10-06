@@ -58,8 +58,9 @@ export const Button = defineStyleConfig({
     },
     productDetail: {
       w: 'fit-content',
-      px: '38px,',
-      py: '20px,',
+      paddingX: '40px',
+      paddingY: '20px',
+      fontSize: '2xl',
     },
   },
   variants: {
@@ -132,15 +133,17 @@ export const Button = defineStyleConfig({
       alignItems: 'center',
     },
     buy: {
-      bg: 'background.300',
+      bg: 'background.200',
       color: 'text.100',
       borderRadius: '5xl',
       fontFamily: 'lufgaSemiBold',
       boxShadow: '0 6px 14px 4px rgba(164, 237, 163, 32.48%)',
       transition: '.2s ease-in',
+      border: '1px solid #284F49',
       _hover: {
+        color: 'text.1200',
         boxShadow: 'none',
-        bgColor: 'background.1700',
+        background: 'transparent',
       },
     },
     cart: {
@@ -151,6 +154,7 @@ export const Button = defineStyleConfig({
       fontFamily: 'lufgaSemiBold',
       transition: '.2s ease-in',
       _hover: {
+        color: 'text.100',
         bgColor: 'background.300',
       },
     },
