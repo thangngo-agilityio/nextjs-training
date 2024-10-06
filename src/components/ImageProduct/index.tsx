@@ -15,7 +15,7 @@ const ImageProduct = ({ image, alt }: TImageProduct) => (
         height={549}
         src={link}
         alt={alt}
-        style={{ backgroundSize: '100%', borderRadius: '8px' }}
+        style={{ backgroundSize: '100%', borderRadius: '8px', width: '100%' }}
       />
     ))}
   </Flex>
