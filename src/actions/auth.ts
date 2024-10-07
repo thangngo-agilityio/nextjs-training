@@ -18,23 +18,20 @@ import {
 import { TUser } from '@/types';
 import { httpClient } from '@/service';
 
-type TSignUpPayload = Omit<TUser, 'id'>;
-
-type TSignUpResponse = { user: Omit<TUser, 'password'> };
+type TSignUpPayload = TUser;
 
 export const signUp = async (
   payload: TSignUpPayload,
-): Promise<{ error?: string; user?: Omit<TUser, 'password'> }> => {
+): Promise<{ error?: string; data?: Omit<TUser, 'password'> }> => {
   try {
-    const res = await httpClient.postRequest<TSignUpPayload, TSignUpResponse>({
+    const res = await httpClient.postRequest<TSignUpPayload>({
       endpoint: API_PATH.USERS,
       body: payload,
     });
 
     const { data } = res || {};
-    const { user } = data || {};
 
-    return { user };
+    return { data };
   } catch (error) {
     return { error: ERROR_MESSAGES.EMAIL_EXIST };
   }

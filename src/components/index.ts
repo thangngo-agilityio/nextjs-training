@@ -12,6 +12,7 @@ export { default as Pagination } from './Pagination';
 export { default as SkeletonProductList } from './Skeleton/ProductList';
 export { default as ImageProduct } from './ImageProduct';
 export { default as ProductInfo } from './ProductInfo';
+export { default as CartItem } from './CartItem';
 
 // Common
 export * from './common';

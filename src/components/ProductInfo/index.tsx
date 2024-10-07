@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Box,
   Button,
@@ -6,6 +8,7 @@ import {
   GridItem,
   Heading,
   HStack,
+  Stack,
   Text,
   VStack,
 } from '@chakra-ui/react';
@@ -25,10 +28,19 @@ type TProductInfo = {
   length?: string;
   width?: string;
   description?: string;
+  onClickBuy: () => void;
+  onClickAddCard: () => void;
 };
 
-const ProductInfo = ({ title, description, price }: TProductInfo) => {
+const ProductInfo = ({
+  title,
+  description,
+  price,
+  onClickBuy,
+  onClickAddCard,
+}: TProductInfo) => {
   const [quantity, setQuantity] = useState(1);
+
   // Handle change quantity
   const onChange = useCallback((operation: 'increment' | 'decrement') => {
     setQuantity((prevQuantity) =>
@@ -45,7 +57,7 @@ const ProductInfo = ({ title, description, price }: TProductInfo) => {
   }, [onChange]);
 
   return (
-    <Flex flexDir="column" flex={1}>
+    <Stack flexDir="column" flex={1}>
       <Heading size="size6xl" variant="quinary" mb="5px">
         {title}
       </Heading>
@@ -77,7 +89,7 @@ const ProductInfo = ({ title, description, price }: TProductInfo) => {
         </Heading>
       </Box>
 
-      <Flex flexDir="row" mb="44px" gap="60px">
+      <Stack flexDir="row" mb="44px" gap="60px">
         <VStack alignItems="flex-start">
           <Heading variant="quaternary" size="lg" mb="20px">
             Quantity available
@@ -128,7 +140,7 @@ const ProductInfo = ({ title, description, price }: TProductInfo) => {
             />
           </HStack>
         </VStack>
-      </Flex>
+      </Stack>
 
       <Grid
         flexDirection="row"
@@ -155,14 +167,19 @@ const ProductInfo = ({ title, description, price }: TProductInfo) => {
       </Heading>
 
       <HStack>
-        <Button size="productDetail" variant="buy">
+        <Button size="productDetail" variant="buy" onClick={onClickBuy}>
           Buy now
         </Button>
-        <Button size="productDetail" variant="cart" ml="30px">
+        <Button
+          size="productDetail"
+          variant="cart"
+          ml="30px"
+          onClick={onClickAddCard}
+        >
           Add to cart
         </Button>
       </HStack>
-    </Flex>
+    </Stack>
   );
 };
 

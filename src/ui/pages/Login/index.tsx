@@ -12,6 +12,7 @@ import { ROUTER, TSignInForm } from '@/constants';
 
 // Actions
 import { signInWithEmail } from '@/actions/auth';
+import { auth } from '@/configs';
 
 const LoginPage = () => {
   const [isPending, setIsPending] = useState(false);
@@ -21,6 +22,12 @@ const LoginPage = () => {
   const handleSignIn = useCallback(
     async (data: TSignInForm) => {
       setIsPending(true);
+
+      const session = await auth();
+
+      const userId = session?.user?.id || '';
+
+      console.log('userId', userId);
 
       const res = await signInWithEmail(data);
 

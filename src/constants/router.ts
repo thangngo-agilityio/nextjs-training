@@ -4,5 +4,6 @@ export const ROUTER = {
   LOGIN: '/login',
   REGISTER: '/register',
   PRODUCT: '/product',
+  CART: '/cart',
   PRODUCT_DETAIL_PAGE: (id: string) => `/product/${id}`,
 };
