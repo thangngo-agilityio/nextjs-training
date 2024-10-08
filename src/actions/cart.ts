@@ -1,3 +1,5 @@
+'use server';
+
 import { revalidateTag } from 'next/cache';
 
 // Service
@@ -23,7 +25,7 @@ export const createCart = async (
 };
 
 export const updateMyCart = async (
-  cartId: number,
+  cartId: string,
   cartItems: ICartItem[],
 ): Promise<{ error: string } | void> => {
   try {

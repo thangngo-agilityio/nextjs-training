@@ -33,14 +33,14 @@ const ProductCard = ({ id, image, title, price }: ProductCard) => (
           <Image
             width={276}
             height={180}
-            objectFit="cover"
             src={image}
             alt={title}
             style={{
               borderRadius: 'sm',
               backgroundRepeat: 'no-repeat',
-              height: '100%',
-              backgroundSize: 'cover',
+              width: 'auto',
+              height: 'auto',
+              objectFit: 'cover',
             }}
           />
         </Box>

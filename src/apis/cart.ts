@@ -21,13 +21,15 @@ export const getCartItems = async (): Promise<{ data: ICart }> => {
 
     const endpoint = formatUrlWithQuery(API_PATH.CARTS, { userId });
 
-    const res = await getCart<ICart>(endpoint, {
+    const res = await getCart<ICart[]>(endpoint, {
       next: { tags: [API_PATH.CARTS] },
     });
 
-    const { data } = res || {};
+    const { data: carts = [] } = res || {};
 
-    return { data };
+    const cart = carts[0] || {};
+
+    return { data: cart };
   } catch (error) {
     throw error;
   }

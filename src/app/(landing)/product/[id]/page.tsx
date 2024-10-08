@@ -14,13 +14,15 @@ const ProductDetailPage = async ({ params }: TProductDetailPage) => {
   const { id: productId } = params || {};
 
   const { data: cartList } = await getCartItems();
-  const { cartItems = [], id: cartId } = cartList || {};
+  const { cartItems = [], id } = cartList || {};
+
+  console.log('cartList', cartList);
 
   const { data: product } = await getProductDetail(productId);
 
   return (
     <>
-      <ProductDetail cartId={cartId} product={product} cartItems={cartItems} />
+      <ProductDetail cartId={id} product={product} cartItems={cartItems} />
     </>
   );
 };

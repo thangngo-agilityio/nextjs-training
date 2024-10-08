@@ -18,13 +18,15 @@ const Header = dynamic(() => import('@/layouts/Header'));
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
 
 type TProductDetail = {
-  cartId: number;
+  cartId: string;
   product?: TProduct;
   cartItems?: ICartItem[];
 };
 
 const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
   const { showToast } = useCustomToast();
+
+  console.log('cartItems', cartItems);
 
   const {
     id: productId = '',

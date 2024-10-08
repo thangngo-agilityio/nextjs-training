@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Stack } from '@chakra-ui/react';
+import { Box, Flex, Stack } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 
 // Types
@@ -19,11 +19,11 @@ const CartPage = ({ cartItem }: TCartPage) => (
   <>
     <Header />
     <OverviewSection title="Cart" />
-    <Stack px="67px" pb="500px">
+    <Stack px="67px" pt="20px" pb="500px">
       <HeadingSection title="Cart" />
       <Flex flexDir="column">
         {cartItem.map((cart) => {
-          const { product } = cart || {};
+          const { product, quantity } = cart || {};
           const {
             name = '',
             image = [],
@@ -31,14 +31,28 @@ const CartPage = ({ cartItem }: TCartPage) => (
             price = 0,
           } = product || {};
           return (
-            <CartItem
+            <Box
               key={name}
-              title={name}
-              image={image}
-              description={description}
-              price={price}
-              onClick={() => {}}
-            />
+              mb="36px"
+              pb="54px"
+              borderBottom="1px solid"
+              borderColor="border.500"
+              _last={{
+                mb: 'unset',
+                pb: 'unset',
+                borderBottom: 'unset',
+                borderColor: 'unset',
+              }}
+            >
+              <CartItem
+                title={name}
+                image={image}
+                description={description}
+                price={price}
+                quantity={quantity}
+                onClick={() => {}}
+              />
+            </Box>
           );
         })}
       </Flex>

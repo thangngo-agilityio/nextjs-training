@@ -6,7 +6,7 @@ export type ICartItem = {
 };
 
 export type ICart = {
-  id: number;
+  id: string;
   userId: string;
   cartItems: ICartItem[];
 };

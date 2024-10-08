@@ -7,15 +7,18 @@ import { useCallback, useState } from 'react';
 // Components
 import { LoginForm } from '@/components';
 
+// Hooks
+import { useCustomToast } from '@/hooks';
+
 // Constants
-import { ROUTER, TSignInForm } from '@/constants';
+import { ROUTER, SUCCESS_MESSAGES, TSignInForm } from '@/constants';
 
 // Actions
 import { signInWithEmail } from '@/actions/auth';
-import { auth } from '@/configs';
 
 const LoginPage = () => {
   const [isPending, setIsPending] = useState(false);
+  const { showToast } = useCustomToast();
 
   const router = useRouter();
 
@@ -23,21 +26,17 @@ const LoginPage = () => {
     async (data: TSignInForm) => {
       setIsPending(true);
 
-      const session = await auth();
-
-      const userId = session?.user?.id || '';
-
-      console.log('userId', userId);
-
       const res = await signInWithEmail(data);
 
       if (typeof res === 'string') {
         setIsPending(false);
+      } else {
+        showToast(SUCCESS_MESSAGES.LOGIN, 'success');
       }
 
       return router.push(ROUTER.HOME);
     },
-    [router],
+    [router, showToast],
   );
 
   return (
