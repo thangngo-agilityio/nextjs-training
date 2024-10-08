@@ -13,6 +13,7 @@ export { default as SkeletonProductList } from './Skeleton/ProductList';
 export { default as ImageProduct } from './ImageProduct';
 export { default as ProductInfo } from './ProductInfo';
 export { default as CartItem } from './CartItem';
+export { default as TotalCart } from './TotalCart';
 
 // Common
 export * from './common';

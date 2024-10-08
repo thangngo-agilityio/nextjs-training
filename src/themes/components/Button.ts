@@ -47,7 +47,13 @@ export const Button = defineStyleConfig({
       px: '42px',
       py: '22px',
       fontSize: '4xl',
-      fontFamily: 'lufgaBold',
+    },
+    size4xlSecond: {
+      w: 'fit-content',
+      h: 'fit-content',
+      px: '100px',
+      py: '30px',
+      fontSize: '4xl',
     },
     icon: {
       p: '22px',
@@ -139,7 +145,8 @@ export const Button = defineStyleConfig({
       fontFamily: 'lufgaSemiBold',
       boxShadow: '0 6px 14px 4px rgba(164, 237, 163, 32.48%)',
       transition: '.2s ease-in',
-      border: '1px solid #284F49',
+      border: '1px solid',
+      borderColor: 'border.600',
       _hover: {
         color: 'text.1200',
         boxShadow: 'none',
@@ -149,13 +156,27 @@ export const Button = defineStyleConfig({
     cart: {
       bg: 'transparent',
       color: 'text.700',
-      border: '1px solid #E68314',
+      border: '1px solid',
+      borderColor: 'border.400',
       borderRadius: '5xl',
       fontFamily: 'lufgaSemiBold',
       transition: '.2s ease-in',
       _hover: {
         color: 'text.100',
         bgColor: 'background.300',
+      },
+    },
+    checkout: {
+      bg: 'background.200',
+      color: 'text.100',
+      borderRadius: '5xl',
+      fontFamily: 'lufgaSemiBold',
+      transition: '.2s ease-in',
+      border: '1px solid',
+      borderColor: 'border.600',
+      _hover: {
+        color: 'text.1200',
+        background: 'transparent',
       },
     },
   },

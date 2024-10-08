@@ -25,8 +25,14 @@ export const Text = defineStyleConfig({
     text2Xl: {
       fontSize: '2xl',
     },
+    text4Xl: {
+      fontSize: '4xl',
+    },
     text9xl: {
       fontSize: '9xl',
+    },
+    text10xl: {
+      fontSize: '10xl',
     },
   },
   variants: {
@@ -77,6 +83,10 @@ export const Text = defineStyleConfig({
     },
     quantity: {
       color: 'text.300',
+      fontFamily: 'lufgaBold',
+    },
+    totalCart: {
+      color: 'text.700',
       fontFamily: 'lufgaBold',
     },
   },

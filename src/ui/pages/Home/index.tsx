@@ -6,12 +6,12 @@ import dynamic from 'next/dynamic';
 // Apis
 import { getProducts } from '@/apis';
 import { PAGE_SIZE } from '@/constants';
+import { Header } from '@/layouts';
 
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
 const TrendingSection = dynamic(() => import('@/ui/section/Trending'));
 const ShowroomSection = dynamic(() => import('@/ui/section/Showroom'));
 const ProductSection = dynamic(() => import('@/ui/section/Product'));
-const Header = dynamic(() => import('@/layouts/Header'));
 
 type THomePage = {
   searchParams: {
