@@ -16,8 +16,6 @@ const ProductDetailPage = async ({ params }: TProductDetailPage) => {
   const { data: cartList } = await getCartItems();
   const { cartItems = [], id } = cartList || {};
 
-  console.log('cartList', cartList);
-
   const { data: product } = await getProductDetail(productId);
 
   return (

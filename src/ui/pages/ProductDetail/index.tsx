@@ -28,8 +28,6 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
   const { showToast } = useCustomToast();
   const router = useRouter();
 
-  console.log('cartItems', cartItems);
-
   const {
     id: productId = '',
     image = [],
