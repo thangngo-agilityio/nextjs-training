@@ -1,13 +1,10 @@
 // Constants
 import { SECOND_URL } from '@/constants';
+import { ResponseData } from '../httpService';
 
 type TRequest = {
   endpoint: string;
   configOptions?: RequestInit;
-};
-
-export type ResponseData<T> = {
-  data: T;
 };
 
 const request = async <T>({
