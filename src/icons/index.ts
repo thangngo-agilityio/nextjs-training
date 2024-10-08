@@ -29,3 +29,4 @@ export * from './Logout';
 export * from './ArrowPagination';
 export * from './Minus';
 export * from './Plus';
+export * from './Delete';

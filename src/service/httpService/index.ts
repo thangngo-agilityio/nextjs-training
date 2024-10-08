@@ -64,11 +64,11 @@ class HttpClient {
     return this.request<T>({ endpoint, configOptions: options });
   }
 
-  async postRequest<T, K>({
+  async postRequest<T>({
     endpoint,
     body,
     configOptions,
-  }: TPostRequest<T>): Promise<ResponseData<K>> {
+  }: TPostRequest<T>): Promise<ResponseData<T>> {
     const options: RequestInit = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

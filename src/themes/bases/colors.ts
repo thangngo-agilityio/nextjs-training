@@ -45,6 +45,7 @@ export const colors = {
     200: '#EDE8E9',
     300: 'rgba(120, 115, 137, 20%)',
     400: '#E68314',
+    500: '#C4C4C4',
   },
 
   danger: {

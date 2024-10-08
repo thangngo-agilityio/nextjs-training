@@ -5,7 +5,7 @@ import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 // Action
-import { signInWithEmail, signUp } from '@/actions';
+import { createCart, signInWithEmail, signUp } from '@/actions';
 
 // Components
 import { SignUpForm } from '@/components';
@@ -17,7 +17,7 @@ import { useCustomToast } from '@/hooks';
 import { TUser } from '@/types';
 
 // Constants
-import { ROUTER } from '@/constants';
+import { ROUTER, SUCCESS_MESSAGES } from '@/constants';
 
 const SignInPage = () => {
   const [isPending, setIsPending] = useState(false);
@@ -25,17 +25,29 @@ const SignInPage = () => {
   const router = useRouter();
 
   const handleSignUp = useCallback(
-    async (data: Omit<TUser, 'id'>) => {
+    async (data: TUser) => {
       setIsPending(true);
 
       const signUpRes = await signUp(data);
 
-      const { error: signUpError } = signUpRes || {};
+      const { error: signUpError, data: user } = signUpRes || {};
 
       if (signUpError) {
         setIsPending(false);
 
         return showToast(signUpError);
+      }
+
+      const { id: userId = '' } = user || {};
+
+      const createCartRes = await createCart([], userId);
+
+      const { error: createCartError } = createCartRes || {};
+
+      if (createCartError) {
+        setIsPending(false);
+
+        return showToast(createCartError);
       }
 
       const { email, password } = data;
@@ -46,6 +58,8 @@ const SignInPage = () => {
         setIsPending(false);
 
         return showToast(signInRes);
+      } else {
+        showToast(SUCCESS_MESSAGES.LOGIN, 'success');
       }
 
       return router.push(ROUTER.HOME);

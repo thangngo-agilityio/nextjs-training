@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 
 // Apis
-import { getProductDetail } from '@/apis';
+import { getCartItems, getProductDetail } from '@/apis';
 
 // Component
 const ProductDetail = dynamic(() => import('@/ui/pages/ProductDetail'));
@@ -13,25 +13,14 @@ type TProductDetailPage = {
 const ProductDetailPage = async ({ params }: TProductDetailPage) => {
   const { id: productId } = params || {};
 
-  const { data: productDetail } = await getProductDetail(productId);
+  const { data: cartList } = await getCartItems();
+  const { cartItems = [], id } = cartList || {};
 
-  const {
-    image = [],
-    name = '',
-    price = 0,
-    description = '',
-    category = '',
-  } = productDetail || {};
+  const { data: product } = await getProductDetail(productId);
 
   return (
     <>
-      <ProductDetail
-        image={image}
-        name={name}
-        price={price}
-        description={description}
-        category={category}
-      />
+      <ProductDetail cartId={id} product={product} cartItems={cartItems} />
     </>
   );
 };

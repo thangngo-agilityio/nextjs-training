@@ -29,7 +29,7 @@ type TAuthFormProps = {
   onChange?: (value: string) => void;
   handleClearRootError?: () => void;
   handleSubmit?: () => void;
-  onSubmit: (data: Omit<TUser, 'id'>) => void;
+  onSubmit: (data: TUser) => void;
 };
 
 const SignUpForm = ({
@@ -90,10 +90,7 @@ const SignUpForm = ({
     [clearErrors],
   );
 
-  const handleSignUp = useCallback(
-    (data: Omit<TUser, 'id'>) => onSubmit(data),
-    [onSubmit],
-  );
+  const handleSignUp = useCallback((data: TUser) => onSubmit(data), [onSubmit]);
 
   return (
     <Stack w="556px" mb="30px" alignItems="center" justifyContent="center">

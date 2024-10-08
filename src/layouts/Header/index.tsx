@@ -100,7 +100,9 @@ const Header = ({ searchValue, onChange }: THeader) => {
           </Stack>
           <Stack flexDirection="row" alignItems="center" gap="32px">
             <HeartIcon />
-            <CartIcon />
+            <Link href={ROUTER.CART}>
+              <CartIcon />
+            </Link>
             <UserDropdown onClick={handleLogout} />
           </Stack>
         </Flex>
