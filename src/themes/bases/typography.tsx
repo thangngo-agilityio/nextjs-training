@@ -16,6 +16,7 @@ export const fontSizes: ThemeOverride['fontSizes'] = {
   '7xl': '60px',
   '8xl': '36px',
   '9xl': '24px',
+  '10xl': '80px',
 };
 
 export const lufga = LocalFont({ src: '../../assets/fonts/LufgaRegular.ttf' });
