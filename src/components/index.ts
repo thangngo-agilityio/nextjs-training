@@ -14,6 +14,7 @@ export { default as ImageProduct } from './ImageProduct';
 export { default as ProductInfo } from './ProductInfo';
 export { default as CartItem } from './CartItem';
 export { default as TotalCart } from './TotalCart';
+export { default as OrderSuccess } from './OrderSuccess';
 
 // Common
 export * from './common';

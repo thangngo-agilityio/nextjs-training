@@ -90,6 +90,10 @@ export const Heading = defineStyleConfig({
       color: 'text.1100',
       fontFamily: 'lufgaBold',
     },
+    orderSuccess: {
+      color: 'text.1800',
+      fontFamily: 'lufgaSemiBold',
+    },
   },
 
   defaultProps: {
