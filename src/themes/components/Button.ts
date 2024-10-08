@@ -68,6 +68,12 @@ export const Button = defineStyleConfig({
       paddingY: '20px',
       fontSize: '2xl',
     },
+    orderSuccess: {
+      w: 'fit-content',
+      px: '170px',
+      py: '16px',
+      fontSize: 'md',
+    },
   },
   variants: {
     default: {
@@ -169,8 +175,21 @@ export const Button = defineStyleConfig({
     checkout: {
       bg: 'background.200',
       color: 'text.100',
-      borderRadius: '5xl',
+      borderRadius: 'xs',
       fontFamily: 'lufgaSemiBold',
+      transition: '.2s ease-in',
+      border: '1px solid',
+      borderColor: 'border.600',
+      _hover: {
+        color: 'text.1200',
+        background: 'transparent',
+      },
+    },
+    orderSuccess: {
+      bg: 'background.200',
+      color: 'text.100',
+      borderRadius: 'lg',
+      fontFamily: 'lufgaBold',
       transition: '.2s ease-in',
       border: '1px solid',
       borderColor: 'border.600',

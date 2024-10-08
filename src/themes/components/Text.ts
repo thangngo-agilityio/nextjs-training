@@ -89,6 +89,9 @@ export const Text = defineStyleConfig({
       color: 'text.700',
       fontFamily: 'lufgaBold',
     },
+    orderSuccess: {
+      color: 'text.1900',
+    },
   },
   defaultProps: {
     size: 'textMd',

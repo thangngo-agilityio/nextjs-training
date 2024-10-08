@@ -67,10 +67,10 @@ const CartPage = ({ cartItem, cartId }: TCartPage) => {
     if (error) {
       showToast(error);
     } else {
-      showToast(SUCCESS_MESSAGES.DELETE_CART_ITEM, 'success');
+      showToast(SUCCESS_MESSAGES.CHECKOUT, 'success');
     }
 
-    return router.push(ROUTER.HOME);
+    return router.push(ROUTER.ORDER);
   }, [cartId, showToast, router]);
 
   return (
