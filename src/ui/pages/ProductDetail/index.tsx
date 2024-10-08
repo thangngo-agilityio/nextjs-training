@@ -3,19 +3,26 @@
 import { useCallback } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 
 // Components
 import { HeadingSection, ImageProduct, ProductInfo } from '@/components';
 
-// Types
-import { ICartItem, TProduct } from '@/types';
+// Layouts
+import { Header } from '@/layouts';
 
 // Actions
 import { updateMyCart } from '@/actions';
+
+// Hooks
 import { useCustomToast } from '@/hooks';
+
+// Types
+import { ICartItem, TProduct } from '@/types';
+
+// Constants
 import { ROUTER, SUCCESS_MESSAGES } from '@/constants';
-import { useRouter } from 'next/navigation';
-const Header = dynamic(() => import('@/layouts/Header'));
+
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
 
 type TProductDetail = {

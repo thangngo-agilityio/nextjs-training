@@ -8,10 +8,10 @@ const Cart = dynamic(() => import('@/ui/pages/Cart'));
 
 const CartPage = async () => {
   const { data: cartList } = await getCartItems();
-  const { cartItems = [] } = cartList || {};
+  const { cartItems = [], id } = cartList || {};
   return (
     <>
-      <Cart cartItem={cartItems} />
+      <Cart cartItem={cartItems} cartId={id} />
     </>
   );
 };

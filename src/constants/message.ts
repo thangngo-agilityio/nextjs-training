@@ -9,4 +9,6 @@ export const ERROR_MESSAGES = {
 export const SUCCESS_MESSAGES = {
   ADD_CART: 'Adding product to your cart successfully.',
   LOGIN: 'Login successfully.',
+  DELETE_CART_ITEM: 'Delete cart item successfully.',
+  CHECKOUT: 'Checkout successfully.',
 };

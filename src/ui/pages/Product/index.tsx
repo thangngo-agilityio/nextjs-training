@@ -35,8 +35,8 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { Header } from '@/layouts';
 
-const Header = dynamic(() => import('@/layouts/Header'));
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
 
 type TTrendingSection = {
