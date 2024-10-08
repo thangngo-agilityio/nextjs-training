@@ -13,7 +13,8 @@ import { ICartItem, TProduct } from '@/types';
 // Actions
 import { updateMyCart } from '@/actions';
 import { useCustomToast } from '@/hooks';
-import { SUCCESS_MESSAGES } from '@/constants';
+import { ROUTER, SUCCESS_MESSAGES } from '@/constants';
+import { useRouter } from 'next/navigation';
 const Header = dynamic(() => import('@/layouts/Header'));
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
 
@@ -25,6 +26,7 @@ type TProductDetail = {
 
 const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
   const { showToast } = useCustomToast();
+  const router = useRouter();
 
   console.log('cartItems', cartItems);
 
@@ -63,9 +65,12 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
       showToast(SUCCESS_MESSAGES.ADD_CART, 'success');
     }
   }, [cartId, cartItems, product, productId, showToast]);
-  const handleBuyNow = () => {
-    console.log(2);
-  };
+
+  const handleBuyNow = useCallback(async () => {
+    handleAddToCart();
+
+    return router.push(ROUTER.CART);
+  }, [handleAddToCart, router]);
 
   return (
     <>
