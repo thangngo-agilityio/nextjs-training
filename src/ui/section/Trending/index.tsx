@@ -102,7 +102,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => (
 
       <Flex w="100%" justifyContent="flex-end" px="94px" mb="136px">
         <Button as={Link} size="md" variant="showroom" href={ROUTER.PRODUCT}>
-          More
+          More details
         </Button>
       </Flex>
 
