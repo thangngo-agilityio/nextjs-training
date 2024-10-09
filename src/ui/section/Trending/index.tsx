@@ -87,13 +87,8 @@ const TrendingSection = ({ productList }: TTrendingSection) => (
         })}
       </Flex>
 
-      <Flex mb="136px" flexDir="column" alignItems="center">
-        <Flex
-          flexDirection="column"
-          alignItems="center"
-          textAlign="center"
-          mb="30px"
-        >
+      <Flex mb="30px" flexDir="column" alignItems="center">
+        <Flex flexDirection="column" alignItems="center" textAlign="center">
           <Heading mb="10px" size="size7xl" variant="quinary">
             Top Trending
           </Heading>
@@ -103,8 +98,11 @@ const TrendingSection = ({ productList }: TTrendingSection) => (
           </Text>
           <Box w="98px" h="5px" bgColor="background.300" />
         </Flex>
+      </Flex>
+
+      <Flex w="100%" justifyContent="flex-end" px="94px" mb="136px">
         <Button as={Link} size="md" variant="showroom" href={ROUTER.PRODUCT}>
-          See more
+          More
         </Button>
       </Flex>
 
