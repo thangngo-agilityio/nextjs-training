@@ -10,3 +10,4 @@ export * from './message';
 export * from './pagination';
 export * from './navigation';
 export * from './query-tags';
+export * from './regex';

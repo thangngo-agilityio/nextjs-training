@@ -1,17 +1,18 @@
 import { Stack } from '@chakra-ui/react';
 
-// Components
-import dynamic from 'next/dynamic';
-
 // Apis
 import { getProducts } from '@/apis';
-import { PAGE_SIZE } from '@/constants';
-import { Header } from '@/layouts';
 
-const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
-const TrendingSection = dynamic(() => import('@/ui/section/Trending'));
-const ShowroomSection = dynamic(() => import('@/ui/section/Showroom'));
-const ProductSection = dynamic(() => import('@/ui/section/Product'));
+// Constants
+import { PAGE_SIZE } from '@/constants';
+
+// Section
+import {
+  OverviewSection,
+  ProductSection,
+  ShowroomSection,
+  TrendingSection,
+} from '@/ui/section';
 
 type THomePage = {
   searchParams: {
@@ -30,7 +31,6 @@ const HomePage = async ({ searchParams }: THomePage) => {
 
   return (
     <Stack>
-      <Header />
       <OverviewSection isHomePage />
       <TrendingSection productList={productList} />
       <ShowroomSection />

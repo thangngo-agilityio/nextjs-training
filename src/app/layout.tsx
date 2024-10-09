@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SessionProvider>
+        <SessionProvider refetchInterval={10 * 60} refetchOnWindowFocus={false}>
           <ChakraProvider>{children}</ChakraProvider>
         </SessionProvider>
       </body>

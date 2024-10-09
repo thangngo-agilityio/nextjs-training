@@ -18,7 +18,7 @@ import { InputField } from '../common';
 import { GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
-import { ISignUpForm, ROUTER } from '@/constants';
+import { AUTH_SCHEMA, ISignUpForm, ROUTER } from '@/constants';
 
 // Types
 import { TUser } from '@/types';
@@ -113,6 +113,7 @@ const SignUpForm = ({
       >
         <Controller
           control={control}
+          rules={AUTH_SCHEMA.EMAIL}
           name="email"
           render={({ field: { value, onChange }, fieldState: { error } }) => {
             const handleChange = (valueInput: string) => {
@@ -140,6 +141,7 @@ const SignUpForm = ({
         <Flex w="full" flexDirection="row" gap="12px" alignItems="center">
           <Controller
             control={control}
+            rules={AUTH_SCHEMA.NAME}
             name="firstName"
             render={({ field, fieldState: { error } }) => (
               <InputField
@@ -161,6 +163,7 @@ const SignUpForm = ({
 
           <Controller
             control={control}
+            rules={AUTH_SCHEMA.NAME}
             name="lastName"
             render={({ field, fieldState: { error } }) => (
               <InputField
@@ -183,6 +186,7 @@ const SignUpForm = ({
 
         <Controller
           control={control}
+          rules={AUTH_SCHEMA.PASSWORD}
           name="password"
           render={({ field, fieldState: { error } }) => (
             <InputField
@@ -207,6 +211,7 @@ const SignUpForm = ({
         <>
           <Controller
             control={control}
+            rules={AUTH_SCHEMA.CONFIRM_PASSWORD}
             name="confirmPassword"
             render={({ field, fieldState: { error } }) => (
               <InputField

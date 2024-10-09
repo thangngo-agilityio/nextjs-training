@@ -13,7 +13,7 @@ const SkeletonProductList = ({ length }: TSkeletonProductList): JSX.Element => (
   >
     {Array.from({ length: length }, (_, index) => (
       <GridItem key={index}>
-        <Skeleton w="full" />
+        <Skeleton w="320px" height="300px" />
       </GridItem>
     ))}
   </Grid>

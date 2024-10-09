@@ -108,14 +108,14 @@ const TrendingSection = ({ productList }: TTrendingSection) => (
         </Button>
       </Flex>
 
-      <Suspense fallback={<SkeletonProductList length={4} />}>
-        <Grid
-          px="94px"
-          gap="29px"
-          rowGap="120px"
-          templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
-          mb="40px"
-        >
+      <Grid
+        px="94px"
+        gap="29px"
+        rowGap="120px"
+        templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
+        mb="40px"
+      >
+        <Suspense fallback={<SkeletonProductList length={4} />}>
           {productList.map((item) => (
             <GridItem key={item.id}>
               <ProductCard
@@ -126,8 +126,8 @@ const TrendingSection = ({ productList }: TTrendingSection) => (
               />
             </GridItem>
           ))}
-        </Grid>
-      </Suspense>
+        </Suspense>
+      </Grid>
     </Flex>
   </Flex>
 );
