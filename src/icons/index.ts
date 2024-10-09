@@ -1,7 +1,3 @@
-export * from './BoltIcon';
-export * from './BugAntIcon';
-export * from './CubeIcon';
-export * from './ChevronRightIcon';
 export * from './Logo';
 export * from './ArrowIcon';
 export * from './Search';
@@ -31,3 +27,5 @@ export * from './Minus';
 export * from './Plus';
 export * from './Delete';
 export * from './Success';
+export * from './Hamburger';
+export * from './LogoMobile';

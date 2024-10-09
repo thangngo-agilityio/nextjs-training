@@ -9,22 +9,32 @@ import {
   InputLeftElement,
   Stack,
   Text,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounceCallback } from 'usehooks-ts';
 
 // Components
-import { Loading, UserDropdown } from '@/components';
+import { Expand, Loading, UserDropdown } from '@/components';
 
 // Icons
-import { ArrowIcon, CartIcon, HeartIcon, LogoIcon, SearchIcon } from '@/icons';
+import {
+  ArrowIcon,
+  CartIcon,
+  HeartIcon,
+  LogoIcon,
+  LogoMobile,
+  SearchIcon,
+} from '@/icons';
 
 // Constants
 import { ROUTER, SEARCH_QUERIES } from '@/constants';
 
 // Actions
 import { logout } from '@/actions';
+
+// Utils
 import { getSearchParams, updateSearchParams } from '@/utils';
 
 export type TSearchValue = {
@@ -32,11 +42,16 @@ export type TSearchValue = {
 };
 
 const Header = () => {
+  const [isLogout, startTransition] = useTransition();
+
   const searchParams = useSearchParams();
   const pathname = usePathname();
+
   const { replace } = useRouter();
-  const [isLogout, startTransition] = useTransition();
   const router = useRouter();
+
+  const isMobile = useBreakpointValue({ base: true, lg: false });
+
   const { name } = getSearchParams(searchParams);
 
   const handleOnChange = useDebounceCallback(
@@ -62,11 +77,16 @@ const Header = () => {
   return (
     <>
       {isLogout && <Loading />}
-      <Flex justifyContent="center">
+      <Flex
+        w="100%"
+        justifyContent="center"
+        position={isMobile ? 'absolute' : 'unset'}
+        flexDir={isMobile ? 'column' : 'unset'}
+        px={isMobile ? '20px' : '52px'}
+      >
         <Flex
           w="100%"
           maxW="1512px"
-          px="52px"
           pt="40px"
           pb="24px"
           flexDirection="row"
@@ -74,45 +94,69 @@ const Header = () => {
           justifyContent="space-between"
         >
           <Stack w="100%" flexDirection="row" alignItems="center">
-            <Box>
+            <Box ml={isMobile ? '-20px' : 'unset'}>
               <Link href={ROUTER.HOME} title="Home">
-                <LogoIcon />
+                {!isMobile ? <LogoIcon /> : <LogoMobile />}
               </Link>
             </Box>
-            <Stack flexDirection="row" alignItems="center">
-              <Flex ml="36px" alignItems="center" gap={1}>
-                <Text size="lg">Space Builder</Text>
-                <Text variant="tertiary">(Coming soon)</Text>
-                <ArrowIcon />
-              </Flex>
-              <Flex ml="40px" alignItems="center" gap={1}>
-                <Text size="lg">Products</Text>
-                <ArrowIcon />
-              </Flex>
+            {!isMobile && (
+              <>
+                <Stack flexDirection="row" alignItems="center">
+                  <Flex ml="36px" alignItems="center" gap={1}>
+                    <Text size="lg">Space Builder</Text>
+                    <Text variant="tertiary">(Coming soon)</Text>
+                    <ArrowIcon />
+                  </Flex>
+                  <Flex ml="40px" alignItems="center" gap={1}>
+                    <Text size="lg">Products</Text>
+                    <ArrowIcon />
+                  </Flex>
+                </Stack>
+                <Box ml="22px" width="30%">
+                  <InputGroup>
+                    <InputLeftElement>
+                      <SearchIcon />
+                    </InputLeftElement>
+                    <Input
+                      placeholder="Search for minimalist chair"
+                      defaultValue={name}
+                      onChange={handleOnChange}
+                      variant="search"
+                      background="background.100"
+                    />
+                  </InputGroup>
+                </Box>
+              </>
+            )}
+          </Stack>
+          {!isMobile ? (
+            <Stack flexDirection="row" alignItems="center" gap="32px">
+              <HeartIcon />
+              <Link href={ROUTER.CART}>
+                <CartIcon />
+              </Link>
+              <UserDropdown onClick={handleLogout} />
             </Stack>
-            <Box ml="22px" width="30%">
-              <InputGroup>
-                <InputLeftElement>
-                  <SearchIcon />
-                </InputLeftElement>
-                <Input
-                  placeholder="Search for minimalist chair"
-                  defaultValue={name}
-                  onChange={handleOnChange}
-                  variant="search"
-                  background="background.100"
-                />
-              </InputGroup>
-            </Box>
-          </Stack>
-          <Stack flexDirection="row" alignItems="center" gap="32px">
-            <HeartIcon />
-            <Link href={ROUTER.CART}>
-              <CartIcon />
-            </Link>
-            <UserDropdown onClick={handleLogout} />
-          </Stack>
+          ) : (
+            <Expand onClick={handleLogout} />
+          )}
         </Flex>
+        {isMobile && (
+          <Box width="100%">
+            <InputGroup>
+              <InputLeftElement>
+                <SearchIcon />
+              </InputLeftElement>
+              <Input
+                placeholder="Search for minimalist chair"
+                defaultValue={name}
+                onChange={handleOnChange}
+                variant="search"
+                background="background.100"
+              />
+            </InputGroup>
+          </Box>
+        )}
       </Flex>
     </>
   );

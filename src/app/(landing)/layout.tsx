@@ -1,4 +1,3 @@
-import { Stack } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
@@ -10,9 +9,9 @@ interface AuthLayoutProps {
 }
 
 const AuthLayout = ({ children }: AuthLayoutProps) => (
-  <Stack>
+  <>
     <MainLayout>{children}</MainLayout>
-  </Stack>
+  </>
 );
 
 export default AuthLayout;
