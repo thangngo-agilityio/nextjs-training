@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 // Apis
 import { getProducts } from '@/apis';
 
@@ -9,6 +11,12 @@ type TProductPage = {
     name?: string;
     id?: string;
   };
+};
+
+export const metadata: Metadata = {
+  title: 'Product',
+  description:
+    'This is the Product page in a comprehensive e-commerce web application designed to facilitate online shopping.',
 };
 
 const Product = async ({ searchParams }: TProductPage) => {
