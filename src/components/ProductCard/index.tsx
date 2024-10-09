@@ -21,15 +21,20 @@ const ProductCard = ({ id, image, title, price }: ProductCard) => (
       borderRadius="sm"
       boxShadow="0 4px 50px -5px rgba(32, 32, 32, 10%)"
       pb="14px"
+      alignItems="center"
     >
       <Flex
-        w="100%"
+        w="90%"
         position="relative"
         justifyContent="center"
         mt="-90px"
         mb="18px"
+        transition=".2s ease-in"
+        _hover={{
+          w: '100%',
+        }}
       >
-        <Box as="div" w="90%" h="180px" borderRadius="sm" overflow="hidden">
+        <Box as="div" w="100%" h="180px" borderRadius="sm" overflow="hidden">
           <Image
             width={276}
             height={180}
@@ -58,12 +63,7 @@ const ProductCard = ({ id, image, title, price }: ProductCard) => (
           <HeartIcon />
         </Flex>
       </Flex>
-      <Flex
-        maxW="274px"
-        flexDirection="column"
-        alignItems="flex-start"
-        px="16px"
-      >
+      <Flex w="100%" maxW="274px" flexDirection="column">
         <Heading variant="senary" size="xl" noOfLines={1}>
           {title}
         </Heading>

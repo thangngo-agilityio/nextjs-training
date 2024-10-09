@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useCallback, useMemo } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { Box, Flex, Stack } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
@@ -25,7 +25,6 @@ import {
   TotalCart,
 } from '@/components';
 import { ROUTER, SUCCESS_MESSAGES } from '@/constants';
-const Header = dynamic(() => import('@/layouts/Header'));
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
 
 type TCartPage = {
@@ -34,9 +33,18 @@ type TCartPage = {
 };
 
 const CartPage = ({ cartItem, cartId }: TCartPage) => {
+  const [isDisable, setIsDisable] = useState(false);
   const total = useMemo(() => calculateTotalPrice(cartItem), [cartItem]);
   const { showToast } = useCustomToast();
   const router = useRouter();
+
+  useEffect(() => {
+    if (cartItem.length === 0) {
+      setIsDisable(true);
+    } else {
+      setIsDisable(false);
+    }
+  }, [cartItem]);
 
   const handleRemoveItem = useCallback(
     async (productId: string) => {
@@ -75,7 +83,6 @@ const CartPage = ({ cartItem, cartId }: TCartPage) => {
 
   return (
     <>
-      <Header />
       <OverviewSection title="Cart" />
       <Stack px="67px" pt="20px" pb="500px">
         <HeadingSection title="Cart" />
@@ -122,7 +129,11 @@ const CartPage = ({ cartItem, cartId }: TCartPage) => {
             );
           })}
         </Flex>
-        <TotalCart total={total} onClick={handleCheckout} />
+        <TotalCart
+          total={total}
+          onClick={handleCheckout}
+          isDisable={isDisable}
+        />
       </Stack>
     </>
   );

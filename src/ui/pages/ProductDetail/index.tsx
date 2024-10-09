@@ -1,15 +1,17 @@
 'use client';
 
-import { useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 
 // Components
-import { HeadingSection, ImageProduct, ProductInfo } from '@/components';
-
-// Layouts
-import { Header } from '@/layouts';
+import {
+  HeadingSection,
+  ImageProduct,
+  ProductInfo,
+  SkeletonProductDetail,
+} from '@/components';
 
 // Actions
 import { updateMyCart } from '@/actions';
@@ -79,19 +81,20 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
 
   return (
     <>
-      <Header />
       <OverviewSection title="Product detail" />
       <Box px="67px" pb="610px">
         <HeadingSection title={category} />
         <Flex flexDir="row" gap="42px">
-          <ImageProduct image={image} alt={name} />
-          <ProductInfo
-            title={name}
-            price={price}
-            description={description}
-            onClickAddCard={handleAddToCart}
-            onClickBuy={handleBuyNow}
-          />
+          <Suspense fallback={<SkeletonProductDetail />}>
+            <ImageProduct image={image} alt={name} />
+            <ProductInfo
+              title={name}
+              price={price}
+              description={description}
+              onClickAddCard={handleAddToCart}
+              onClickBuy={handleBuyNow}
+            />
+          </Suspense>
         </Flex>
       </Box>
     </>

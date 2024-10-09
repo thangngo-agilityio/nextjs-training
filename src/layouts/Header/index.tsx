@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useCallback, useTransition } from 'react';
+import { useCallback, useTransition } from 'react';
 import {
   Box,
   Flex,
@@ -11,7 +11,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounceCallback } from 'usehooks-ts';
 
 // Components
@@ -21,27 +21,34 @@ import { Loading, UserDropdown } from '@/components';
 import { ArrowIcon, CartIcon, HeartIcon, LogoIcon, SearchIcon } from '@/icons';
 
 // Constants
-import { ROUTER } from '@/constants';
+import { ROUTER, SEARCH_QUERIES } from '@/constants';
 
 // Actions
 import { logout } from '@/actions';
+import { getSearchParams, updateSearchParams } from '@/utils';
 
 export type TSearchValue = {
   search: string;
 };
 
-type THeader = {
-  searchValue?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-};
-
-const Header = ({ searchValue, onChange }: THeader) => {
+const Header = () => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
   const [isLogout, startTransition] = useTransition();
   const router = useRouter();
+  const { name } = getSearchParams(searchParams);
 
   const handleOnChange = useDebounceCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      onChange && onChange(e);
+      const value = e.target.value;
+      const updatedParams = updateSearchParams(
+        searchParams,
+        SEARCH_QUERIES.NAME,
+        value,
+      );
+
+      replace(`${pathname}?${updatedParams.toString()}`, { scroll: false });
     },
     500,
   );
@@ -90,7 +97,7 @@ const Header = ({ searchValue, onChange }: THeader) => {
                 </InputLeftElement>
                 <Input
                   placeholder="Search for minimalist chair"
-                  defaultValue={searchValue}
+                  defaultValue={name}
                   onChange={handleOnChange}
                   variant="search"
                   background="background.100"

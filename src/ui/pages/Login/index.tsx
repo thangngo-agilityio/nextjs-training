@@ -11,12 +11,19 @@ import { LoginForm } from '@/components';
 import { useCustomToast } from '@/hooks';
 
 // Constants
-import { ROUTER, SUCCESS_MESSAGES, TSignInForm } from '@/constants';
+import {
+  ERROR_MESSAGES,
+  ROUTER,
+  SUCCESS_MESSAGES,
+  TSignInForm,
+} from '@/constants';
 
 // Actions
 import { signInWithEmail } from '@/actions/auth';
+import { formatUppercaseFirstLetter } from '@/utils';
 
 const LoginPage = () => {
+  const [errorMessage, setErrorMessage] = useState('');
   const [isPending, setIsPending] = useState(false);
   const { showToast } = useCustomToast();
 
@@ -30,6 +37,9 @@ const LoginPage = () => {
 
       if (typeof res === 'string') {
         setIsPending(false);
+        setErrorMessage(
+          formatUppercaseFirstLetter(ERROR_MESSAGES.AUTH_INCORRECT),
+        );
       } else {
         showToast(SUCCESS_MESSAGES.LOGIN, 'success');
       }
@@ -41,7 +51,11 @@ const LoginPage = () => {
 
   return (
     <Flex h="100%" justifyContent="center" alignItems="center">
-      <LoginForm onSubmit={handleSignIn} isDisabled={isPending} />
+      <LoginForm
+        onSubmit={handleSignIn}
+        isDisabled={isPending}
+        errorMessage={errorMessage}
+      />
     </Flex>
   );
 };

@@ -1,10 +1,8 @@
-import dynamic from 'next/dynamic';
-
 // Apis
 import { getCartItems, getProductDetail } from '@/apis';
 
 // Component
-const ProductDetail = dynamic(() => import('@/ui/pages/ProductDetail'));
+import { ProductDetail } from '@/ui';
 
 type TProductDetailPage = {
   params: { id: string };

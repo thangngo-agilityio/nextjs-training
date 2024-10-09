@@ -1,8 +1,7 @@
 'use client';
 
 import { Flex, Grid, GridItem, RadioGroup } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { Fragment, Suspense, useMemo, useState } from 'react';
 
 // Components
 import {
@@ -11,6 +10,7 @@ import {
   ProductCard,
   SkeletonProductList,
 } from '@/components';
+import { OverviewSection } from '@/ui/section';
 
 // Hooks
 import { usePagination } from '@/hooks';
@@ -19,37 +19,14 @@ import { usePagination } from '@/hooks';
 import { TProduct } from '@/types';
 
 // Constants
-import {
-  MENU_ITEM_FILTER,
-  PAGE_SIZE_PRODUCT,
-  SEARCH_QUERIES,
-} from '@/constants';
-
-// Utils
-import { getSearchParams, updateSearchParams } from '@/utils';
-import {
-  ChangeEvent,
-  Fragment,
-  Suspense,
-  useCallback,
-  useMemo,
-  useState,
-} from 'react';
-import { Header } from '@/layouts';
-
-const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
+import { MENU_ITEM_FILTER, PAGE_SIZE_PRODUCT } from '@/constants';
 
 type TTrendingSection = {
   productList: TProduct[];
 };
 
 const ProductPage = ({ productList }: TTrendingSection) => {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
   const [filter, setFilter] = useState<string>('');
-
-  const { name } = getSearchParams(searchParams);
 
   const productFilter = useMemo(
     () =>
@@ -67,23 +44,8 @@ const ProductPage = ({ productList }: TTrendingSection) => {
     handlePageClick,
   } = usePagination(productFilter, PAGE_SIZE_PRODUCT);
 
-  const handleSearchProducts = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
-      const updatedParams = updateSearchParams(
-        searchParams,
-        SEARCH_QUERIES.NAME,
-        value,
-      );
-
-      replace(`${pathname}?${updatedParams.toString()}`, { scroll: false });
-    },
-    [pathname, replace, searchParams],
-  );
-
   return (
     <>
-      <Header onChange={handleSearchProducts} searchValue={name} />
       <OverviewSection title="Product page" />
       <Flex pb="350px" flexDir="column" alignItems="center" mb="20px">
         <Flex
@@ -124,14 +86,14 @@ const ProductPage = ({ productList }: TTrendingSection) => {
           })}
         </Flex>
 
-        <Suspense fallback={<SkeletonProductList length={12} />}>
-          <Grid
-            px="94px"
-            gap="29px"
-            rowGap="120px"
-            templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
-            mb="20px"
-          >
+        <Grid
+          px="94px"
+          gap="29px"
+          rowGap="120px"
+          templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
+          mb="20px"
+        >
+          <Suspense fallback={<SkeletonProductList length={12} />}>
             {filterData.map((item) => (
               <GridItem key={item.id}>
                 <ProductCard
@@ -142,8 +104,8 @@ const ProductPage = ({ productList }: TTrendingSection) => {
                 />
               </GridItem>
             ))}
-          </Grid>
-        </Suspense>
+          </Suspense>
+        </Grid>
         <Pagination
           currentPage={data.currentPage}
           isDisableNext={isDisableNext}

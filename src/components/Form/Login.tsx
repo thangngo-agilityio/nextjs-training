@@ -20,7 +20,7 @@ import { InputField } from '../common';
 import { GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
-import { ROUTER, TSignInForm } from '@/constants';
+import { AUTH_SCHEMA, ROUTER, TSignInForm } from '@/constants';
 import { LoginFormData } from '@/types';
 
 type TAuthFormProps = {
@@ -111,6 +111,7 @@ const LoginForm = ({
       >
         <Controller
           control={control}
+          rules={AUTH_SCHEMA.EMAIL}
           name="email"
           render={({ field: { value, onChange }, fieldState: { error } }) => {
             const handleChange = (valueInput: string) => {
@@ -137,6 +138,7 @@ const LoginForm = ({
 
         <Controller
           control={control}
+          rules={AUTH_SCHEMA.PASSWORD}
           name="password"
           render={({ field, fieldState: { error } }) => (
             <InputField
@@ -162,10 +164,6 @@ const LoginForm = ({
           <Checkbox
             aria-label="remember"
             variant="round"
-            // isChecked={value}
-            // onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            //   onChange(e.target.checked)
-            // }
             isDisabled={isSubmitting}
             position="relative"
           >

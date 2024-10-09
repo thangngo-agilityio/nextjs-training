@@ -1,19 +1,17 @@
-import dynamic from 'next/dynamic';
-
 // Apis
 import { getCartItems } from '@/apis';
 
 // Components
-const Cart = dynamic(() => import('@/ui/pages/Cart'));
+import { CartPage } from '@/ui';
 
-const CartPage = async () => {
+const Cart = async () => {
   const { data: cartList } = await getCartItems();
   const { cartItems = [], id } = cartList || {};
   return (
     <>
-      <Cart cartItem={cartItems} cartId={id} />
+      <CartPage cartItem={cartItems} cartId={id} />
     </>
   );
 };
 
-export default CartPage;
+export default Cart;

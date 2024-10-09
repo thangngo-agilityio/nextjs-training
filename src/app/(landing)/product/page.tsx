@@ -1,10 +1,8 @@
-import dynamic from 'next/dynamic';
-
 // Apis
 import { getProducts } from '@/apis';
 
 // Pages
-const Product = dynamic(() => import('@/ui/pages/Product'));
+import { ProductPage } from '@/ui';
 
 type TProductPage = {
   searchParams: {
@@ -13,7 +11,7 @@ type TProductPage = {
   };
 };
 
-const ProductPage = async ({ searchParams }: TProductPage) => {
+const Product = async ({ searchParams }: TProductPage) => {
   const { name = '', id = '' } = searchParams || {};
 
   const queryConfig = {
@@ -23,9 +21,9 @@ const ProductPage = async ({ searchParams }: TProductPage) => {
   const { data: productList } = await getProducts(queryConfig);
   return (
     <>
-      <Product productList={productList} />
+      <ProductPage productList={productList} />
     </>
   );
 };
 
-export default ProductPage;
+export default Product;
