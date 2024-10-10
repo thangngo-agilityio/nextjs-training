@@ -31,7 +31,7 @@ const CartItem = ({
     onRemoveItem && onRemoveItem(id);
   }, [id, onRemoveItem]);
   return (
-    <Flex flexDir="row" gap="30px">
+    <Flex flexDir={{ base: 'column', lg: 'row' }} gap="30px">
       <Flex flex={1}>
         <Image
           width={347}
@@ -47,10 +47,18 @@ const CartItem = ({
         />
       </Flex>
       <Flex flex={4} flexDir="column">
-        <Heading size="size6xl" variant="quinary" mb="5px">
+        <Heading
+          size={{ base: 'size4xl', lg: 'size6xl' }}
+          variant="quinary"
+          mb="5px"
+        >
           {title}
         </Heading>
-        <Text size="text2Xl" variant="senary" mb="30px">
+        <Text
+          size={{ base: 'textMd', lg: 'text2Xl' }}
+          variant="senary"
+          mb="30px"
+        >
           {description}
         </Text>
 

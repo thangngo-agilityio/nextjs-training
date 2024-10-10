@@ -178,19 +178,26 @@ const ProductInfo = ({
         Delivery Fee: N3,000-N5000
       </Heading>
 
-      <HStack>
-        <Button size="productDetail" variant="buy" onClick={onClickBuy}>
+      <Stack
+        flexDir={{ base: 'column', lg: 'row' }}
+        gap={{ base: '20px', lg: 'unset' }}
+      >
+        <Button
+          size={{ base: 'xl', lg: 'productDetail' }}
+          variant="buy"
+          onClick={onClickBuy}
+        >
           Buy now
         </Button>
         <Button
-          size="productDetail"
+          size={{ base: 'xl', lg: 'productDetail' }}
           variant="cart"
-          ml={{ base: '15px', lg: '30px' }}
+          ml={{ base: 'unset', lg: '30px' }}
           onClick={onClickAddCard}
         >
           Add to cart
         </Button>
-      </HStack>
+      </Stack>
     </Stack>
   );
 };
