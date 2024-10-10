@@ -50,7 +50,12 @@ const LoginPage = () => {
   );
 
   return (
-    <Flex h="100%" justifyContent="center" alignItems="center">
+    <Flex
+      h="100%"
+      justifyContent="center"
+      alignItems="center"
+      overflow="hidden"
+    >
       <LoginForm
         onSubmit={handleSignIn}
         isDisabled={isPending}

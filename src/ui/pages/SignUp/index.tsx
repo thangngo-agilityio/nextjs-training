@@ -68,7 +68,12 @@ const SignInPage = () => {
   );
 
   return (
-    <Flex h="100%" justifyContent="center" alignItems="center">
+    <Flex
+      h="100%"
+      justifyContent="center"
+      alignItems="center"
+      overflow="hidden"
+    >
       <SignUpForm onSubmit={handleSignUp} isDisabled={isPending} />
     </Flex>
   );
