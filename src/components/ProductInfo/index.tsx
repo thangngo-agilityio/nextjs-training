@@ -58,21 +58,29 @@ const ProductInfo = ({
 
   return (
     <Stack flexDir="column" flex={1}>
-      <Heading size="size6xl" variant="quinary" mb="5px">
+      <Heading
+        size={{ base: 'size4xl', lg: 'size6xl' }}
+        variant="quinary"
+        mb="5px"
+      >
         {title}
       </Heading>
-      <Text size="text2Xl" variant="senary" mb="30px">
+      <Text
+        size={{ base: 'textMd', lg: 'text2Xl' }}
+        variant="senary"
+        mb={{ base: '10px', lg: '30px' }}
+      >
         {description}
       </Text>
-      <VStack mb="30px" alignItems="flex-start">
+      <VStack mb={{ base: '10px', lg: '30px' }} alignItems="flex-start">
         <Heading variant="productTitle" size="size2xl">
           Dimension:
         </Heading>
         <Flex flexDir="row" gap="5px">
-          <Text variant="senary" size="text2Xl">
+          <Text variant="senary" size={{ base: 'textMd', lg: 'text2Xl' }}>
             Length-34cm,
           </Text>
-          <Text variant="tertiary" size="text2Xl">
+          <Text variant="tertiary" size={{ base: 'textMd', lg: 'text2Xl' }}>
             Width-56cm
           </Text>
         </Flex>
@@ -144,8 +152,8 @@ const ProductInfo = ({
 
       <Grid
         flexDirection="row"
-        gap="92px"
-        mb="40px"
+        gap={{ base: '20px', lg: '92px' }}
+        mb={{ base: '20px', lg: '40px' }}
         templateColumns={{ base: '', lg: 'repeat(2, 1fr)' }}
       >
         {BENEFIT_LIST.map((item) => {
@@ -162,7 +170,11 @@ const ProductInfo = ({
         })}
       </Grid>
 
-      <Heading variant="quinary" size="size9xl" mb="58px">
+      <Heading
+        variant="quinary"
+        size="size2xl"
+        mb={{ base: '25px', lg: '58px' }}
+      >
         Delivery Fee: N3,000-N5000
       </Heading>
 
@@ -173,7 +185,7 @@ const ProductInfo = ({
         <Button
           size="productDetail"
           variant="cart"
-          ml="30px"
+          ml={{ base: '15px', lg: '30px' }}
           onClick={onClickAddCard}
         >
           Add to cart
