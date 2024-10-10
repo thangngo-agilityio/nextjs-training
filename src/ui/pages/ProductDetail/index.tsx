@@ -82,9 +82,9 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
   return (
     <>
       <OverviewSection title="Product detail" />
-      <Box px="67px" pb="610px">
+      <Box px={{ base: '28px', lg: '67px' }} pb="610px">
         <HeadingSection title={category} />
-        <Flex flexDir="row" gap="42px">
+        <Flex flexDir={{ base: 'column', lg: 'row' }} gap="42px">
           <Suspense fallback={<SkeletonProductDetail />}>
             <ImageProduct image={image} alt={name} />
             <ProductInfo
