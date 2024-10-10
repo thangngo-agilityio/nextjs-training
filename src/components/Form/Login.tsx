@@ -91,7 +91,13 @@ const LoginForm = ({
   );
 
   return (
-    <Stack w="556px" mb="30px" alignItems="center" justifyContent="center">
+    <Stack
+      w={{ base: '100%', lg: '556px' }}
+      px={{ base: '28px', lg: 'unset' }}
+      mb="30px"
+      alignItems="center"
+      justifyContent="center"
+    >
       <Box mb="36px" textAlign="center">
         <Heading as="h1" mb="8px" variant="tertiary" size="size4xl">
           Welcome Back!
@@ -229,7 +235,12 @@ const LoginForm = ({
           Sign up
         </Button>
       </Flex>
-      <Flex flexDirection="column" alignItems="center" justifyContent="center">
+      <Flex
+        w={{ base: '100%', lg: 'unset' }}
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Flex flexDirection="row" gap="18px" alignItems="center" mb="14px">
           <LineIcon />
           <Text variant="quaternary">Or</Text>
