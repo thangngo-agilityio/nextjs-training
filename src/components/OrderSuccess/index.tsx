@@ -4,7 +4,14 @@ import { Button, Heading, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 
 const OrderSuccess = () => (
-  <VStack pt="202px" pb="468px" alignItems="center" justifyContent="center">
+  <VStack
+    pt="202px"
+    px={{ base: '28px', lg: 'unset' }}
+    pb={{ base: '100px', lg: '468px' }}
+    alignItems="center"
+    justifyContent="center"
+    textAlign={{ base: 'center', lg: 'unset' }}
+  >
     <SuccessIcon />
     <Heading variant="orderSuccess" size="size5xl" mb="10px">
       Your Order has been accepted
@@ -12,12 +19,7 @@ const OrderSuccess = () => (
     <Text size="textXl" variant="orderSuccess" mb="70px">
       Your item is being processed! A confirmation email will be sent to you!
     </Text>
-    <Button
-      as={Link}
-      href={ROUTER.HOME}
-      variant="orderSuccess"
-      size="orderSuccess"
-    >
+    <Button as={Link} href={ROUTER.HOME} variant="orderSuccess" size="xl">
       Back home
     </Button>
   </VStack>
