@@ -15,8 +15,9 @@ export const Button = defineStyleConfig({
   },
   sizes: {
     xs: {
-      py: 3.5,
-      px: 4,
+      w: 'fit-content',
+      py: '18px',
+      px: '14px',
       fontSize: 'xs',
     },
     sm: {
@@ -74,6 +75,10 @@ export const Button = defineStyleConfig({
       py: '16px',
       fontSize: 'md',
     },
+    showroomMobile: {
+      w: 'fit-content',
+      fontSize: 'xs',
+    },
   },
   variants: {
     default: {
@@ -126,6 +131,15 @@ export const Button = defineStyleConfig({
       bgColor: 'background.1000',
       color: 'text.100',
       borderRadius: 'xl',
+      opacity: 1,
+      _hover: {
+        opacity: 0.8,
+      },
+    },
+    showroomMobile: {
+      w: 'fit-content',
+      bgColor: 'transparent',
+      color: 'text.1200',
       opacity: 1,
       _hover: {
         opacity: 0.8,

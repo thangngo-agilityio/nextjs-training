@@ -14,6 +14,9 @@ export const Heading = defineStyleConfig({
     xs: {
       fontSize: 'xs',
     },
+    sm: {
+      fontSize: 'sm',
+    },
     md: {
       fontSize: 'md',
     },

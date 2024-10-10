@@ -29,3 +29,4 @@ export * from './Delete';
 export * from './Success';
 export * from './Hamburger';
 export * from './LogoMobile';
+export * from './Vector';

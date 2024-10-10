@@ -1,5 +1,3 @@
-import { Stack } from '@chakra-ui/react';
-
 // Apis
 import { getProducts } from '@/apis';
 
@@ -13,6 +11,7 @@ import {
   ShowroomSection,
   TrendingSection,
 } from '@/ui/section';
+import { Box } from '@chakra-ui/react';
 
 type THomePage = {
   searchParams: {
@@ -30,12 +29,12 @@ const HomePage = async ({ searchParams }: THomePage) => {
   const { data: productList } = await getProducts(queryConfigs);
 
   return (
-    <Stack>
+    <Box overflow="hidden">
       <OverviewSection isHomePage />
       <TrendingSection productList={productList} />
       <ShowroomSection />
       <ProductSection productList={productList} />
-    </Stack>
+    </Box>
   );
 };
 
