@@ -84,7 +84,11 @@ const CartPage = ({ cartItem, cartId }: TCartPage) => {
   return (
     <>
       <OverviewSection title="Cart" />
-      <Stack px={{ base: '28px', lg: '67px' }} pt="20px" pb="500px">
+      <Stack
+        px={{ base: '28px', lg: '67px' }}
+        pt="20px"
+        pb={{ base: '100px', lg: '500px' }}
+      >
         <HeadingSection title="Cart" />
         <Flex flexDir="column" mb="90px">
           {cartItem.map((cart) => {
