@@ -47,18 +47,23 @@ const ProductPage = ({ productList }: TTrendingSection) => {
   return (
     <>
       <OverviewSection title="Product page" />
-      <Flex pb="350px" flexDir="column" alignItems="center" mb="20px">
+      <Flex
+        pb={{ base: '100px', lg: '350px' }}
+        flexDir="column"
+        alignItems="center"
+        mb="20px"
+      >
         <Flex
-          width="73%"
-          px="145px"
+          width={{ base: '100%', lg: '73%' }}
+          px={{ base: '28px', lg: '145px' }}
           pt="20px"
           pb="26px"
-          bgColor="background.800"
-          boxShadow="0 11px 30px 4px rgba(0, 0, 0, 7%)"
-          gap="75px"
+          bgColor={{ base: 'transparent', lg: 'background.800' }}
+          boxShadow={{ base: 'unset', lg: '0 11px 30px 4px rgba(0, 0, 0, 7%)' }}
+          gap={{ base: '25px', lg: '75px' }}
           justifyContent="center"
           alignItems="center"
-          mt="-20px"
+          mt={{ base: 'unset', lg: '-20px' }}
           mb="146px"
         >
           {MENU_ITEM_FILTER.map((item) => {
@@ -87,10 +92,10 @@ const ProductPage = ({ productList }: TTrendingSection) => {
         </Flex>
 
         <Grid
-          px="94px"
-          gap="29px"
+          px={{ base: '28px', lg: '94px' }}
+          gap={{ base: '15px', lg: '29px' }}
           rowGap="120px"
-          templateColumns={{ base: '', lg: 'repeat(4, 1fr)' }}
+          templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
           mb="20px"
         >
           <Suspense fallback={<SkeletonProductList length={12} />}>

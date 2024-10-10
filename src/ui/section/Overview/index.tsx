@@ -1,4 +1,5 @@
 'use client';
+
 import {
   Button,
   Flex,
@@ -18,8 +19,8 @@ const OverviewSection = ({ isHomePage, title }: TOverviewSection) => {
   return (
     <Flex
       px={isMobile ? '28px' : '122px'}
-      pt={isHomePage ? '162px' : '35px'}
-      pb={isHomePage ? (isMobile ? '78px' : '150') : '35px'}
+      pt={isHomePage ? '162px' : isMobile ? '172px' : '35px'}
+      pb={isHomePage ? (isMobile ? '78px' : '150') : isMobile ? '78px' : '35px'}
       bgImage="/images/background-overview.png"
       bgRepeat="no-repeat"
       bgSize="cover"
