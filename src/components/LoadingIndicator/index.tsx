@@ -14,6 +14,7 @@ const LoadingIndicator = (): JSX.Element => (
       justifyContent: 'center',
       backgroundColor: 'white',
       zIndex: 9999,
+      opacity: 0.7,
     }}
   >
     <SpinnerChakraUI size="lg" thickness="4px" speed="0.8s" color="blue.500" />
