@@ -1,6 +1,6 @@
 import { getProducts } from '@/apis';
 import { Metadata } from 'next';
-import lazy from 'next/dynamic';
+import dynamic from 'next/dynamic';
 
 // Constants
 import { PAGE_SIZE } from '@/constants';
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 // Pages
-const HomePage = lazy(() => import('@/ui/pages/Home'));
+const HomePage = dynamic(() => import('@/ui/pages/Home'));
 
 type THome = {
   searchParams: {

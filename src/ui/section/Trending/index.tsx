@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, Suspense } from 'react';
+import { Fragment } from 'react';
 import {
   Box,
   Flex,
@@ -25,7 +25,9 @@ import { BENEFIT_LIST, MENU_ITEM_FILTER, ROUTER } from '@/constants';
 import { TProduct } from '@/types';
 import { VectorIcon } from '@/icons';
 
-const ProductCard = dynamic(() => import('@/components/ProductCard'));
+const ProductCard = dynamic(() => import('@/components/ProductCard'), {
+  loading: () => <SkeletonProductList length={1} />,
+});
 
 type TTrendingSection = {
   productList: TProduct[];
@@ -145,18 +147,16 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
           mb="40px"
         >
-          <Suspense fallback={<SkeletonProductList length={4} />}>
-            {productList.map((item) => (
-              <GridItem key={item.id}>
-                <ProductCard
-                  id={item.id}
-                  image={item.image[0]}
-                  title={item.name}
-                  price={item.price}
-                />
-              </GridItem>
-            ))}
-          </Suspense>
+          {productList.map((item) => (
+            <GridItem key={item.id}>
+              <ProductCard
+                id={item.id}
+                image={item.image[0]}
+                title={item.name}
+                price={item.price}
+              />
+            </GridItem>
+          ))}
         </Grid>
       </Flex>
     </Flex>
