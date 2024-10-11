@@ -4,12 +4,8 @@ import { Flex, Grid, GridItem, RadioGroup } from '@chakra-ui/react';
 import { Fragment, Suspense, useMemo, useState } from 'react';
 
 // Components
-import {
-  ItemCategory,
-  Pagination,
-  ProductCard,
-  SkeletonProductList,
-} from '@/components';
+import { ItemCategory, Pagination, SkeletonProductList } from '@/components';
+import lazy from 'next/dynamic';
 import { OverviewSection } from '@/ui/section';
 
 // Hooks
@@ -20,6 +16,8 @@ import { TProduct } from '@/types';
 
 // Constants
 import { MENU_ITEM_FILTER, PAGE_SIZE_PRODUCT } from '@/constants';
+
+const ProductCard = lazy(() => import('@/components/ProductCard'));
 
 type TTrendingSection = {
   productList: TProduct[];

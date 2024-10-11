@@ -19,7 +19,12 @@ const OrderSuccess = () => (
     <Text size="textXl" variant="orderSuccess" mb="70px">
       Your item is being processed! A confirmation email will be sent to you!
     </Text>
-    <Button as={Link} href={ROUTER.HOME} variant="orderSuccess" size="xl">
+    <Button
+      as={Link}
+      href={ROUTER.HOME}
+      variant="orderSuccess"
+      size={{ base: 'xl', lg: 'orderSuccess' }}
+    >
       Back home
     </Button>
   </VStack>

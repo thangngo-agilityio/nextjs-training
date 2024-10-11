@@ -3,15 +3,11 @@
 import { Suspense, useCallback } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
+import lazy from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 
 // Components
-import {
-  HeadingSection,
-  ImageProduct,
-  ProductInfo,
-  SkeletonProductDetail,
-} from '@/components';
+import { HeadingSection, SkeletonProductDetail } from '@/components';
 
 // Actions
 import { updateMyCart } from '@/actions';
@@ -26,6 +22,8 @@ import { ICartItem, TProduct } from '@/types';
 import { ROUTER, SUCCESS_MESSAGES } from '@/constants';
 
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
+const ImageProduct = lazy(() => import('@/components/ImageProduct'));
+const ProductInfo = lazy(() => import('@/components/ProductInfo'));
 
 type TProductDetail = {
   cartId: string;

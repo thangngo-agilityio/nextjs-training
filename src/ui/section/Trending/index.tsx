@@ -12,22 +12,20 @@ import {
   Text,
   useBreakpointValue,
 } from '@chakra-ui/react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 // Components
-import {
-  CardBenefit,
-  ItemCategory,
-  ProductCard,
-  SkeletonProductList,
-} from '@/components';
+import { CardBenefit, ItemCategory, SkeletonProductList } from '@/components';
 
 // Constants
 import { BENEFIT_LIST, MENU_ITEM_FILTER, ROUTER } from '@/constants';
 
 // Types
 import { TProduct } from '@/types';
-import Link from 'next/link';
 import { VectorIcon } from '@/icons';
+
+const ProductCard = dynamic(() => import('@/components/ProductCard'));
 
 type TTrendingSection = {
   productList: TProduct[];
