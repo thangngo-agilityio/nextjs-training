@@ -1,41 +1,36 @@
-// Apis
-import { getProducts } from '@/apis';
+'use client';
 
-// Constants
-import { PAGE_SIZE } from '@/constants';
-
-// Section
-import {
-  OverviewSection,
-  ProductSection,
-  ShowroomSection,
-  TrendingSection,
-} from '@/ui/section';
+import lazy from 'next/dynamic';
+import dynamic from 'next/dynamic';
 import { Box } from '@chakra-ui/react';
 
+// Apis
+import { SkeletonSection } from '@/components';
+
+// Types
+import { TProduct } from '@/types';
+
+const OverviewSection = dynamic(() => import('@/ui/section/Overview'), {
+  loading: () => <SkeletonSection />,
+});
+
+const TrendingSection = dynamic(() => import('@/ui/section/Trending'), {
+  loading: () => <SkeletonSection />,
+});
+const ShowroomSection = lazy(() => import('@/ui/section/Showroom'));
+const ProductSection = lazy(() => import('@/ui/section/Product'));
+
 type THomePage = {
-  searchParams: {
-    limit?: number;
-    page?: string;
-  };
+  productList: TProduct[];
 };
 
-const HomePage = async ({ searchParams }: THomePage) => {
-  const queryConfigs = {
-    limit: (searchParams.limit = PAGE_SIZE),
-    page: (searchParams.page = '1'),
-  };
-
-  const { data: productList } = await getProducts(queryConfigs);
-
-  return (
-    <Box overflow="hidden">
-      <OverviewSection isHomePage />
-      <TrendingSection productList={productList} />
-      <ShowroomSection />
-      <ProductSection productList={productList} />
-    </Box>
-  );
-};
+const HomePage = ({ productList }: THomePage) => (
+  <Box overflow="hidden">
+    <OverviewSection isHomePage />
+    <TrendingSection productList={productList} />
+    <ShowroomSection />
+    <ProductSection productList={productList} />
+  </Box>
+);
 
 export default HomePage;

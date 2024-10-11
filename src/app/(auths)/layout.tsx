@@ -1,4 +1,4 @@
-import { Stack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 interface AuthLayoutProps {
@@ -6,14 +6,14 @@ interface AuthLayoutProps {
 }
 
 const AuthLayout = ({ children }: AuthLayoutProps) => (
-  <Stack
+  <Box
     h="100vh"
-    bgImage="/images/background-auth.jpg"
+    bgImage="/images/background.png"
     bgRepeat="no-repeat"
     bgSize="cover"
   >
     {children}
-  </Stack>
+  </Box>
 );
 
 export default AuthLayout;
