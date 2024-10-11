@@ -1,5 +1,9 @@
+import { getProducts } from '@/apis';
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+import lazy from 'next/dynamic';
+
+// Constants
+import { PAGE_SIZE } from '@/constants';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -8,6 +12,23 @@ export const metadata: Metadata = {
 };
 
 // Pages
-const homePage = dynamic(() => import('@/ui/pages/Home'));
+const HomePage = lazy(() => import('@/ui/pages/Home'));
 
-export default homePage;
+type THome = {
+  searchParams: {
+    limit?: number;
+    page?: string;
+  };
+};
+
+const Home = async ({ searchParams }: THome) => {
+  const queryConfigs = {
+    limit: (searchParams.limit = PAGE_SIZE),
+    page: (searchParams.page = '1'),
+  };
+
+  const { data: productList } = await getProducts(queryConfigs);
+  return <HomePage productList={productList} />;
+};
+
+export default Home;

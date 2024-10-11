@@ -11,6 +11,7 @@ export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as Pagination } from './Pagination';
 export { default as SkeletonProductList } from './Skeleton/ProductList';
 export { default as SkeletonProductDetail } from './Skeleton/ProductDetail';
+export { default as SkeletonSection } from './Skeleton/Section';
 export { default as ImageProduct } from './ImageProduct';
 export { default as ProductInfo } from './ProductInfo';
 export { default as CartItem } from './CartItem';

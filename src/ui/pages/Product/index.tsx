@@ -93,8 +93,7 @@ const ProductPage = ({ productList }: TTrendingSection) => {
 
         <Grid
           px={{ base: '28px', lg: '94px' }}
-          gap={{ base: '15px', lg: '29px' }}
-          rowGap="120px"
+          gap={{ base: '120px 15px', lg: '120px 29px' }}
           templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
           mb="20px"
         >
