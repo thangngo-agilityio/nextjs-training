@@ -51,8 +51,9 @@ const config: Config = {
   ],
 
   moduleNameMapper: {
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/__mocks__/fileMock.js',
+    'next-auth/providers/credentials':
+      '<rootDir>__mocks__/next-auth-providers-credentials.ts',
+    'next-auth': '<rootDir>__mocks__/next-auth.ts',
     '^@/assets(.*)$': '<rootDir>src/assets/$1',
     '^@/components(.*)$': '<rootDir>src/components/$1',
     '^@/service(.*)$': '<rootDir>src/service/$1',
@@ -69,6 +70,7 @@ const config: Config = {
     '^@/configs(.*)$': '<rootDir>src/configs/$1',
     '^@/apis(.*)$': '<rootDir>src/apis/$1',
     '^@/ui(.*)$': '<rootDir>src/ui/$1',
+    '^@/actions(.*)$': '<rootDir>src/actions/$1',
   },
 
   coveragePathIgnorePatterns: [

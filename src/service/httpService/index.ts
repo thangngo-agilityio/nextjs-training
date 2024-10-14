@@ -14,10 +14,6 @@ type TPutRequest<T> = TRequest & {
   body: T;
 };
 
-type TDeleteRequest<T> = TRequest & {
-  body?: T;
-};
-
 export type ResponseData<T> = {
   data: T;
 };
@@ -79,21 +75,6 @@ class HttpClient {
     return this.request({ endpoint, configOptions: options });
   }
 
-  async putRequest<T, K>({
-    endpoint,
-    body,
-    configOptions,
-  }: TPutRequest<T>): Promise<ResponseData<K>> {
-    const options: RequestInit = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-      ...configOptions,
-    };
-
-    return this.request<K>({ endpoint, configOptions: options });
-  }
-
   async patchRequest<T, K>({
     endpoint,
     body,
@@ -101,21 +82,6 @@ class HttpClient {
   }: TPutRequest<T>): Promise<ResponseData<K>> {
     const options: RequestInit = {
       method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-      ...configOptions,
-    };
-
-    return this.request<K>({ endpoint, configOptions: options });
-  }
-
-  async deleteRequest<T, K>({
-    endpoint,
-    body,
-    configOptions,
-  }: TDeleteRequest<T>): Promise<ResponseData<K>> {
-    const options: RequestInit = {
-      method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
       ...configOptions,

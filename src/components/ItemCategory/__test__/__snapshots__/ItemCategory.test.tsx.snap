@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemCategory component Should match snapshot for ItemCategory 1`] = `
+<div>
+  <label
+    class="chakra-radio css-c6m1hx"
+  >
+    <input
+      class="chakra-radio__input"
+      id="radio-:r0:"
+      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+      type="radio"
+      value=""
+    />
+    <span
+      aria-hidden="true"
+      class="chakra-radio__control css-ssalds"
+    />
+    <span
+      class="chakra-radio__label css-1y8kf23"
+    >
+      <div
+        class="css-1f5g8ea"
+      />
+      <h2
+        class="chakra-heading css-0"
+      >
+        test
+      </h2>
+    </span>
+  </label>
+</div>
+`;

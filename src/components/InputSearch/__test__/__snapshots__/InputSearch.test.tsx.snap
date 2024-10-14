@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputSearch component should match snapshot for InputSearch  1`] = `
+<div>
+  <div
+    class="chakra-input__group css-bx0blc"
+    data-group="true"
+  >
+    <div
+      class="chakra-input__left-element css-o84xzr"
+    >
+      <svg
+        data-testid="search-icon"
+      />
+    </div>
+    <input
+      class="chakra-input css-q179pw"
+      data-testid="search"
+      placeholder="Search for minimalist chair"
+      value=""
+    />
+  </div>
+</div>
+`;
