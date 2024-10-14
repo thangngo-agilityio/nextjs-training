@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExpandSidebar() ExpandSidebar method should match snapshot for Expand 1`] = `
+<div>
+  <div
+    class="chakra-stack css-8g8ihq"
+  >
+    <div
+      class="css-9aaew4"
+      data-testid="button-hamburger"
+    >
+      <svg
+        fill="none"
+        height="21"
+        viewBox="0 0 21 21"
+        width="21"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 3.1499V5.2499H21V3.1499H0ZM0 9.4499V11.5499H21V9.4499H0ZM0 15.7499V17.8499H21V15.7499H0Z"
+          fill="white"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

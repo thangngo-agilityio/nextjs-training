@@ -1,7 +1,7 @@
 'use client';
 
 import { Flex, Grid, GridItem, RadioGroup } from '@chakra-ui/react';
-import { Fragment, Suspense, useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 
 // Components
 import { ItemCategory, Pagination, SkeletonProductList } from '@/components';
@@ -17,7 +17,9 @@ import { TProduct } from '@/types';
 // Constants
 import { MENU_ITEM_FILTER, PAGE_SIZE_PRODUCT } from '@/constants';
 
-const ProductCard = lazy(() => import('@/components/ProductCard'));
+const ProductCard = lazy(() => import('@/components/ProductCard'), {
+  loading: () => <SkeletonProductList length={1} />,
+});
 
 type TTrendingSection = {
   productList: TProduct[];
@@ -95,18 +97,16 @@ const ProductPage = ({ productList }: TTrendingSection) => {
           templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
           mb="20px"
         >
-          <Suspense fallback={<SkeletonProductList length={12} />}>
-            {filterData.map((item) => (
-              <GridItem key={item.id}>
-                <ProductCard
-                  id={item.id}
-                  image={item.image[0]}
-                  title={item.name}
-                  price={item.price}
-                />
-              </GridItem>
-            ))}
-          </Suspense>
+          {filterData.map((item) => (
+            <GridItem key={item.id}>
+              <ProductCard
+                id={item.id}
+                image={item.image[0]}
+                title={item.name}
+                price={item.price}
+              />
+            </GridItem>
+          ))}
         </Grid>
         <Pagination
           currentPage={data.currentPage}

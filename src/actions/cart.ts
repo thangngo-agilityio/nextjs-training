@@ -8,7 +8,7 @@ import { patchCart, postCart } from '@/service';
 // Types
 import { ICartItem } from '@/types';
 
-// Contants
+// Constants
 import { API_PATH, ERROR_MESSAGES } from '@/constants';
 
 export const createCart = async (

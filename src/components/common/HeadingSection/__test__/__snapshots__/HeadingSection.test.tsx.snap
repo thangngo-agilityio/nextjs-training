@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeadingSection() HeadingSection method should match snapshot for HeadingSection 1`] = `
+<div>
+  <div
+    class="css-icp0c2"
+  >
+    <h2
+      class="chakra-heading css-19idom"
+    >
+      Test Title
+    </h2>
+  </div>
+</div>
+`;

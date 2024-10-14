@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItem() CartItem method should match snapshot for CartItem 1`] = `
+<div>
+  <div
+    class="css-fnno8d"
+  >
+    <div
+      class="css-13pmxen"
+    >
+      <img
+        alt="Sample Item"
+        data-nimg="1"
+        decoding="async"
+        height="290"
+        loading="lazy"
+        src="/_next/image?url=https%3A%2F%2Fsample-image.jpg&w=750&q=75"
+        srcset="/_next/image?url=https%3A%2F%2Fsample-image.jpg&w=384&q=75 1x, /_next/image?url=https%3A%2F%2Fsample-image.jpg&w=750&q=75 2x"
+        style="color: transparent; object-fit: cover; width: 100%; height: 100%; border-radius: 8px;"
+        width="347"
+      />
+    </div>
+    <div
+      class="css-1lvotsk"
+    >
+      <h2
+        class="chakra-heading css-r7q7qr"
+      >
+        Sample Item
+      </h2>
+      <p
+        class="chakra-text css-1xn3edc"
+      >
+        This is a sample item description.
+      </p>
+      <div
+        class="chakra-stack css-1ih7iax"
+      >
+        <h2
+          class="chakra-heading css-0"
+        >
+          Size:
+        </h2>
+        <div
+          class="css-tx8ton"
+        >
+          <p
+            class="chakra-text css-0"
+          >
+            Length-34cm,
+          </p>
+          <p
+            class="chakra-text css-0"
+          >
+            Width-56cm
+          </p>
+        </div>
+      </div>
+      <div
+        class="css-1u85xi0"
+      >
+        <h2
+          class="chakra-heading css-9452eu"
+        >
+          N
+          1000
+        </h2>
+      </div>
+      <div
+        class="css-i5q2k0"
+      >
+        <h2
+          class="chakra-heading css-0"
+        >
+          Quantity:
+        </h2>
+        <p
+          class="chakra-text css-0"
+        >
+          2
+        </p>
+      </div>
+    </div>
+    <div
+      class="css-1n2mv2k"
+    >
+      <div
+        class="css-ua50fe"
+      >
+        <svg
+          data-testid="delete-icon"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

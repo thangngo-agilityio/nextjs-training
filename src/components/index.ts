@@ -18,6 +18,8 @@ export { default as CartItem } from './CartItem';
 export { default as TotalCart } from './TotalCart';
 export { default as OrderSuccess } from './OrderSuccess';
 export { default as Expand } from './Expand';
+export { default as InputSearch } from './InputSearch';
+export { default as Navigation } from './Navigation';
 
 // Common
 export * from './common';
