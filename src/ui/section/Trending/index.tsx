@@ -145,7 +145,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           gap={{ base: '15px', lg: '29px' }}
           rowGap="120px"
           templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
-          mb="40px"
+          mb="85px"
         >
           {productList.map((item) => (
             <GridItem key={item.id}>

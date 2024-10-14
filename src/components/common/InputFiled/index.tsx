@@ -54,16 +54,6 @@ const InputField = forwardRef(
 
     return (
       <FormControl isInvalid={isError}>
-        {/* {label && (
-          <FormLabel
-            fontSize="md"
-            marginInlineEnd={0}
-            minW="max-content"
-            color="text.200"
-          >
-            {label}
-          </FormLabel>
-        )} */}
         <InputGroup position="relative">
           {leftIcon && (
             <InputLeftElement pointerEvents="none">{leftIcon}</InputLeftElement>
