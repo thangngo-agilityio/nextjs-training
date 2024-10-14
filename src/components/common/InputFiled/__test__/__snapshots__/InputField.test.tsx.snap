@@ -6,19 +6,19 @@ exports[`InputField component renders correctly with default props 1`] = `
     class="chakra-form-control css-0"
     role="group"
   >
-    <label
-      class="chakra-form__label css-byg028"
-      for="field-:r0:"
-      id="field-:r0:-label"
-    >
-      Search
-    </label>
     <div
-      class="chakra-input__group css-bx0blc"
+      class="chakra-input__group css-1j0rc7q"
       data-group="true"
     >
+      <label
+        class="chakra-form__label css-2ihjzw"
+        for="field-:r0:"
+        id="field-:r0:-label"
+      >
+        Search
+      </label>
       <input
-        class="chakra-input css-rak02u"
+        class="chakra-input css-0"
         id="field-:r0:"
         name="search"
         placeholder="Search Tasks"
@@ -35,15 +35,8 @@ exports[`InputField component renders correctly with left icon and right icon 1`
     class="chakra-form-control css-0"
     role="group"
   >
-    <label
-      class="chakra-form__label css-byg028"
-      for="field-:r2:"
-      id="field-:r2:-label"
-    >
-      Search
-    </label>
     <div
-      class="chakra-input__group css-bx0blc"
+      class="chakra-input__group css-1j0rc7q"
       data-group="true"
     >
       <div
@@ -60,8 +53,15 @@ exports[`InputField component renders correctly with left icon and right icon 1`
           />
         </svg>
       </div>
+      <label
+        class="chakra-form__label css-2ihjzw"
+        for="field-:r2:"
+        id="field-:r2:-label"
+      >
+        Search
+      </label>
       <input
-        class="chakra-input css-rak02u"
+        class="chakra-input css-0"
         id="field-:r2:"
         name="search"
         placeholder="Search Tasks"
@@ -69,7 +69,7 @@ exports[`InputField component renders correctly with left icon and right icon 1`
       />
       <button
         aria-label="The eye icon"
-        class="chakra-input__right-element css-34z6oi"
+        class="chakra-input__right-element css-f1rp4v"
         data-testid="right-icon-input"
         type="button"
       >
