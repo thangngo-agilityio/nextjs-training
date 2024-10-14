@@ -1,12 +1,7 @@
-// Unit tests for: useCustomToast
-
 import { useToast, UseToastOptions } from '@chakra-ui/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useCustomToast } from '../useToast';
 
-// Import necessary libraries and components
-
-// Import necessary libraries and components
 // Mock the useToast hook from Chakra UI
 jest.mock('@chakra-ui/react', () => ({
   useToast: jest.fn(),
@@ -146,5 +141,3 @@ describe('useCustomToast() useCustomToast method', () => {
     });
   });
 });
-
-// End of unit tests for: useCustomToast
