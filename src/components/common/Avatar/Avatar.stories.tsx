@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import Avatar from '.';
 
 const meta: Meta<typeof Avatar> = {
-  title: 'Components/Avatar',
+  title: 'Common/Avatar',
   tags: ['autodocs'],
   component: Avatar,
 

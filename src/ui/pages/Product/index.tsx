@@ -92,7 +92,7 @@ const ProductPage = ({ productList }: TTrendingSection) => {
         </Flex>
 
         <Grid
-          px={{ base: '28px', lg: '94px' }}
+          px={{ base: '28px', lg: '320px' }}
           gap={{ base: '120px 15px', lg: '120px 29px' }}
           templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
           mb="20px"
