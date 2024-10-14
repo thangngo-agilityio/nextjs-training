@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
-import dynamic from 'next/dynamic';
 
 // Layouts
-const Header = dynamic(() => import('@/layouts/Header'));
-const Footer = dynamic(() => import('@/layouts/Footer'));
+import Header from '../Header';
+import Footer from '../Footer';
 
 type TMainLayout = {
   children: ReactNode;

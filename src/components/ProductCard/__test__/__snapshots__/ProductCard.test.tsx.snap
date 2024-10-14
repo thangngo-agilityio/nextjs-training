@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard() ProductCard method  1`] = `
+<div>
+  <a
+    href="/product/1"
+  >
+    <div
+      class="css-6rwikn"
+    >
+      <div
+        class="css-12nnctg"
+      >
+        <div
+          class="css-1vani7c"
+        >
+          <img
+            alt="Sample Product"
+            src="/path/to/image.jpg"
+          />
+        </div>
+        <div
+          class="css-fv60i0"
+        >
+          <svg
+            data-testid="heart-icon"
+          />
+        </div>
+      </div>
+      <div
+        class="css-p4lymy"
+      >
+        <h2
+          class="chakra-heading css-zvlevn"
+        >
+          Sample Product
+        </h2>
+        <p
+          class="chakra-text css-0"
+        >
+          N
+          1000
+        </p>
+      </div>
+    </div>
+  </a>
+</div>
+`;

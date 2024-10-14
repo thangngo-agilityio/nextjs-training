@@ -1,8 +1,7 @@
-import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
 // layouts
-const MainLayout = dynamic(() => import('@/layouts/main'));
+import { MainLayout } from '@/layouts';
 
 interface AuthLayoutProps {
   children: ReactNode;

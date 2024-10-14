@@ -35,10 +35,20 @@ const ExpandSidebar = ({ onClick }: TSidebarProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Stack>
-      <Box onClick={onOpen} top="35px" left="10px">
+      <Box
+        onClick={onOpen}
+        top="35px"
+        left="10px"
+        data-testid="button-hamburger"
+      >
         <HamburgerIcon />
       </Box>
-      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        data-testid="button-close"
+      >
         <DrawerOverlay />
         <DrawerContent alignItems="center" justifyContent="center">
           <DrawerCloseButton />
@@ -80,6 +90,7 @@ const ExpandSidebar = ({ onClick }: TSidebarProps) => {
                 pb="10px"
                 onClick={onClick}
                 cursor="pointer"
+                data-testid="button-logout"
               >
                 <Logout />
                 <Heading>Logout</Heading>

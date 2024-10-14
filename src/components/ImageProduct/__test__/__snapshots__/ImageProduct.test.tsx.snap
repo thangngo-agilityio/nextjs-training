@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageProduct component should match snapshot for ImageProduct 1`] = `
+<div>
+  <div
+    class="css-1sawh8z"
+  />
+</div>
+`;

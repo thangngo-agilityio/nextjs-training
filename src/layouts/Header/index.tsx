@@ -11,59 +11,57 @@ import { ArrowIcon, LogoIcon, LogoMobile } from '@/icons';
 import { ROUTER } from '@/constants';
 
 const Header = (): JSX.Element => (
-  <>
+  <Flex
+    w="100%"
+    justifyContent="center"
+    position={{ base: 'absolute', lg: 'unset' }}
+    flexDir={{ base: 'column', lg: 'unset' }}
+    px={{ base: '20px', lg: '52px' }}
+  >
     <Flex
       w="100%"
-      justifyContent="center"
-      position={{ base: 'absolute', lg: 'unset' }}
-      flexDir={{ base: 'column', lg: 'unset' }}
-      px={{ base: '20px', lg: '52px' }}
+      maxW="1512px"
+      pt="40px"
+      pb="24px"
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="space-between"
     >
-      <Flex
-        w="100%"
-        maxW="1512px"
-        pt="40px"
-        pb="24px"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Stack w="100%" flexDirection="row" alignItems="center">
-          <Box ml={{ base: '-20px', lg: 'unset' }}>
-            <Link href={ROUTER.HOME} title="Home">
-              <Show above="lg">
-                <LogoIcon />
-              </Show>
-              <Hide above="lg">
-                <LogoMobile />
-              </Hide>
-            </Link>
-          </Box>
-          <Show above="lg">
-            <Stack flexDirection="row" alignItems="center">
-              <Flex ml="36px" alignItems="center" gap={1}>
-                <Text size="lg">Space Builder</Text>
-                <Text variant="tertiary">(Coming soon)</Text>
-                <ArrowIcon />
-              </Flex>
-              <Flex ml="40px" alignItems="center" gap={1}>
-                <Text size="lg">Products</Text>
-                <ArrowIcon />
-              </Flex>
-            </Stack>
-            <Box ml="22px" width="30%">
-              <InputSearch />
-            </Box>
-          </Show>
-        </Stack>
-        <Navigation />
-      </Flex>
-      <Hide above="lg">
-        <Box width="100%">
-          <InputSearch />
+      <Stack w="100%" flexDirection="row" alignItems="center">
+        <Box ml={{ base: '-20px', lg: 'unset' }}>
+          <Link href={ROUTER.HOME} title="Home">
+            <Show above="lg">
+              <LogoIcon />
+            </Show>
+            <Hide above="lg">
+              <LogoMobile />
+            </Hide>
+          </Link>
         </Box>
-      </Hide>
+        <Show above="lg">
+          <Stack flexDirection="row" alignItems="center">
+            <Flex ml="36px" alignItems="center" gap={1}>
+              <Text size="lg">Space Builder</Text>
+              <Text variant="tertiary">(Coming soon)</Text>
+              <ArrowIcon />
+            </Flex>
+            <Flex ml="40px" alignItems="center" gap={1}>
+              <Text size="lg">Products</Text>
+              <ArrowIcon />
+            </Flex>
+          </Stack>
+          <Box ml="22px" width="30%">
+            <InputSearch />
+          </Box>
+        </Show>
+      </Stack>
+      <Navigation />
     </Flex>
-  </>
+    <Hide above="lg">
+      <Box width="100%">
+        <InputSearch />
+      </Box>
+    </Hide>
+  </Flex>
 );
 export default Header;

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TotalCart() TotalCart method should match snapshot for TotalCart 1`] = `
+<div>
+  <div
+    class="chakra-stack css-1b3w1ka"
+  >
+    <div
+      class="chakra-stack css-1sq0ttz"
+    >
+      <div
+        class="chakra-stack css-14xzl1v"
+      >
+        <h2
+          class="chakra-heading css-0"
+        >
+          Total:
+        </h2>
+        <p
+          class="chakra-text css-0"
+        >
+          N
+          1000
+        </p>
+      </div>
+      <p
+        class="chakra-text css-0"
+      >
+        Delivery exclusive
+      </p>
+    </div>
+    <button
+      class="chakra-button css-4xx2wk"
+      type="button"
+    >
+      Checkout
+    </button>
+  </div>
+</div>
+`;

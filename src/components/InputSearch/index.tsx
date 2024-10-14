@@ -37,6 +37,7 @@ const InputSearch = () => {
         onChange={handleOnChange}
         variant="search"
         background="background.100"
+        data-testid="search"
       />
     </InputGroup>
   );

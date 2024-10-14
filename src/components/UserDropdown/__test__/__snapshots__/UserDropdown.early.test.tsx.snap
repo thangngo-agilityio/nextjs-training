@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserDropdown() UserDropdown method should match snapshot for UserDropdown 1`] = `
+<div>
+  <div>
+    <button>
+      <img
+        alt="User Avatar"
+        src="avatar.png"
+      />
+    </button>
+    <div>
+      <div>
+        Logout
+      </div>
+    </div>
+  </div>
+</div>
+`;
