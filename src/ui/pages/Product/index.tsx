@@ -5,7 +5,7 @@ import { Fragment, useMemo, useState } from 'react';
 
 // Components
 import { ItemCategory, Pagination, SkeletonProductList } from '@/components';
-import lazy from 'next/dynamic';
+import dynamic from 'next/dynamic';
 import { OverviewSection } from '@/ui/section';
 
 // Hooks
@@ -17,7 +17,7 @@ import { TProduct } from '@/types';
 // Constants
 import { MENU_ITEM_FILTER, PAGE_SIZE_PRODUCT } from '@/constants';
 
-const ProductCard = lazy(() => import('@/components/ProductCard'), {
+const ProductCard = dynamic(() => import('@/components/ProductCard'), {
   loading: () => <SkeletonProductList length={1} />,
 });
 
