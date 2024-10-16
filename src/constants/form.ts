@@ -18,6 +18,17 @@ export const AUTH_SCHEMA = {
   },
   PASSWORD: {
     required: ERROR_MESSAGES.FIELD_REQUIRED('Password'),
+    validate: (value: string) => {
+      if (!REGEX.LENGTH_IS_EIGHT.test(value)) {
+        return ERROR_MESSAGES.PASS_WORD_SHORT;
+      }
+
+      if (!REGEX.PASSWORD.test(value)) {
+        return ERROR_MESSAGES.PASS_WORD_WEAK;
+      }
+
+      return true;
+    },
   },
   CONFIRM_PASSWORD: {
     required: ERROR_MESSAGES.FIELD_REQUIRED('Confirm password'),
