@@ -2,8 +2,6 @@ import { ReactNode } from 'react';
 import lazy from 'next/dynamic';
 
 // Layouts
-import Header from '../Header';
-
 const Footer = lazy(() => import('@/layouts/Footer'));
 
 type TMainLayout = {
@@ -12,7 +10,6 @@ type TMainLayout = {
 
 const MainLayout = ({ children }: TMainLayout) => (
   <>
-    <Header />
     {children}
     <Footer />
   </>

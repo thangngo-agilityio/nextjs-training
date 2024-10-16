@@ -6,10 +6,12 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
+  Flex,
   Heading,
   HStack,
   Link,
   Stack,
+  Text,
   useDisclosure,
   VStack,
 } from '@chakra-ui/react';
@@ -28,10 +30,11 @@ import {
 import { ROUTER } from '@/constants';
 
 type TSidebarProps = {
+  totalQuantity: number;
   onClick?: () => void;
 };
 
-const ExpandSidebar = ({ onClick }: TSidebarProps) => {
+const ExpandSidebar = ({ totalQuantity, onClick }: TSidebarProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Stack>
@@ -79,7 +82,29 @@ const ExpandSidebar = ({ onClick }: TSidebarProps) => {
                 borderColor="border.500"
                 pb="10px"
               >
-                <CartIcon />
+                <Box
+                  position="relative"
+                  opacity={1}
+                  transition=".2s ease-in"
+                  _hover={{ opacity: '.8' }}
+                >
+                  <CartIcon />
+                  <Flex
+                    w="20px"
+                    h="20px"
+                    bgColor="background.1800"
+                    borderRadius="100%"
+                    alignItems="center"
+                    justifyContent="center"
+                    position="absolute"
+                    top={-3}
+                    right={-3}
+                  >
+                    <Text size="textMd" variant="secondary">
+                      {totalQuantity}
+                    </Text>
+                  </Flex>
+                </Box>
                 <Heading>Cart</Heading>
               </HStack>
 

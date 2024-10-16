@@ -5,6 +5,9 @@ import { getCartItems, getProductDetail, getProducts } from '@/apis';
 import { ProductDetail } from '@/ui';
 import { Metadata } from 'next';
 
+// Layouts
+import { Header } from '@/layouts';
+
 type TProductDetailPage = {
   params: { id: string };
 };
@@ -62,6 +65,7 @@ const ProductDetailPage = async ({ params }: TProductDetailPage) => {
 
   return (
     <>
+      <Header />
       <ProductDetail cartId={id} product={product} cartItems={cartItems} />
     </>
   );

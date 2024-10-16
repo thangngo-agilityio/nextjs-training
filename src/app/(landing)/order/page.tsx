@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+
+// Components
+import { OrderSuccess } from '@/components';
+
+// Layouts
+import { Header } from '@/layouts';
 
 export const metadata: Metadata = {
   title: 'Order',
@@ -7,6 +12,11 @@ export const metadata: Metadata = {
     'This is the Order page in a comprehensive e-commerce web application designed to facilitate online shopping.',
 };
 
-const OrderPage = dynamic(() => import('@/ui/pages/Order'));
+const OrderPage = () => (
+  <>
+    <Header />
+    <OrderSuccess />
+  </>
+);
 
 export default OrderPage;

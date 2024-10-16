@@ -1,9 +1,13 @@
+import { Metadata } from 'next';
+
 // Apis
 import { getCartItems } from '@/apis';
 
 // Components
 import { CartPage } from '@/ui';
-import { Metadata } from 'next';
+
+// Layouts
+import { Header } from '@/layouts';
 
 export const metadata: Metadata = {
   title: 'Cart',
@@ -16,6 +20,7 @@ const Cart = async () => {
   const { cartItems = [], id } = cartList || {};
   return (
     <>
+      <Header />
       <CartPage cartItem={cartItems} cartId={id} />
     </>
   );
