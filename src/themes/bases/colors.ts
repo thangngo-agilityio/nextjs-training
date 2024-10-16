@@ -18,6 +18,7 @@ export const colors = {
     1500: '#56CCF2',
     1600: '#58514B',
     1700: '#A4EDA3',
+    1800: '#EB5E55',
   },
 
   text: {

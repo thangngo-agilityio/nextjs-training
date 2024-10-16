@@ -1,11 +1,17 @@
 'use client';
 
-import { SEARCH_QUERIES } from '@/constants';
-import { SearchIcon } from '@/icons';
-import { getSearchParams, updateSearchParams } from '@/utils';
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounceCallback } from 'usehooks-ts';
+
+// Constants
+import { SEARCH_QUERIES } from '@/constants';
+
+// Icons
+import { SearchIcon } from '@/icons';
+
+// Utils
+import { getSearchParams, updateSearchParams } from '@/utils';
 
 const InputSearch = () => {
   const searchParams = useSearchParams();

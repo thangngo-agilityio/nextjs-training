@@ -12,7 +12,7 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { Fragment, useCallback, useState } from 'react';
+import { Dispatch, Fragment, SetStateAction, useCallback } from 'react';
 
 // Utils
 import { formatAmountNumber } from '@/utils';
@@ -28,6 +28,8 @@ type TProductInfo = {
   length?: string;
   width?: string;
   description?: string;
+  quantity: number;
+  setQuantity: Dispatch<SetStateAction<number>>;
   onClickBuy: () => void;
   onClickAddCard: () => void;
 };
@@ -36,11 +38,11 @@ const ProductInfo = ({
   title,
   description,
   price,
+  quantity,
+  setQuantity,
   onClickBuy,
   onClickAddCard,
 }: TProductInfo) => {
-  const [quantity, setQuantity] = useState(1);
-
   // Handle change quantity
   const onChange = useCallback((operation: 'increment' | 'decrement') => {
     setQuantity((prevQuantity) =>

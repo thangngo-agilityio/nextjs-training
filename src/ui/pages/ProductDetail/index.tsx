@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useCallback } from 'react';
+import { Suspense, useCallback, useState } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import lazy from 'next/dynamic';
@@ -32,6 +32,7 @@ type TProductDetail = {
 };
 
 const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
+  const [quantity, setQuantity] = useState(1);
   const { showToast } = useCustomToast();
   const router = useRouter();
 
@@ -55,9 +56,9 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
     });
 
     if (itemExist) {
-      itemExist.quantity = itemExist.quantity + 1;
+      itemExist.quantity = quantity;
     } else {
-      newCartItems.push({ product, quantity: 1 });
+      newCartItems.push({ product, quantity: quantity });
     }
 
     const res = await updateMyCart(cartId, newCartItems);
@@ -69,7 +70,7 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
     } else {
       showToast(SUCCESS_MESSAGES.ADD_CART, 'success');
     }
-  }, [cartId, cartItems, product, productId, showToast]);
+  }, [cartId, cartItems, product, productId, quantity, showToast]);
 
   const handleBuyNow = useCallback(async () => {
     handleAddToCart();
@@ -92,6 +93,8 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
               title={name}
               price={price}
               description={description}
+              quantity={quantity}
+              setQuantity={setQuantity}
               onClickAddCard={handleAddToCart}
               onClickBuy={handleBuyNow}
             />

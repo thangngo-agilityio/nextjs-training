@@ -11,3 +11,10 @@ export const calculateTotalPrice = (cartItems: ICartItem[] = []) =>
 
     return acc + itemPrice;
   }, 0);
+
+export const calculateTotalQuantity = (cartItems: ICartItem[] = []) =>
+  cartItems.reduce((acc, cartItem) => {
+    const { quantity = 0 } = cartItem || {};
+
+    return acc + quantity;
+  }, 0);
