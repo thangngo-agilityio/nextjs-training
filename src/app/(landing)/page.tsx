@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 
 // Constants
 import { PAGE_SIZE } from '@/constants';
+import { Header } from '@/layouts';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -28,7 +29,12 @@ const Home = async ({ searchParams }: THome) => {
   };
 
   const { data: productList } = await getProducts(queryConfigs);
-  return <HomePage productList={productList} />;
+  return (
+    <>
+      <Header />
+      <HomePage productList={productList} />
+    </>
+  );
 };
 
 export default Home;

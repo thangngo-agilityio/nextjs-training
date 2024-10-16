@@ -74,14 +74,12 @@ const Navigation = ({ cartItem }: TNavigation) => {
               </Flex>
             </Box>
           </Link>
-          <Box opacity={1} transition=".2s ease-in" _hover={{ opacity: '.8' }}>
-            <UserDropdown onClick={handleLogout} />
-          </Box>
+          <UserDropdown onClick={handleLogout} />
         </Stack>
       </Show>
 
       <Hide above="lg">
-        <Expand onClick={handleLogout} />
+        <Expand totalQuantity={totalQuantity} onClick={handleLogout} />
       </Hide>
 
       {isLogout && <LoadingIndicator />}
