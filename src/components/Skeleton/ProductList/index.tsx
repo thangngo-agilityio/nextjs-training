@@ -7,9 +7,8 @@ type TSkeletonProductList = {
 
 const SkeletonProductList = ({ length }: TSkeletonProductList): JSX.Element => (
   <Grid
-    templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(4, 1fr)' }}
-    rowGap={{ base: '20px', md: '48px' }}
-    columnGap="20px"
+    templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
+    gap={{ base: '120px 15px', lg: '120px 29px' }}
   >
     {Array.from({ length: length }, (_, index) => (
       <GridItem key={index}>

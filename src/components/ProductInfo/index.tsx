@@ -111,6 +111,7 @@ const ProductInfo = ({
               data-testid="btn-decrement"
               onClick={handleDecrement}
               isDisabled={quantity === 1}
+              aria-label="Minus button"
             >
               <MinusIcon />
             </Button>
@@ -120,6 +121,7 @@ const ProductInfo = ({
               size="quantity"
               onClick={handleIncrement}
               data-testid="btn-increment"
+              aria-label="Plus button"
             >
               <PlusIcon />
             </Button>
