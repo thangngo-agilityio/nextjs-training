@@ -16,7 +16,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 // Components
-import { CardBenefit, ItemCategory, SkeletonProductList } from '@/components';
+import { SkeletonProductList } from '@/components';
 
 // Constants
 import { BENEFIT_LIST, MENU_ITEM_FILTER, ROUTER } from '@/constants';
@@ -28,6 +28,8 @@ import { VectorIcon } from '@/icons';
 const ProductCard = dynamic(() => import('@/components/ProductCard'), {
   loading: () => <SkeletonProductList length={1} />,
 });
+const ItemCategory = dynamic(() => import('@/components/ItemCategory'));
+const CardBenefit = dynamic(() => import('@/components/CardBenefit'));
 
 type TTrendingSection = {
   productList: TProduct[];
