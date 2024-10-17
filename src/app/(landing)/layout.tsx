@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 // layouts
-import { MainLayout } from '@/layouts';
+import { Footer } from '@/layouts';
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -9,7 +9,8 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => (
   <>
-    <MainLayout>{children}</MainLayout>
+    {children}
+    <Footer />
   </>
 );
 
