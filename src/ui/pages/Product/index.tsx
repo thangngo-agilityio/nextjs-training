@@ -1,7 +1,7 @@
 'use client';
 
 import { Flex, Grid, GridItem, RadioGroup } from '@chakra-ui/react';
-import { Fragment } from 'react';
+import { Fragment, Suspense } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounceCallback } from 'usehooks-ts';
 import dynamic from 'next/dynamic';
@@ -26,9 +26,7 @@ import {
 // Utils
 import { getSearchParams, updateSearchParams } from '@/utils';
 
-const ProductCard = dynamic(() => import('@/components/ProductCard'), {
-  loading: () => <SkeletonProductList length={1} />,
-});
+const ProductCard = dynamic(() => import('@/components/ProductCard'));
 
 type TTrendingSection = {
   productList: TProduct[];
@@ -114,16 +112,18 @@ const ProductPage = ({ productList }: TTrendingSection) => {
           templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
           mb="20px"
         >
-          {filterData.map((item) => (
-            <GridItem key={item.id}>
-              <ProductCard
-                id={item.id}
-                image={item.image[0]}
-                title={item.name}
-                price={item.price}
-              />
-            </GridItem>
-          ))}
+          <Suspense fallback={<SkeletonProductList length={8} />}>
+            {filterData.map((item) => (
+              <GridItem key={item.id}>
+                <ProductCard
+                  id={item.id}
+                  image={item.image[0]}
+                  title={item.name}
+                  price={item.price}
+                />
+              </GridItem>
+            ))}
+          </Suspense>
         </Grid>
         <Pagination
           currentPage={data.currentPage}

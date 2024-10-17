@@ -2,6 +2,8 @@ import { Box } from '@chakra-ui/react';
 
 // Types
 import { TProduct } from '@/types';
+
+// Sections
 import {
   OverviewSection,
   ProductSection,

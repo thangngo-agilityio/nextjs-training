@@ -3,7 +3,6 @@
 import { Suspense, useCallback, useState } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
-import lazy from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 
 // Components
@@ -22,8 +21,8 @@ import { ICartItem, TProduct } from '@/types';
 import { ROUTER, SUCCESS_MESSAGES } from '@/constants';
 
 const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
-const ImageProduct = lazy(() => import('@/components/ImageProduct'));
-const ProductInfo = lazy(() => import('@/components/ProductInfo'));
+const ImageProduct = dynamic(() => import('@/components/ImageProduct'));
+const ProductInfo = dynamic(() => import('@/components/ProductInfo'));
 
 type TProductDetail = {
   cartId: string;
@@ -86,8 +85,8 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
         pb={{ base: '100px', lg: '610px' }}
       >
         <HeadingSection title={category} />
-        <Flex flexDir={{ base: 'column', lg: 'row' }} gap="42px">
-          <Suspense fallback={<SkeletonProductDetail />}>
+        <Suspense fallback={<SkeletonProductDetail />}>
+          <Flex flexDir={{ base: 'column', lg: 'row' }} gap="42px">
             <ImageProduct image={image} alt={name} />
             <ProductInfo
               title={name}
@@ -98,8 +97,8 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
               onClickAddCard={handleAddToCart}
               onClickBuy={handleBuyNow}
             />
-          </Suspense>
-        </Flex>
+          </Flex>
+        </Suspense>
       </Box>
     </>
   );
