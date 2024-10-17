@@ -3,14 +3,13 @@ import { Button, Flex, Heading, Text } from '@chakra-ui/react';
 type TOverviewSection = {
   title?: string;
   isHomePage?: boolean;
-  isMobile?: boolean;
 };
 
-const OverviewSection = ({ isHomePage, title, isMobile }: TOverviewSection) => (
+const OverviewSection = ({ isHomePage, title }: TOverviewSection) => (
   <Flex
-    px={isMobile ? '28px' : '122px'}
-    pt={isHomePage ? '162px' : isMobile ? '172px' : '35px'}
-    pb={isHomePage ? (isMobile ? '78px' : '150') : isMobile ? '78px' : '35px'}
+    px={{ base: '28px', lg: '122px' }}
+    pt={isHomePage ? '162px' : { base: '172px', lg: '35px' }}
+    pb={isHomePage ? { base: '78px', lg: '150' } : { base: '78px', lg: '35px' }}
     bgImage="/images/background-overview.png"
     bgRepeat="no-repeat"
     bgSize="cover"
@@ -18,13 +17,13 @@ const OverviewSection = ({ isHomePage, title, isMobile }: TOverviewSection) => (
   >
     <Flex
       flexDir="column"
-      alignItems={!isHomePage ? 'center' : 'unset'}
+      alignItems={{ base: 'center', lg: 'unset' }}
       w="100%"
       maxW="1512px"
     >
       <Heading
         maxW="705px"
-        size={isHomePage ? (isMobile ? 'xl' : 'size7xl') : 'size6xl'}
+        size={isHomePage ? { base: 'xl', lg: 'size7xl' } : 'size6xl'}
         variant="secondary"
         textAlign={!isHomePage ? 'center' : 'unset'}
       >
@@ -35,13 +34,13 @@ const OverviewSection = ({ isHomePage, title, isMobile }: TOverviewSection) => (
           <Text
             maxW="665px"
             mb="20px"
-            size={isMobile ? 'textXs' : 'textXl'}
+            size={{ base: 'textXs', lg: 'textXl' }}
             variant="secondary"
           >
             Find a bright ideal to suit your taste with our great selection of
             suspension, wall, floor and table lights.
           </Text>
-          <Button size={isMobile ? 'xs' : 'size4xl'}>Shop Now</Button>
+          <Button size={{ base: 'xs', lg: 'size4xl' }}>Shop Now</Button>
         </>
       )}
     </Flex>

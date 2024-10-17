@@ -1,9 +1,10 @@
+import { Metadata } from 'next';
+
 // Apis
 import { getCartItems, getProductDetail, getProducts } from '@/apis';
 
 // Component
 import { ProductDetail } from '@/ui';
-import { Metadata } from 'next';
 
 // Layouts
 import { Header } from '@/layouts';

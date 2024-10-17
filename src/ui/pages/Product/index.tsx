@@ -1,11 +1,13 @@
 'use client';
 
 import { Flex, Grid, GridItem, RadioGroup } from '@chakra-ui/react';
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useDebounceCallback } from 'usehooks-ts';
+import dynamic from 'next/dynamic';
 
 // Components
 import { ItemCategory, Pagination, SkeletonProductList } from '@/components';
-import dynamic from 'next/dynamic';
 import { OverviewSection } from '@/ui/section';
 
 // Hooks
@@ -15,7 +17,14 @@ import { usePagination } from '@/hooks';
 import { TProduct } from '@/types';
 
 // Constants
-import { MENU_ITEM_FILTER, PAGE_SIZE_PRODUCT } from '@/constants';
+import {
+  MENU_ITEM_FILTER,
+  PAGE_SIZE_PRODUCT,
+  SEARCH_QUERIES,
+} from '@/constants';
+
+// Utils
+import { getSearchParams, updateSearchParams } from '@/utils';
 
 const ProductCard = dynamic(() => import('@/components/ProductCard'), {
   loading: () => <SkeletonProductList length={1} />,
@@ -26,13 +35,22 @@ type TTrendingSection = {
 };
 
 const ProductPage = ({ productList }: TTrendingSection) => {
-  const [filter, setFilter] = useState<string>('');
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+  const { category = '' } = getSearchParams(searchParams);
 
-  const productFilter = useMemo(
-    () =>
-      productList.filter(({ category }) => category.trim().includes(filter)),
-    [filter, productList],
-  );
+  const handleFilterProduct = useDebounceCallback((category: string) => {
+    const value = category;
+
+    const updatedParams = updateSearchParams(
+      searchParams,
+      SEARCH_QUERIES.CATEGORIES,
+      value,
+    );
+
+    replace(`${pathname}?${updatedParams.toString()}`, { scroll: false });
+  }, 500);
 
   const {
     data,
@@ -42,7 +60,7 @@ const ProductPage = ({ productList }: TTrendingSection) => {
     isDisableNext,
     handlePageChange,
     handlePageClick,
-  } = usePagination(productFilter, PAGE_SIZE_PRODUCT);
+  } = usePagination(productList, PAGE_SIZE_PRODUCT);
 
   return (
     <>
@@ -74,17 +92,16 @@ const ProductPage = ({ productList }: TTrendingSection) => {
                 flexDirection="column"
                 alignItems="center"
                 cursor="pointer"
-                onChange={setFilter}
-                value={filter}
+                onChange={handleFilterProduct}
+                value={category}
                 key={item.id}
               >
                 <ItemCategory
                   value={item.value}
                   title={item.itemContent}
-                  filter={filter}
+                  filter={category}
                   icon={<IconComponent />}
                   iconActive={<IconActiveComponent />}
-                  onClick={setFilter}
                 />
               </RadioGroup>
             );
