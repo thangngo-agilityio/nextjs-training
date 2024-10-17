@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import lazy from 'next/dynamic';
 import { Suspense } from 'react';
 import {
   Box,
@@ -14,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 
 // Component
-import { ProductCard, SkeletonProductList } from '@/components';
+import { SkeletonProductList } from '@/components';
 import { VectorIcon } from '@/icons';
 
 // Types
@@ -22,6 +23,8 @@ import { TProduct } from '@/types';
 
 // Constants
 import { ROUTER } from '@/constants';
+
+const ProductCard = lazy(() => import('@/components/ProductCard'));
 
 type TProductSection = {
   productList: TProduct[];

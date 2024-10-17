@@ -1,7 +1,8 @@
+import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
 // layouts
-import { Footer } from '@/layouts';
+const Footer = dynamic(() => import('@/layouts/Footer'));
 
 interface AuthLayoutProps {
   children: ReactNode;
