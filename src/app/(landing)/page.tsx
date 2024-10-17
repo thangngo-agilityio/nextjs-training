@@ -1,10 +1,16 @@
-import { getProducts } from '@/apis';
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+
+// Pages
+import { HomePage } from '@/ui';
+
+// Layouts
+import { Header } from '@/layouts';
+
+// Apis
+import { getProducts } from '@/apis';
 
 // Constants
 import { PAGE_SIZE } from '@/constants';
-import { Header } from '@/layouts';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -13,7 +19,6 @@ export const metadata: Metadata = {
 };
 
 // Pages
-const HomePage = dynamic(() => import('@/ui/pages/Home'));
 
 type THome = {
   searchParams: {

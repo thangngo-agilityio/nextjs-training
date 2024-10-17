@@ -12,6 +12,7 @@ import { Header } from '@/layouts';
 type TProductPage = {
   searchParams: {
     name?: string;
+    category?: string;
     id?: string;
   };
 };
@@ -23,13 +24,15 @@ export const metadata: Metadata = {
 };
 
 const Product = async ({ searchParams }: TProductPage) => {
-  const { name = '', id = '' } = searchParams || {};
+  const { name = '', category = '', id = '' } = searchParams || {};
 
   const queryConfig = {
     name: name,
+    category: category,
     id: id,
   };
   const { data: productList } = await getProducts(queryConfig);
+
   return (
     <>
       <Header isProduct />

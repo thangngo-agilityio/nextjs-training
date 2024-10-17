@@ -1,6 +1,4 @@
-'use client';
-
-import { Box, useBreakpointValue } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 // Types
 import { TProduct } from '@/types';
@@ -15,17 +13,13 @@ type THomePage = {
   productList: TProduct[];
 };
 
-const HomePage = ({ productList }: THomePage) => {
-  const isMobile = useBreakpointValue({ base: true, lg: false });
-
-  return (
-    <Box overflow="hidden">
-      <OverviewSection isHomePage isMobile={isMobile} />
-      <TrendingSection productList={productList} />
-      <ShowroomSection />
-      <ProductSection productList={productList} />
-    </Box>
-  );
-};
+const HomePage = ({ productList }: THomePage) => (
+  <Box overflow="hidden">
+    <OverviewSection isHomePage />
+    <TrendingSection productList={productList} />
+    <ShowroomSection />
+    <ProductSection productList={productList} />
+  </Box>
+);
 
 export default HomePage;
