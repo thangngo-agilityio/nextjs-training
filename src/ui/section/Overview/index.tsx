@@ -15,12 +15,7 @@ const OverviewSection = ({ isHomePage, title }: TOverviewSection) => (
     bgSize="cover"
     justifyContent="center"
   >
-    <Flex
-      flexDir="column"
-      alignItems={{ base: 'center', lg: 'unset' }}
-      w="100%"
-      maxW="1512px"
-    >
+    <Flex flexDir="column" w="100%" maxW="1512px">
       <Heading
         maxW="705px"
         size={isHomePage ? { base: 'xl', lg: 'size7xl' } : 'size6xl'}
