@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Grid, GridItem, RadioGroup, Text } from '@chakra-ui/react';
+import { Box, Flex, Grid, GridItem, RadioGroup, Text } from '@chakra-ui/react';
 import { Fragment, Suspense } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounceCallback } from 'usehooks-ts';
@@ -127,7 +127,11 @@ const ProductPage = ({ productList }: TTrendingSection) => {
             </Suspense>
           </Grid>
         ) : (
-          <Text textAlign="center">No products in list</Text>
+          <Box px={{ base: '28px', lg: '320px' }} mb="50px">
+            <Text size="textLg" textAlign="center">
+              No products in list
+            </Text>
+          </Box>
         )}
         <Pagination
           currentPage={data.currentPage}
