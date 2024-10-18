@@ -63,9 +63,9 @@ exports[`ProductInfo() ProductInfo method should match snapshot for ProductInfo 
           class="chakra-stack css-1qc97x9"
         >
           <button
+            aria-label="Minus button"
             class="chakra-button css-4xx2wk"
             data-testid="btn-decrement"
-            disabled=""
             type="button"
           >
             <svg
@@ -88,10 +88,9 @@ exports[`ProductInfo() ProductInfo method should match snapshot for ProductInfo 
           </button>
           <p
             class="chakra-text css-0"
-          >
-            1
-          </p>
+          />
           <button
+            aria-label="Plus button"
             class="chakra-button css-4xx2wk"
             data-testid="btn-increment"
             type="button"
