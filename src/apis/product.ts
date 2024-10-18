@@ -36,9 +36,11 @@ export const getProducts = async (
       configOptions: { next: { tags: [QUERY_TAGS.PRODUCT] } },
     });
 
-    const { data = [] } = res || {};
+    if (!res.length) {
+      return { data: [] };
+    }
 
-    return { data };
+    return { data: res };
   } catch (error) {
     throw error;
   }
@@ -50,9 +52,7 @@ export const getProductDetail = async (id: string) => {
       endpoint: `${API_PATH.PRODUCTS}/${id}`,
     });
 
-    const { data } = res || {};
-
-    return { data };
+    return { data: res };
   } catch (error) {
     return { error };
   }

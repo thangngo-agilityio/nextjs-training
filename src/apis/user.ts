@@ -14,9 +14,7 @@ export const getUsers = async (): Promise<{ data: TUser[] }> => {
       configOptions: { next: { tags: [API_PATH.USERS] } },
     });
 
-    const { data = [] } = res || {};
-
-    return { data };
+    return { data: res };
   } catch (error) {
     throw error;
   }

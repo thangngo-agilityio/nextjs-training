@@ -29,9 +29,7 @@ export const signUp = async (
       body: payload,
     });
 
-    const { data } = res || {};
-
-    return { data };
+    return { data: res };
   } catch (error) {
     return { error: ERROR_MESSAGES.EMAIL_EXIST };
   }
