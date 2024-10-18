@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Grid, GridItem, RadioGroup } from '@chakra-ui/react';
+import { Flex, Grid, GridItem, RadioGroup, Text } from '@chakra-ui/react';
 import { Fragment, Suspense } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounceCallback } from 'usehooks-ts';
@@ -106,25 +106,29 @@ const ProductPage = ({ productList }: TTrendingSection) => {
           })}
         </Flex>
 
-        <Grid
-          px={{ base: '28px', lg: '320px' }}
-          gap={{ base: '120px 15px', lg: '120px 29px' }}
-          templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
-          mb="20px"
-        >
-          <Suspense fallback={<SkeletonProductList length={8} />}>
-            {filterData.map((item) => (
-              <GridItem key={item.id}>
-                <ProductCard
-                  id={item.id}
-                  image={item.image[0]}
-                  title={item.name}
-                  price={item.price}
-                />
-              </GridItem>
-            ))}
-          </Suspense>
-        </Grid>
+        {productList.length > 0 ? (
+          <Grid
+            px={{ base: '28px', lg: '320px' }}
+            gap={{ base: '120px 15px', lg: '120px 29px' }}
+            templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
+            mb="20px"
+          >
+            <Suspense fallback={<SkeletonProductList length={8} />}>
+              {filterData.map((item) => (
+                <GridItem key={item.id}>
+                  <ProductCard
+                    id={item.id}
+                    image={item.image[0]}
+                    title={item.name}
+                    price={item.price}
+                  />
+                </GridItem>
+              ))}
+            </Suspense>
+          </Grid>
+        ) : (
+          <Text textAlign="center">No products in list</Text>
+        )}
         <Pagination
           currentPage={data.currentPage}
           isDisableNext={isDisableNext}

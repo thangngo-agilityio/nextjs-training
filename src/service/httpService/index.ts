@@ -14,8 +14,8 @@ type TPutRequest<T> = TRequest & {
   body: T;
 };
 
-export type ResponseData<T> = {
-  data: T;
+type TDeleteRequest<T> = TRequest & {
+  body?: T;
 };
 
 class HttpClient {
@@ -25,14 +25,16 @@ class HttpClient {
     this.baseApi = baseUrl;
   }
 
-  async request<T>({
-    endpoint,
-    configOptions,
-  }: TRequest): Promise<ResponseData<T>> {
+  async request<T>({ endpoint, configOptions }: TRequest): Promise<T> {
     const res = await fetch(this.baseApi + endpoint, configOptions);
 
     if (!res?.ok) {
-      throw new Error(res?.statusText);
+      if (res.status === 404) {
+        return [] as unknown as T;
+      }
+
+      const errorData = await res.json();
+      throw errorData;
     }
 
     const contentType = res.headers.get('Content-Type') || '';
@@ -45,13 +47,10 @@ class HttpClient {
       result = (await res.text()) as unknown as T;
     }
 
-    return { data: result };
+    return result;
   }
 
-  async getRequest<T>({
-    endpoint,
-    configOptions,
-  }: TRequest): Promise<ResponseData<T>> {
+  async getRequest<T>({ endpoint, configOptions }: TRequest): Promise<T> {
     const options: RequestInit = {
       method: 'GET',
       ...configOptions,
@@ -64,7 +63,7 @@ class HttpClient {
     endpoint,
     body,
     configOptions,
-  }: TPostRequest<T>): Promise<ResponseData<T>> {
+  }: TPostRequest<T>): Promise<T> {
     const options: RequestInit = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -75,13 +74,43 @@ class HttpClient {
     return this.request({ endpoint, configOptions: options });
   }
 
+  async putRequest<T, K>({
+    endpoint,
+    body,
+    configOptions,
+  }: TPutRequest<T>): Promise<K> {
+    const options: RequestInit = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      ...configOptions,
+    };
+
+    return this.request<K>({ endpoint, configOptions: options });
+  }
+
   async patchRequest<T, K>({
     endpoint,
     body,
     configOptions,
-  }: TPutRequest<T>): Promise<ResponseData<K>> {
+  }: TPutRequest<T>): Promise<K> {
     const options: RequestInit = {
       method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      ...configOptions,
+    };
+
+    return this.request<K>({ endpoint, configOptions: options });
+  }
+
+  async deleteRequest<T, K>({
+    endpoint,
+    body,
+    configOptions,
+  }: TDeleteRequest<T>): Promise<K> {
+    const options: RequestInit = {
+      method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
       ...configOptions,

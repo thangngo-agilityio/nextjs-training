@@ -1,6 +1,9 @@
 // Constants
 import { SECOND_URL } from '@/constants';
-import { ResponseData } from '../httpService';
+
+export type ResponseData<T> = {
+  data: T;
+};
 
 type TRequest = {
   endpoint: string;
