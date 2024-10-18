@@ -73,13 +73,13 @@ const PaginationComponent = ({
             const hoverStyle = isDots
               ? {}
               : {
-                  color: 'text.100',
+                  color: 'text.700',
                   bg: 'background.800',
                 };
             const disableStyle = isDots
               ? {}
               : {
-                  color: 'text.100',
+                  color: 'text.700',
                   bg: 'background.800',
                 };
             const handleClickPage = () => onClickPage(+item);
@@ -91,11 +91,10 @@ const PaginationComponent = ({
                 aria-label="btn-pages"
                 isDisabled={isDisable}
                 mx={0.5}
-                h={{ base: '7px', default: '30px', '3xl': '53px' }}
+                p={{ base: '15px', lg: '25px' }}
                 fontSize={{ base: 'sm', lg: 'md' }}
-                p={{ base: '3px', default: '4px', '3xl': '6px' }}
                 bg={currentPage === +item ? 'background.800' : 'transparent'}
-                color={currentPage === +item ? 'text.100' : 'text.200'}
+                color={currentPage === +item ? 'text.700' : 'text.200'}
                 {...(isDots && { cursor: 'not-allowed' })}
                 _hover={hoverStyle}
                 _disabled={disableStyle}
