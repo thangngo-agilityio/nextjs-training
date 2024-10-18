@@ -1,5 +1,3 @@
-'use client';
-
 // Component
 import { LoadingIndicator } from '@/components';
 

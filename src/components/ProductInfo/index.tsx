@@ -44,11 +44,14 @@ const ProductInfo = ({
   onClickAddCard,
 }: TProductInfo) => {
   // Handle change quantity
-  const onChange = useCallback((operation: 'increment' | 'decrement') => {
-    setQuantity((prevQuantity) =>
-      operation === 'increment' ? prevQuantity + 1 : prevQuantity - 1,
-    );
-  }, []);
+  const onChange = useCallback(
+    (operation: 'increment' | 'decrement') => {
+      setQuantity((prevQuantity) =>
+        operation === 'increment' ? prevQuantity + 1 : prevQuantity - 1,
+      );
+    },
+    [setQuantity],
+  );
 
   const handleDecrement = useCallback(async () => {
     onChange('decrement');

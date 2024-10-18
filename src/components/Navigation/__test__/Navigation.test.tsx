@@ -56,7 +56,7 @@ describe('Navigation() Navigation method', () => {
   });
 
   it('Should match snapshot for Navigation', () => {
-    const { container } = render(<Navigation />);
+    const { container } = render(<Navigation cartItem={[]} />);
 
     expect(container).toMatchSnapshot();
   });
@@ -65,7 +65,7 @@ describe('Navigation() Navigation method', () => {
     it('should render desktop navigation with icons and user dropdown', () => {
       (useBreakpointValue as jest.Mock).mockReturnValue(false);
 
-      render(<Navigation />);
+      render(<Navigation cartItem={[]} />);
 
       expect(screen.getByText('HeartIcon')).toBeInTheDocument();
       expect(screen.getByText('CartIcon')).toBeInTheDocument();
@@ -75,7 +75,7 @@ describe('Navigation() Navigation method', () => {
     it('should render mobile navigation with expand button', () => {
       (useBreakpointValue as jest.Mock).mockReturnValue(true);
 
-      render(<Navigation />);
+      render(<Navigation cartItem={[]} />);
 
       expect(screen.getByText('Expand')).toBeInTheDocument();
     });
@@ -83,7 +83,7 @@ describe('Navigation() Navigation method', () => {
     it('should call logout and redirect to login on logout click', async () => {
       (useBreakpointValue as jest.Mock).mockReturnValue(false);
 
-      render(<Navigation />);
+      render(<Navigation cartItem={[]} />);
 
       fireEvent.click(screen.getByText('MockUserDropdown'));
 
@@ -97,7 +97,7 @@ describe('Navigation() Navigation method', () => {
       (useBreakpointValue as jest.Mock).mockReturnValue(false);
       (useTransition as jest.Mock).mockReturnValue([true, mockStartTransition]);
 
-      render(<Navigation />);
+      render(<Navigation cartItem={[]} />);
 
       expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
@@ -108,7 +108,7 @@ describe('Navigation() Navigation method', () => {
         throw new Error('Transition Error');
       });
 
-      render(<Navigation />);
+      render(<Navigation cartItem={[]} />);
 
       fireEvent.click(screen.getByText('MockUserDropdown'));
 
