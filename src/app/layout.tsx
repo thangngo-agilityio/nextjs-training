@@ -12,12 +12,6 @@ const ChakraProvider = dynamic(() => import('@/providers/Chakra'));
 export const metadata: Metadata = {
   title: 'minifurs',
   description: 'E-commerce app',
-  icons: [
-    {
-      rel: 'icon',
-      url: '/images/logo.svg',
-    },
-  ],
 };
 
 export default function RootLayout({
