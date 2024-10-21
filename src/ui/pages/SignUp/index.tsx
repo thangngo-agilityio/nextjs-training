@@ -19,7 +19,7 @@ import { TUser } from '@/types';
 // Constants
 import { ROUTER, SUCCESS_MESSAGES } from '@/constants';
 
-const SignInPage = () => {
+const SignUpPage = () => {
   const { showToast } = useCustomToast();
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -73,4 +73,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default SignUpPage;

@@ -1,5 +1,9 @@
-import dynamic from 'next/dynamic';
+import { LoginPage } from '@/ui';
 
-const SignIn = dynamic(() => import('@/ui/pages/Login'));
+const SignIn = () => (
+  <>
+    <LoginPage />
+  </>
+);
 
 export default SignIn;
