@@ -5,12 +5,11 @@ export const Button = defineStyleConfig({
   baseStyle: {
     color: 'text.100',
     py: 3,
-    opacity: 1,
     _focus: {
       outline: 'none',
     },
     _hover: {
-      opacity: 0.7,
+      opacity: 0.9,
     },
   },
   sizes: {
@@ -96,6 +95,12 @@ export const Button = defineStyleConfig({
       borderRadius: 'lg',
       bgColor: 'background.200',
       color: 'text.100',
+      _hover: {
+        _disabled: {
+          bgColor: 'background.200',
+          opacity: '.7',
+        },
+      },
     },
     authSecondary: {
       color: 'text.500',
