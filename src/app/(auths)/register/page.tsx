@@ -1,7 +1,5 @@
-'use client';
+import { SignUpPage } from '@/ui';
 
-import dynamic from 'next/dynamic';
-
-const SignUp = dynamic(() => import('@/ui/pages/SignUp'));
+const SignUp = () => <SignUpPage />;
 
 export default SignUp;
