@@ -53,3 +53,11 @@ export type TSignInForm = {
   email: string;
   password: string;
 };
+
+export const REQUIRED_FIELDS_LOGIN = ['email', 'password'];
+export const REQUIRED_FIELDS_REGISTER = [
+  'email',
+  'username',
+  'password',
+  'confirmPassword',
+];

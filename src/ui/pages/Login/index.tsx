@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { Flex } from '@chakra-ui/react';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useTransition } from 'react';
 
 // Components
 import { LoginForm } from '@/components';
@@ -24,27 +24,27 @@ import { formatUppercaseFirstLetter } from '@/utils';
 
 const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
-  const [isPending, setIsPending] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const { showToast } = useCustomToast();
 
   const router = useRouter();
 
   const handleSignIn = useCallback(
-    async (data: TSignInForm) => {
-      setIsPending(true);
+    (data: TSignInForm) => {
+      startTransition(async () => {
+        const res = await signInWithEmail(data);
 
-      const res = await signInWithEmail(data);
+        if (typeof res === 'string') {
+          setErrorMessage(
+            formatUppercaseFirstLetter(ERROR_MESSAGES.AUTH_INCORRECT),
+          );
+        } else {
+          setErrorMessage('');
+          showToast(SUCCESS_MESSAGES.LOGIN, 'success');
+        }
 
-      if (typeof res === 'string') {
-        setIsPending(false);
-        setErrorMessage(
-          formatUppercaseFirstLetter(ERROR_MESSAGES.AUTH_INCORRECT),
-        );
-      } else {
-        showToast(SUCCESS_MESSAGES.LOGIN, 'success');
-      }
-
-      return router.push(ROUTER.HOME);
+        return router.push(ROUTER.HOME);
+      });
     },
     [router, showToast],
   );
@@ -58,7 +58,7 @@ const LoginPage = () => {
     >
       <LoginForm
         onSubmit={handleSignIn}
-        isDisabled={isPending}
+        isPending={isPending}
         errorMessage={errorMessage}
       />
     </Flex>

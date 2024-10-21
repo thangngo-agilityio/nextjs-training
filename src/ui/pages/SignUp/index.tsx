@@ -1,7 +1,7 @@
 'use client';
 
 import { Flex } from '@chakra-ui/react';
-import { useCallback, useState } from 'react';
+import { useCallback, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 
 // Action
@@ -20,49 +20,43 @@ import { TUser } from '@/types';
 import { ROUTER, SUCCESS_MESSAGES } from '@/constants';
 
 const SignInPage = () => {
-  const [isPending, setIsPending] = useState(false);
   const { showToast } = useCustomToast();
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
   const handleSignUp = useCallback(
     async (data: TUser) => {
-      setIsPending(true);
+      startTransition(async () => {
+        const signUpRes = await signUp(data);
 
-      const signUpRes = await signUp(data);
+        const { error: signUpError, data: user } = signUpRes || {};
 
-      const { error: signUpError, data: user } = signUpRes || {};
+        if (signUpError) {
+          return showToast(signUpError);
+        }
 
-      if (signUpError) {
-        setIsPending(false);
+        const { id: userId = '' } = user || {};
 
-        return showToast(signUpError);
-      }
+        const createCartRes = await createCart([], userId);
 
-      const { id: userId = '' } = user || {};
+        const { error: createCartError } = createCartRes || {};
 
-      const createCartRes = await createCart([], userId);
+        if (createCartError) {
+          return showToast(createCartError);
+        }
 
-      const { error: createCartError } = createCartRes || {};
+        const { email, password } = data;
 
-      if (createCartError) {
-        setIsPending(false);
+        const signInRes = await signInWithEmail({ email, password });
 
-        return showToast(createCartError);
-      }
+        if (typeof signInRes === 'string') {
+          return showToast(signInRes);
+        } else {
+          showToast(SUCCESS_MESSAGES.LOGIN, 'success');
+        }
 
-      const { email, password } = data;
-
-      const signInRes = await signInWithEmail({ email, password });
-
-      if (typeof signInRes === 'string') {
-        setIsPending(false);
-
-        return showToast(signInRes);
-      } else {
-        showToast(SUCCESS_MESSAGES.LOGIN, 'success');
-      }
-
-      return router.push(ROUTER.HOME);
+        return router.push(ROUTER.HOME);
+      });
     },
     [showToast, router],
   );
@@ -74,7 +68,7 @@ const SignInPage = () => {
       alignItems="center"
       overflow="hidden"
     >
-      <SignUpForm onSubmit={handleSignUp} isDisabled={isPending} />
+      <SignUpForm onSubmit={handleSignUp} isPending={isPending} />
     </Flex>
   );
 };

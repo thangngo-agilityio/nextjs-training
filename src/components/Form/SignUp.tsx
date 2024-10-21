@@ -10,7 +10,7 @@ import {
   useDisclosure,
   VStack,
 } from '@chakra-ui/react';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
@@ -20,13 +20,19 @@ import { InputField } from '../common';
 import { GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
-import { AUTH_SCHEMA, ISignUpForm, ROUTER } from '@/constants';
+import {
+  AUTH_SCHEMA,
+  ISignUpForm,
+  REQUIRED_FIELDS_REGISTER,
+  ROUTER,
+} from '@/constants';
 
 // Types
 import { TUser } from '@/types';
+import { isEnableSubmitButton } from '@/utils';
 
 type TAuthFormProps = {
-  isDisabled?: boolean;
+  isPending?: boolean;
   errorMessage?: string;
   onChange?: (value: string) => void;
   handleClearRootError?: () => void;
@@ -35,14 +41,14 @@ type TAuthFormProps = {
 };
 
 const SignUpForm = ({
-  isDisabled = false,
+  isPending,
   errorMessage = '',
   handleClearRootError,
   onSubmit,
 }: TAuthFormProps) => {
   const {
     control,
-    formState: { isSubmitting },
+    formState: { dirtyFields, isSubmitting, errors },
     handleSubmit,
     clearErrors,
   } = useForm<ISignUpForm>({
@@ -94,6 +100,14 @@ const SignUpForm = ({
 
   const handleSignUp = useCallback((data: TUser) => onSubmit(data), [onSubmit]);
 
+  const dirtyItems = Object.keys(dirtyFields);
+
+  const enableSubmit: boolean = useMemo(
+    () => isEnableSubmitButton(REQUIRED_FIELDS_REGISTER, dirtyItems, errors),
+    [dirtyItems, errors],
+  );
+  const isDisableSubmit = !enableSubmit;
+
   return (
     <Stack
       w={{ base: '100%', lg: '556px' }}
@@ -137,7 +151,6 @@ const SignUpForm = ({
                 variant="form"
                 isError={!!error?.message}
                 errorMessages={error?.message}
-                isDisabled={isDisabled}
                 value={value}
                 onChange={handleChange}
                 onBlur={handleClearRootError}
@@ -204,7 +217,6 @@ const SignUpForm = ({
               rightIcon={renderPasswordIcon(isShowPassword, onShowPassword)}
               isError={!!error?.message}
               errorMessages={error?.message}
-              isDisabled={isDisabled}
               {...field}
               onChange={handleClearErrorMessage(
                 'password',
@@ -257,7 +269,8 @@ const SignUpForm = ({
             variant="auth"
             colorScheme="primary"
             textTransform="capitalize"
-            isDisabled={isDisabled}
+            isDisabled={isDisableSubmit}
+            isLoading={isPending}
           >
             SIGN UP
           </Button>

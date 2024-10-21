@@ -12,7 +12,7 @@ import {
   useDisclosure,
   VStack,
 } from '@chakra-ui/react';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
@@ -22,11 +22,21 @@ import { InputField } from '../common';
 import { GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
-import { AUTH_SCHEMA, ROUTER, TSignInForm } from '@/constants';
+import {
+  AUTH_SCHEMA,
+  REQUIRED_FIELDS_LOGIN,
+  ROUTER,
+  TSignInForm,
+} from '@/constants';
+
+// Types
 import { LoginFormData } from '@/types';
 
+// Utils
+import { isEnableSubmitButton } from '@/utils';
+
 type TAuthFormProps = {
-  isDisabled?: boolean;
+  isPending?: boolean;
   errorMessage?: string;
   onChange?: (value: string) => void;
   handleClearRootError?: () => void;
@@ -35,14 +45,14 @@ type TAuthFormProps = {
 };
 
 const LoginForm = ({
-  isDisabled = false,
+  isPending,
   errorMessage = '',
   handleClearRootError,
   onSubmit,
 }: TAuthFormProps) => {
   const {
     control,
-    formState: { isSubmitting },
+    formState: { dirtyFields, errors },
     handleSubmit,
     clearErrors,
   } = useForm<LoginFormData>({
@@ -92,6 +102,14 @@ const LoginForm = ({
     [onSubmit],
   );
 
+  const dirtyItems = Object.keys(dirtyFields);
+
+  const enableSubmit: boolean = useMemo(
+    () => isEnableSubmitButton(REQUIRED_FIELDS_LOGIN, dirtyItems, errors),
+    [dirtyItems, errors],
+  );
+  const isDisableSubmit = !enableSubmit;
+
   return (
     <Stack
       w={{ base: '100%', lg: '556px' }}
@@ -135,7 +153,6 @@ const LoginForm = ({
                 variant="form"
                 isError={!!error?.message}
                 errorMessages={error?.message}
-                isDisabled={isDisabled}
                 value={value}
                 onChange={handleChange}
                 onBlur={handleClearRootError}
@@ -156,7 +173,6 @@ const LoginForm = ({
               rightIcon={renderPasswordIcon(isShowPassword, onShowPassword)}
               isError={!!error?.message}
               errorMessages={error?.message}
-              isDisabled={isDisabled}
               {...field}
               onChange={handleClearErrorMessage(
                 'password',
@@ -169,18 +185,12 @@ const LoginForm = ({
         />
 
         <HStack justifyContent="space-between" w="100%" mt="10px">
-          <Checkbox
-            aria-label="remember"
-            variant="round"
-            isDisabled={isSubmitting}
-            position="relative"
-          >
+          <Checkbox aria-label="remember" variant="round" position="relative">
             <Text variant="quinary" fontWeight="bold">
               Remember me
             </Text>
           </Checkbox>
           <Button
-            isDisabled={isSubmitting}
             variant="authSecondary"
             px={0}
             fontSize="md"
@@ -206,7 +216,8 @@ const LoginForm = ({
             variant="auth"
             colorScheme="primary"
             textTransform="capitalize"
-            isDisabled={isDisabled}
+            isDisabled={isDisableSubmit}
+            isLoading={isPending}
           >
             SIGN IN
           </Button>
