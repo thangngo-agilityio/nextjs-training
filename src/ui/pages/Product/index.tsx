@@ -26,7 +26,6 @@ const ProductPage = ({ productList }: TTrendingSection) => (
       mb="20px"
     >
       <FilterProduct />
-
       <Suspense fallback={<SkeletonProductList length={8} />}>
         <ProductList productList={productList} />
       </Suspense>
