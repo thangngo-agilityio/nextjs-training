@@ -39,9 +39,9 @@ const ImageProduct = dynamic(() => import('@/components/ImageProduct'));
 const CardBenefit = dynamic(() => import('@/components/CardBenefit'));
 
 type TProductInfo = {
-  product: TProduct;
   cartId: string;
   cartItems: ICartItem[];
+  product?: TProduct;
   length?: string;
   width?: string;
 };

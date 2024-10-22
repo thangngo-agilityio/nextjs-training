@@ -15,7 +15,7 @@ const ProductInfo = dynamic(() => import('@/components/ProductInfo'));
 
 type TProductDetail = {
   cartId: string;
-  product: TProduct;
+  product?: TProduct;
   cartItems?: ICartItem[];
 };
 
