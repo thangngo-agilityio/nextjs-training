@@ -6,9 +6,6 @@ import { getCartItems, getProductDetail, getProducts } from '@/apis';
 // Component
 import { ProductDetail } from '@/ui';
 
-// Layouts
-import { Header } from '@/layouts';
-
 type TProductDetailPage = {
   params: { id: string };
 };
@@ -66,7 +63,6 @@ const ProductDetailPage = async ({ params }: TProductDetailPage) => {
 
   return (
     <>
-      <Header />
       <ProductDetail cartId={id} product={product} cartItems={cartItems} />
     </>
   );

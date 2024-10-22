@@ -6,9 +6,6 @@ import { getProducts } from '@/apis';
 // Pages
 import { ProductPage } from '@/ui';
 
-// Layouts
-import { Header } from '@/layouts';
-
 type TProductPage = {
   searchParams: {
     name?: string;
@@ -35,7 +32,6 @@ const Product = async ({ searchParams }: TProductPage) => {
 
   return (
     <>
-      <Header isProduct />
       <ProductPage productList={productList} />
     </>
   );

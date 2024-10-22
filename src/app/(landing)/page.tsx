@@ -3,9 +3,6 @@ import { Metadata } from 'next';
 // Pages
 import { HomePage } from '@/ui';
 
-// Layouts
-import { Header } from '@/layouts';
-
 // Apis
 import { getProducts } from '@/apis';
 
@@ -36,7 +33,6 @@ const Home = async ({ searchParams }: THome) => {
   const { data: productList } = await getProducts(queryConfigs);
   return (
     <>
-      <Header />
       <HomePage productList={productList} />
     </>
   );
