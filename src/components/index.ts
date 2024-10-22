@@ -20,6 +20,8 @@ export { default as OrderSuccess } from './OrderSuccess';
 export { default as Expand } from './Expand';
 export { default as InputSearch } from './InputSearch';
 export { default as Navigation } from './Navigation';
+export { default as FilterProduct } from './FilterProduct';
+export { default as ProductList } from './ProductList';
 
 // Common
 export * from './common';
