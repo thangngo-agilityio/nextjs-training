@@ -13,11 +13,7 @@ import { ArrowIcon, LogoIcon, LogoMobile } from '@/icons';
 // Constants
 import { ROUTER } from '@/constants';
 
-type THeader = {
-  isProduct?: boolean;
-};
-
-const Header = async ({ isProduct }: THeader) => {
+const Header = async () => {
   const { data: cartList } = await getCartItems();
   const { cartItems = [] } = cartList || {};
 
@@ -70,22 +66,19 @@ const Header = async ({ isProduct }: THeader) => {
                 <ArrowIcon />
               </Flex>
             </Stack>
-            {isProduct && (
-              <Box ml="22px" width="30%">
-                <InputSearch />
-              </Box>
-            )}
+            <Box ml="22px" width="30%">
+              <InputSearch />
+            </Box>
           </Show>
         </Stack>
         <Navigation cartItem={cartItems} />
       </Flex>
-      {isProduct && (
-        <Hide above="lg">
-          <Box width="100%">
-            <InputSearch />
-          </Box>
-        </Hide>
-      )}
+
+      <Hide above="lg">
+        <Box width="100%">
+          <InputSearch />
+        </Box>
+      </Hide>
     </Flex>
   );
 };

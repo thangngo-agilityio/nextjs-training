@@ -1,3 +1,4 @@
+import { Header } from '@/layouts';
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
@@ -10,6 +11,7 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => (
   <>
+    <Header />
     {children}
     <Footer />
   </>

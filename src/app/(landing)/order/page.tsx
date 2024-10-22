@@ -3,9 +3,6 @@ import { Metadata } from 'next';
 // Components
 import { OrderSuccess } from '@/components';
 
-// Layouts
-import { Header } from '@/layouts';
-
 export const metadata: Metadata = {
   title: 'Order',
   description:
@@ -14,7 +11,6 @@ export const metadata: Metadata = {
 
 const OrderPage = () => (
   <>
-    <Header />
     <OrderSuccess />
   </>
 );

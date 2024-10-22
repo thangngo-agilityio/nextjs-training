@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounceCallback } from 'usehooks-ts';
 
 // Constants
-import { SEARCH_QUERIES } from '@/constants';
+import { ROUTER, SEARCH_QUERIES } from '@/constants';
 
 // Icons
 import { SearchIcon } from '@/icons';
@@ -18,6 +18,8 @@ const InputSearch = () => {
   const pathname = usePathname();
   const { replace } = useRouter();
   const { name } = getSearchParams(searchParams);
+
+  const isShowSearch = pathname === ROUTER.PRODUCT;
 
   const handleOnChange = useDebounceCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,19 +35,23 @@ const InputSearch = () => {
     500,
   );
   return (
-    <InputGroup>
-      <InputLeftElement>
-        <SearchIcon />
-      </InputLeftElement>
-      <Input
-        placeholder="Search for minimalist chair"
-        defaultValue={name}
-        onChange={handleOnChange}
-        variant="search"
-        background="background.100"
-        data-testid="search"
-      />
-    </InputGroup>
+    <>
+      {isShowSearch && (
+        <InputGroup>
+          <InputLeftElement>
+            <SearchIcon />
+          </InputLeftElement>
+          <Input
+            placeholder="Search for minimalist chair"
+            defaultValue={name}
+            onChange={handleOnChange}
+            variant="search"
+            background="background.100"
+            data-testid="search"
+          />
+        </InputGroup>
+      )}
+    </>
   );
 };
 
