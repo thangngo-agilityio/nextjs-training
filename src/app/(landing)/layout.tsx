@@ -1,4 +1,5 @@
 import { Header } from '@/layouts';
+import { Box } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
@@ -12,7 +13,7 @@ interface AuthLayoutProps {
 const AuthLayout = ({ children }: AuthLayoutProps) => (
   <>
     <Header />
-    {children}
+    <Box>{children}</Box>
     <Footer />
   </>
 );
