@@ -1,8 +1,5 @@
 import { Box } from '@chakra-ui/react';
 
-// Types
-import { TProduct } from '@/types';
-
 // Sections
 import {
   OverviewSection,
@@ -10,18 +7,25 @@ import {
   ShowroomSection,
   TrendingSection,
 } from '@/ui/section';
+import { getProducts } from '@/apis';
 
 type THomePage = {
-  productList: TProduct[];
+  queryConfigs: {
+    limit?: number;
+    page?: string;
+  };
 };
 
-const HomePage = ({ productList }: THomePage) => (
-  <Box overflow="hidden">
-    <OverviewSection isHomePage />
-    <TrendingSection productList={productList} />
-    <ShowroomSection />
-    <ProductSection productList={productList} />
-  </Box>
-);
+const HomePage = async ({ queryConfigs }: THomePage) => {
+  const { data: productList } = await getProducts(queryConfigs);
+  return (
+    <Box overflow="hidden">
+      <OverviewSection isHomePage />
+      <TrendingSection productList={productList} />
+      <ShowroomSection />
+      <ProductSection productList={productList} />
+    </Box>
+  );
+};
 
 export default HomePage;
