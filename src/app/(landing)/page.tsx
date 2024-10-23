@@ -3,11 +3,11 @@ import { Metadata } from 'next';
 // Pages
 import { HomePage } from '@/ui';
 
-// Apis
-import { getProducts } from '@/apis';
-
 // Constants
 import { PAGE_SIZE } from '@/constants';
+import { Box } from '@chakra-ui/react';
+import { Suspense } from 'react';
+import { SkeletonSection } from '@/components';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -30,11 +30,12 @@ const Home = async ({ searchParams }: THome) => {
     page: (searchParams.page = '1'),
   };
 
-  const { data: productList } = await getProducts(queryConfigs);
   return (
-    <>
-      <HomePage productList={productList} />
-    </>
+    <Box>
+      <Suspense fallback={<SkeletonSection length={4} />}>
+        <HomePage queryConfigs={queryConfigs} />
+      </Suspense>
+    </Box>
   );
 };
 
