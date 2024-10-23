@@ -1,11 +1,10 @@
+import { Box, Flex } from '@chakra-ui/react';
+import { Suspense } from 'react';
 import { Metadata } from 'next';
 
-// Apis
-import { getProducts } from '@/apis';
-
 // Pages
-import { ProductPage } from '@/ui';
-import { Box } from '@chakra-ui/react';
+import { OverviewSection, ProductPage } from '@/ui';
+import { FilterProduct, SkeletonProductList } from '@/components';
 
 type TProductPage = {
   searchParams: {
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
     'This is the Product page in a comprehensive e-commerce web application designed to facilitate online shopping.',
 };
 
-const Product = async ({ searchParams }: TProductPage) => {
+const Product = ({ searchParams }: TProductPage) => {
   const { name = '', category = '', id = '' } = searchParams || {};
 
   const queryConfig = {
@@ -29,11 +28,27 @@ const Product = async ({ searchParams }: TProductPage) => {
     category: category,
     id: id,
   };
-  const { data: productList } = await getProducts(queryConfig);
 
   return (
     <Box>
-      <ProductPage productList={productList} />
+      <OverviewSection title="Product page" />
+      <Flex
+        pb={{ base: '100px', lg: '350px' }}
+        flexDir="column"
+        alignItems="center"
+        mb="20px"
+      >
+        <Flex
+          maxW={{ base: 'unset', lg: '1512px' }}
+          flexDir="column"
+          alignItems="center"
+        >
+          <FilterProduct />
+          <Suspense fallback={<SkeletonProductList length={8} />}>
+            <ProductPage queryConfig={queryConfig} />
+          </Suspense>
+        </Flex>
+      </Flex>
     </Box>
   );
 };

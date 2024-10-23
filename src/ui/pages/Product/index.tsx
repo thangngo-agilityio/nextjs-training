@@ -1,42 +1,21 @@
-import { Suspense } from 'react';
-import { Flex } from '@chakra-ui/react';
-
-// Components
-import { SkeletonProductList } from '@/components';
-import { OverviewSection } from '@/ui/section';
-
-// Types
-import { TProduct } from '@/types';
 import dynamic from 'next/dynamic';
 
-const FilterProduct = dynamic(() => import('@/components/FilterProduct'));
+// Types
+import { getProducts } from '@/apis';
+
 const ProductList = dynamic(() => import('@/components/ProductList'));
 
 type TTrendingSection = {
-  productList: TProduct[];
+  queryConfig: {
+    name?: string;
+    category?: string;
+    id?: string;
+  };
 };
 
-const ProductPage = ({ productList }: TTrendingSection) => (
-  <>
-    <OverviewSection title="Product page" />
-    <Flex
-      pb={{ base: '100px', lg: '350px' }}
-      flexDir="column"
-      alignItems="center"
-      mb="20px"
-    >
-      <Flex
-        maxW={{ base: 'unset', lg: '1512px' }}
-        flexDir="column"
-        alignItems="center"
-      >
-        <FilterProduct />
-        <Suspense fallback={<SkeletonProductList length={8} />}>
-          <ProductList productList={productList} />
-        </Suspense>
-      </Flex>
-    </Flex>
-  </>
-);
+const ProductPage = async ({ queryConfig }: TTrendingSection) => {
+  const { data: productList } = await getProducts(queryConfig);
+  return <ProductList productList={productList} />;
+};
 
 export default ProductPage;
