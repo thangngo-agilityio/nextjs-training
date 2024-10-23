@@ -2,10 +2,12 @@ import { Metadata } from 'next';
 import { Box } from '@chakra-ui/react';
 
 // Apis
-import { getCartItems, getProductDetail, getProducts } from '@/apis';
+import { getProductDetail, getProducts } from '@/apis';
 
 // Component
-import { ProductDetail } from '@/ui';
+import { OverviewSection, ProductDetail } from '@/ui';
+import { Suspense } from 'react';
+import { SkeletonProductDetail } from '@/components';
 
 type TProductDetailPage = {
   params: { id: string };
@@ -54,19 +56,13 @@ export const generateMetadata = async ({
   };
 };
 
-const ProductDetailPage = async ({ params }: TProductDetailPage) => {
-  const { id: productId } = params || {};
-
-  const { data: cartList } = await getCartItems();
-  const { cartItems = [], id } = cartList || {};
-
-  const { data: product } = await getProductDetail(productId);
-
-  return (
-    <Box>
-      <ProductDetail cartId={id} product={product} cartItems={cartItems} />
-    </Box>
-  );
-};
+const ProductDetailPage = ({ params }: TProductDetailPage) => (
+  <Box>
+    <OverviewSection title="Product detail" />
+    <Suspense fallback={<SkeletonProductDetail />}>
+      <ProductDetail params={params} />
+    </Suspense>
+  </Box>
+);
 
 export default ProductDetailPage;

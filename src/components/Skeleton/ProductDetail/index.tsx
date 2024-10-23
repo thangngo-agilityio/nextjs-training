@@ -2,37 +2,33 @@ import {
   Box,
   Flex,
   Grid,
-  Heading,
   HStack,
   Skeleton,
   SkeletonCircle,
   SkeletonText,
   Stack,
-  Text,
   VStack,
 } from '@chakra-ui/react';
 
 const SkeletonProductDetail = () => (
-  <Flex gap="42px">
+  <Flex
+    gap="42px"
+    px={{ base: '28px', lg: '67px' }}
+    pt="30px"
+    pb={{ base: '100px', lg: '610px' }}
+  >
     <Flex borderRadius="sm" flex={1} flexDir="column" gap="10px">
       <Skeleton w="100%" h="400px" />
       <Skeleton w="100%" h="400px" />
     </Flex>
     <Stack flexDir="column" flex={1}>
-      <SkeletonText />
-      <SkeletonText />
+      <Flex gap="20px" flexDir="column" mb="30px">
+        <Skeleton w="100%" h="80px" />
+        <SkeletonText />
+      </Flex>
       <VStack mb="30px" alignItems="flex-start">
-        <Heading variant="productTitle" size="size2xl">
-          Dimension:
-        </Heading>
-        <Flex flexDir="row" gap="5px">
-          <Text variant="senary" size="text2Xl">
-            Length-34cm,
-          </Text>
-          <Text variant="tertiary" size="text2Xl">
-            Width-56cm
-          </Text>
-        </Flex>
+        <Skeleton w="150px" h="40px" />
+        <SkeletonText />
       </VStack>
 
       <Box
@@ -46,17 +42,11 @@ const SkeletonProductDetail = () => (
 
       <Stack flexDir="row" mb="44px" gap="60px">
         <VStack alignItems="flex-start">
-          <Heading variant="quaternary" size="lg" mb="20px">
-            Quantity available
-          </Heading>
-          <HStack gap="20px">
-            <Skeleton w="150px" h="50px" />
-          </HStack>
+          <Skeleton w="150px" h="40px" />
+          <Skeleton w="150px" h="40px" />
         </VStack>
         <VStack alignItems="flex-start">
-          <Heading mb="20px" variant="quaternary" size="lg">
-            Color:
-          </Heading>
+          <Skeleton w="150px" h="40px" />
           <HStack gap="15px">
             <SkeletonCircle w="36px" h="36px" />
             <SkeletonCircle w="36px" h="36px" />
@@ -77,9 +67,7 @@ const SkeletonProductDetail = () => (
         <Skeleton w="200px" h="50px" />
       </Grid>
 
-      <Heading variant="quinary" size="size9xl" mb="58px">
-        Delivery Fee: N3,000-N5000
-      </Heading>
+      <Skeleton w="250px" h="40px" mb="58px" />
 
       <HStack gap="30px">
         <Skeleton w="162px" height="65px" />
