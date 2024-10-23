@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 
 // Components
 import { ProductCard, Pagination } from '@/components';
@@ -30,7 +30,7 @@ const ProductList = ({ productList }: TProductListProps) => {
   } = usePagination(productList, PAGE_SIZE_PRODUCT);
 
   return (
-    <>
+    <Flex flexDir="column" alignItems="center">
       {productList.length > 0 ? (
         <Grid
           px={{ base: '28px', lg: '94px' }}
@@ -64,7 +64,7 @@ const ProductList = ({ productList }: TProductListProps) => {
         onPageChange={handlePageChange}
         onClickPage={handlePageClick}
       />
-    </>
+    </Flex>
   );
 };
 
