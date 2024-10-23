@@ -12,6 +12,7 @@ export { default as Pagination } from './Pagination';
 export { default as SkeletonProductList } from './Skeleton/ProductList';
 export { default as SkeletonProductDetail } from './Skeleton/ProductDetail';
 export { default as SkeletonSection } from './Skeleton/Section';
+export { default as SkeletonCartList } from './Skeleton/CartList';
 export { default as ImageProduct } from './ImageProduct';
 export { default as ProductInfo } from './ProductInfo';
 export { default as CartItem } from './CartItem';
@@ -22,6 +23,7 @@ export { default as InputSearch } from './InputSearch';
 export { default as Navigation } from './Navigation';
 export { default as FilterProduct } from './FilterProduct';
 export { default as ProductList } from './ProductList';
+export { default as CartList } from './CartList';
 
 // Common
 export * from './common';
