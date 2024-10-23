@@ -1,42 +1,39 @@
 import { Suspense } from 'react';
 import { Box } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
 
 // Components
-import { HeadingSection, SkeletonProductDetail } from '@/components';
+import {
+  HeadingSection,
+  ProductInfo,
+  SkeletonProductDetail,
+} from '@/components';
 
-// Types
-import { ICartItem, TProduct } from '@/types';
+import { getCartItems, getProductDetail } from '@/apis';
 
 // Constants
 
-const OverviewSection = dynamic(() => import('@/ui/section/Overview'));
-const ProductInfo = dynamic(() => import('@/components/ProductInfo'));
-
 type TProductDetail = {
-  cartId: string;
-  product?: TProduct;
-  cartItems?: ICartItem[];
+  params: {
+    id: string;
+  };
 };
 
-const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
+const ProductDetail = async ({ params }: TProductDetail) => {
+  const { id: productId } = params || {};
+
+  const { data: cartList } = await getCartItems();
+  const { cartItems = [], id } = cartList || {};
+
+  const { data: product } = await getProductDetail(productId);
+
   const { category = '' } = product || {};
+
   return (
-    <Box>
-      <OverviewSection title="Product detail" />
-      <Box
-        px={{ base: '28px', lg: '67px' }}
-        pb={{ base: '100px', lg: '610px' }}
-      >
-        <HeadingSection title={category} />
-        <Suspense fallback={<SkeletonProductDetail />}>
-          <ProductInfo
-            product={product}
-            cartId={cartId}
-            cartItems={cartItems}
-          />
-        </Suspense>
-      </Box>
+    <Box px={{ base: '28px', lg: '67px' }} pb={{ base: '100px', lg: '610px' }}>
+      <HeadingSection title={category} />
+      <Suspense fallback={<SkeletonProductDetail />}>
+        <ProductInfo product={product} cartId={id} cartItems={cartItems} />
+      </Suspense>
     </Box>
   );
 };
