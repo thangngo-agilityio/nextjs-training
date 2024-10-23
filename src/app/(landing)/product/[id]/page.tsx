@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Box } from '@chakra-ui/react';
 
 // Apis
 import { getCartItems, getProductDetail, getProducts } from '@/apis';
@@ -62,9 +63,9 @@ const ProductDetailPage = async ({ params }: TProductDetailPage) => {
   const { data: product } = await getProductDetail(productId);
 
   return (
-    <>
+    <Box>
       <ProductDetail cartId={id} product={product} cartItems={cartItems} />
-    </>
+    </Box>
   );
 };
 

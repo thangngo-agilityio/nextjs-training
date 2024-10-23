@@ -22,7 +22,7 @@ type TProductDetail = {
 const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
   const { category = '' } = product || {};
   return (
-    <>
+    <Box>
       <OverviewSection title="Product detail" />
       <Box
         px={{ base: '28px', lg: '67px' }}
@@ -37,7 +37,7 @@ const ProductDetail = ({ cartId, product, cartItems = [] }: TProductDetail) => {
           />
         </Suspense>
       </Box>
-    </>
+    </Box>
   );
 };
 

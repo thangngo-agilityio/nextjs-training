@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 
-// Apis
-import { getCartItems } from '@/apis';
-
 // Components
-import { CartPage } from '@/ui';
+import { CartPage, OverviewSection } from '@/ui';
+import { Box, Container } from '@chakra-ui/react';
+import { Suspense } from 'react';
+import { HeadingSection, SkeletonProductList } from '@/components';
 
 export const metadata: Metadata = {
   title: 'Cart',
@@ -12,14 +12,21 @@ export const metadata: Metadata = {
     'This is the Cart page in a comprehensive e-commerce web application designed to facilitate online shopping.',
 };
 
-const Cart = async () => {
-  const { data: cartList } = await getCartItems();
-  const { cartItems = [], id } = cartList || {};
-  return (
-    <>
-      <CartPage cartItem={cartItems} cartId={id} />
-    </>
-  );
-};
+const Cart = () => (
+  <Container maxW="100%" p={0}>
+    <OverviewSection title="Cart page" />
+    <Box
+      px={{ base: '28px', lg: '67px' }}
+      pt="20px"
+      pb={{ base: '100px', lg: '500px' }}
+    >
+      <HeadingSection title="Cart" />
+
+      <Suspense fallback={<SkeletonProductList length={1} />}>
+        <CartPage />
+      </Suspense>
+    </Box>
+  </Container>
+);
 
 export default Cart;

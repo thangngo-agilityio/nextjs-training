@@ -25,10 +25,16 @@ const ProductPage = ({ productList }: TTrendingSection) => (
       alignItems="center"
       mb="20px"
     >
-      <FilterProduct />
-      <Suspense fallback={<SkeletonProductList length={8} />}>
-        <ProductList productList={productList} />
-      </Suspense>
+      <Flex
+        maxW={{ base: 'unset', lg: '1512px' }}
+        flexDir="column"
+        alignItems="center"
+      >
+        <FilterProduct />
+        <Suspense fallback={<SkeletonProductList length={8} />}>
+          <ProductList productList={productList} />
+        </Suspense>
+      </Flex>
     </Flex>
   </>
 );

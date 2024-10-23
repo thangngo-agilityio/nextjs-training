@@ -5,6 +5,7 @@ import { getProducts } from '@/apis';
 
 // Pages
 import { ProductPage } from '@/ui';
+import { Box } from '@chakra-ui/react';
 
 type TProductPage = {
   searchParams: {
@@ -31,9 +32,9 @@ const Product = async ({ searchParams }: TProductPage) => {
   const { data: productList } = await getProducts(queryConfig);
 
   return (
-    <>
+    <Box>
       <ProductPage productList={productList} />
-    </>
+    </Box>
   );
 };
 

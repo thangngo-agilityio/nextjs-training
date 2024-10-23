@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body>
         <SessionProvider refetchInterval={10 * 60} refetchOnWindowFocus={false}>
           <ChakraProvider>{children}</ChakraProvider>
